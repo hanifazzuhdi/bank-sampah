@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Jenis;
 use App\Model\Role;
 use Illuminate\Database\Seeder;
 
@@ -30,6 +31,31 @@ class RoleSeeder extends Seeder
 
         Role::create([
             'role_name' => 'admin'
+        ]);
+        
+        Jenis::create([
+            'jenis_sampah' => 'Plastik',
+            'harga'        => '500'
+        ]);
+
+        Jenis::create([
+            'jenis_sampah' => 'kertas',
+            'harga'        => '700'
+        ]);
+
+        Jenis::create([
+            'jenis_sampah' => 'logam',
+            'harga'        => '2000'
+        ]);
+
+        Jenis::create([
+            'jenis_sampah' => 'Elektronik',
+            'harga'        => '5000'
+        ]);
+
+        Jenis::create([
+            'jenis_sampah' => 'Minyak',
+            'harga'        => '3000'
         ]);
     }
 }
