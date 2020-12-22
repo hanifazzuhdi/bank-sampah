@@ -55,15 +55,18 @@ class ProfileController extends Controller
     }
     public function change(Request $request)
     {
-        $this->validate($request, [
-            '$password'  => 'required',
-        ]);
         $user = User::where('id', Auth::user()->id)->first();
-        $user->password = $request->password_change;
-        if (!empty($request->password_change)) {
-            $user->password = Hash::make($request->password_change);
+        if (!Empty($user)) {
+            if (password_verify($request->password, $user->password)) {
+                $user->password = $request->password_change;
+                if (!empty($request->password_change)) {
+                    $user->password = Hash::make($request->password_change);
+                }
+                $user->update();
+                return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);    
+            } else {
+                return $this->sendResponse('error', 'masukan password lama dengan benar bos', null, 200);    
+            }
         }
-        $user->update();
-        return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);
     }
 }
