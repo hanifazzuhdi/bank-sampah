@@ -23,8 +23,9 @@ Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
 
 Route::group(['middleware' => 'auth'], function () {
-Route::post('profile', 'ProfileController@update');
-//mengupdate profile
-Route::post('change', 'ProfileController@change');
-//ganti password
+
+Route::get('profile', 'ProfileController@index');//menampilkan profil user yang sedang login
+Route::post('profile', 'ProfileController@update');//mengupdate profile
+Route::post('change', 'ProfileController@change');//ganti password
+
 });

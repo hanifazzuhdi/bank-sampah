@@ -10,6 +10,15 @@ use GuzzleHttp\Client;
 
 class ProfileController extends Controller
 {
+    public function index()
+	{
+		$user = User::where('id', Auth::user()->id)->first();
+		if (Empty($user)) {
+			return response('silakan login terlebih dahulu bos');
+		}
+		return $this->sendResponse('Succes', 'ini dia profil anda bos', $user, 500);
+		// return view('profile.index', compact('user'));
+	}
     public function update(Request $request)
     {
         $this->validate($request, [
