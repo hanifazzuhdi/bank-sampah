@@ -33,5 +33,4 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('jemput', 'PenyetoranController@jemput');
 
     // Route Transaksi
-    Route::post('addSaldo', 'TransaksiController@addSaldo');
 });
