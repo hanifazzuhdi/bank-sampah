@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PenyetoranController;
 use App\Http\Controllers\Api\SampahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ Route::post('login', 'Api\UserController@login');
 
 
 Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
-    // Route User 
+    // Route User
     Route::get('profile', 'ProfileController@index'); //menampilkan profil user yang sedang login
     Route::post('profile', 'ProfileController@update'); //mengupdate profile
     Route::post('ganti', 'ProfileController@change'); //ganti password
@@ -33,6 +34,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     // Route penyetoran
     Route::post('setor', 'PenyetoranController@store');
     Route::post('jemput', 'PenyetoranController@jemput');
+    Route::post('setorDriver/{fee}', 'PenyetoranController@store');
 
     // Route Transaksi
 
@@ -41,5 +43,4 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     // Route Gudang sampah
     Route::get('getSampah', 'SampahController@index');
     Route::get('getSampah/{id}', 'SampahController@show');
-
 });
