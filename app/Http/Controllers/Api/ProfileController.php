@@ -12,17 +12,17 @@ use GuzzleHttp\Client;
 class ProfileController extends Controller
 {
     public function index()
-	{
-		$user = User::where('id', Auth::user()->id)->first();
-		if (Empty($user)) {
-			return response('silakan login terlebih dahulu bos');
-		}
-		return $this->sendResponse('Succes', 'ini dia profil anda bos', $user, 500);
-	}
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        if (empty($user)) {
+            return response('silakan login terlebih dahulu bos');
+        }
+        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 500);
+    }
     public function update(Request $request)
     {
         $this->validate($request, [
-            'phone_number'  => 'string',    
+            'phone_number'  => 'string',
         ]);
         $image = null;
 
@@ -56,16 +56,16 @@ class ProfileController extends Controller
     public function change(Request $request)
     {
         $user = User::where('id', Auth::user()->id)->first();
-        if (!Empty($user)) {
+        if (!empty($user)) {
             if (password_verify($request->password, $user->password)) {
                 $user->password = $request->password_change;
                 if (!empty($request->password_change)) {
                     $user->password = Hash::make($request->password_change);
                 }
                 $user->update();
-                return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);    
+                return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);
             } else {
-                return $this->sendResponse('error', 'masukan password lama dengan benar bos', null, 200);    
+                return $this->sendResponse('error', 'masukan password lama dengan benar bos', null, 200);
             }
         }
     }

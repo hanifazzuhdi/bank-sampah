@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
-    public function getSaldo()
+    public function index()
     {
         $data = Tabungan::where('user_id', Auth::id())->get();
 
