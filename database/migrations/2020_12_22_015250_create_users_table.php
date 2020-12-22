@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('address')->nullable();
             $table->string('phone_number');
             $table->string('avatar')->nullable()->default('https://via.placeholder.com/150');
             $table->unsignedBigInteger('role_id')->default(1);
