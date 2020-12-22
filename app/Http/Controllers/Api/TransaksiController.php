@@ -21,16 +21,16 @@ class TransaksiController extends Controller
 
     public static function addSaldo($data)
     {
-        $last = Tabungan::where('user_id', Auth::id())->chunk('saldo')->latest()->first();
+        $last = Tabungan::where('user_id', Auth::id())->latest()->first();
 
         Tabungan::create([
-            'user_id'       =>  Auth::id(),
+            'user_id'       => Auth::id(),
             'keterangan'    => 'Penjualan Sampah',
             'jenis_sampah'  => $data['jenis_sampah'],
             'berat'         => $data['berat'],
             'debet'         => $data['penghasilan'],
             'kredit'        => 0,
-            'saldo'         => $last->saldo + $data['penghasilan']
+            'saldo'         => $last == null ? 0 + $data['penghasilan'] : $last->saldo + $data['penghasilan']
         ]);
     }
 }

@@ -10,11 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function sendResponse($status, $msg, $data = null, $code)
-    {return response([
-        'status'=> $status,
-        'msg'=> $msg,
-        'data' => $data
-    ], $code);
+    public function sendResponse($status = 'failed', $msg = 'data not found', $data = null, $code = 404)
+    {
+        return response([
+            'status' => $status,
+            'msg' => $msg,
+            'data' => $data
+        ], $code);
     }
 }
