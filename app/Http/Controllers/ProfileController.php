@@ -57,6 +57,6 @@ class ProfileController extends Controller
         if (!empty($request->password_change)) {
             $user->password = Hash::make($request->password_change);
         }
-
+        return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);
     }
 }
