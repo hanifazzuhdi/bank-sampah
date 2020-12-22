@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SampahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,8 +35,11 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('jemput', 'PenyetoranController@jemput');
 
     // Route Transaksi
-    Route::post('addSaldo', 'TransaksiController@addSaldo');
 
-    // Route penjualan
-    
+    Route::get('getSaldo', 'TransaksiController@index');
+
+    // Route Gudang sampah
+    Route::get('getSampah', 'SampahController@index');
+    Route::get('getSampah/{id}', 'SampahController@show');
+
 });
