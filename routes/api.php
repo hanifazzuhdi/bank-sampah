@@ -21,3 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route Auth
 Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
+
+Route::post('profile', 'ProfileController@update')->middleware('jwt.verify');
+//mengupdate profile
+Route::post('change', 'ProfileController@change')->middleware('jwt.verify');
+//ganti password
