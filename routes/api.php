@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'jwt.verify'], function () {
 
 Route::get('profile', 'ProfileController@index');//menampilkan profil user yang sedang login
 Route::post('profile', 'ProfileController@update');//mengupdate profile
