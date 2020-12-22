@@ -3,7 +3,7 @@
 use App\Model\Jenis;
 use Illuminate\Database\Seeder;
 
-class KategoriSeeder extends Seeder
+class JenisSeeder extends Seeder
 {
     /**
      * Run the database seeds.

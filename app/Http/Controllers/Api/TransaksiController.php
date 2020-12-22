@@ -23,9 +23,6 @@ class TransaksiController extends Controller
     {
         $last = Tabungan::where('user_id', Auth::id())->latest()->first();
 
-        // Kondisi
-        $last == null ? $res = 0 : $res = 1;
-
         Tabungan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => 'Penjualan Sampah',
@@ -33,7 +30,7 @@ class TransaksiController extends Controller
             'berat'         => $data['berat'],
             'debet'         => $data['penghasilan'],
             'kredit'        => 0,
-            'saldo'         => $res == 0 ? $res + $data['penghasilan'] : $last->saldo + $data['penghasilan']
+            'saldo'         => $last == null ? 0 + $data['penghasilan'] : $last->saldo + $data['penghasilan']
         ]);
     }
 }

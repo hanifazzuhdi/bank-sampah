@@ -33,4 +33,8 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('jemput', 'PenyetoranController@jemput');
 
     // Route Transaksi
+    Route::get('getSaldo', 'TransaksiController@getSaldo');
+
+    // Route Gudang sampah
+    Route::post('addSampah', 'SampahController@store');
 });

@@ -28,8 +28,9 @@ class PenyetoranController extends Controller
 
         $res = Penyetoran::create($data);
 
-        // update buku tabungan
+        // update buku tabungan & gudang sampah
         if ($res) {
+            SampahController::addSampah($data);
             TransaksiController::addSaldo($data);
         }
 
@@ -75,7 +76,7 @@ class PenyetoranController extends Controller
 
         return response([
             'status' => 'success',
-            'message' => 'Driver Sedang ke Lokasi Abda',
+            'message' => 'Driver Sedang ke Lokasi Anda',
             'data'   => $data
         ]);
     }
