@@ -15,8 +15,7 @@ class CreateTabungansTable extends Migration
     {
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('hari');
-            $table->string('kategori');
+            $table->string('keterangan');
             $table->unsignedBigInteger('jenis_sampah');
             $table->integer('berat');
             $table->string('debet');

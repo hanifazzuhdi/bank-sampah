@@ -18,7 +18,7 @@ class CreatePenyetoransTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('jenis_sampah');
             $table->integer('berat');
-            $table->string('harga');
+            $table->string('penghasilan');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

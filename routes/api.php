@@ -21,3 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route Auth
 Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
+
+// Middleware JWT
+Route::group(['middleware' => 'jwt.verify'], function () {
+    // Route penyetoran
+    Route::post('setor', 'Api\PenyetoranController@store');
+    Route::post('jemput', 'Api\PenyetoranController@jemput');
+
+    // Route Transaksi
+    Route::post('addSaldo', 'TransaksiController@addSaldo');
+});

@@ -17,7 +17,6 @@ class JenisSeeder extends Seeder
             'harga'        => '500'
         ]);
 
-
         Jenis::create([
             'jenis_sampah' => 'kertas',
             'harga'        => '700'
