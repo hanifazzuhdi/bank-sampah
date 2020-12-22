@@ -45,14 +45,4 @@ class UserController extends Controller
 
         return response()->json(compact('user'), 201);
     }
-
-    public function logout()
-    {
-        JWTAuth::invalidate(Auth::id());
-
-        return response([
-            'status' => 'success',
-            'message' => 'Token deleted successfully'
-        ], 200);
-    }
 }
