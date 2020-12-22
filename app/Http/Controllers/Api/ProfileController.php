@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,9 +22,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'password'  => 'requiredconfirmed',
-            'phone_number'  => 'string',
-            
+            'phone_number'  => 'string',    
         ]);
         $image = null;
 
@@ -45,7 +44,7 @@ class ProfileController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $user->avatar = $image;
         $user->phone_number = $request->phone_number;
-        $user->address = $request->address;
+        // $user->address = $request->address;
 
         if (!empty($request->password)) {
             $user->password = Hash::make($request->password);
@@ -57,14 +56,14 @@ class ProfileController extends Controller
     public function change(Request $request)
     {
         $this->validate($request, [
-            'password'  => 'requiredconfirmed',
+            '$password'  => 'required',
         ]);
         $user = User::where('id', Auth::user()->id)->first();
         $user->password = $request->password_change;
-        $user->update();
         if (!empty($request->password_change)) {
             $user->password = Hash::make($request->password_change);
         }
+        $user->update();
         return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);
     }
 }

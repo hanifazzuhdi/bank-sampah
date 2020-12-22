@@ -22,10 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
 
-Route::group(['middleware' => 'jwt.verify'], function () {
+Route::group(['namespace'=>'Api','middleware' => 'jwt.verify'], function () {
 
 Route::get('profile', 'ProfileController@index');//menampilkan profil user yang sedang login
 Route::post('profile', 'ProfileController@update');//mengupdate profile
-Route::post('change', 'ProfileController@change');//ganti password
+Route::post('ganti', 'ProfileController@change');//ganti password
 
 });
