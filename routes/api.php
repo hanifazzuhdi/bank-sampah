@@ -24,6 +24,7 @@ Route::post('login', 'Api\UserController@login');
 
 
 Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
+    // Route User 
     Route::get('profile', 'ProfileController@index'); //menampilkan profil user yang sedang login
     Route::post('profile', 'ProfileController@update'); //mengupdate profile
     Route::post('ganti', 'ProfileController@change'); //ganti password
@@ -34,4 +35,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route Transaksi
     Route::post('addSaldo', 'TransaksiController@addSaldo');
+
+    // Route penjualan
+    
 });
