@@ -32,6 +32,8 @@ class PenyetoranController extends Controller
         if ($res) {
             SampahController::addSampah($data);
             TransaksiController::addSaldo($data);
+        } else {
+            $this->sendResponse('Failed', 'Gagal Melakukan Permintaan', null, 400);
         }
 
         return response([
@@ -47,7 +49,6 @@ class PenyetoranController extends Controller
             'address'       => 'required',
             'phone_number'  => 'required',
             'description'   => 'required',
-            'status'        => 'required',
         ]);
 
         // Validasi image
@@ -79,5 +80,21 @@ class PenyetoranController extends Controller
             'message' => 'Driver Sedang ke Lokasi Anda Bos',
             'data'   => $data
         ]);
+    }
+
+    public function konfirmasiPenjemputan(Penjemputan $penjemputan)
+    {
+        $penjemputan->update([
+            'status'    => 1
+        ]);
+
+        return $this->sendResponse('Success', 'Barang Berhasil dijemput', $penjemputan, 200);
+    }
+
+    public function historyPenjemputan()
+    {
+        $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get();
+
+        return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
     }
 }

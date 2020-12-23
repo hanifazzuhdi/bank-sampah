@@ -31,9 +31,11 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::get('gett', 'ProfileController@gett'); //route percobaan
 
     // Route penyetoran
+    Route::get('historyPenjemputan', 'PenyetoranController@historyPenjemputan');
+    Route::post('konfirmasiPenjemputan/{penjemputan}', 'PenyetoranController@konfirmasiPenjemputan');
+    Route::post('setorDriver/{fee}', 'PenyetoranController@store');
     Route::post('setor', 'PenyetoranController@store');
     Route::post('jemput', 'PenyetoranController@jemput');
-    Route::post('setorDriver/{fee}', 'PenyetoranController@store'); //
 
     // Route Transaksi
     Route::get('getSaldo', 'TransaksiController@index'); //untuk mengambil saldo nasabah
