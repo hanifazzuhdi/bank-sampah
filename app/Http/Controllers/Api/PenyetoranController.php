@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class PenyetoranController extends Controller
 {
-    public function store()
+    public function store($fee = 0)
     {
         $data = request()->validate([
             'jenis_sampah' => 'required',
@@ -19,7 +19,7 @@ class PenyetoranController extends Controller
         ]);
 
         $harga = Jenis::find(request('jenis_sampah'));
-        $data['penghasilan'] = $harga->harga * $data['berat'];
+        $data['penghasilan'] = $fee == 0 ? $harga->harga * $data['berat'] : $harga->harga * $data['berat'] - (($harga->harga * $data['berat']) * $fee / 100);
 
         $data['user_id'] = Auth::id();
 
