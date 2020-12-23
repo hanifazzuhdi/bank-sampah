@@ -41,7 +41,7 @@ class PenjualanController extends Controller
 
         //tambah penghasilan ke data keuangan dan buat catatan pemasukan
         $penghasilan = Keuangan::latest()->first();
-        if ($penghasilan->isEmpty()) {
+        if (($penghasilan)->isEmpty()) {
             $penghasilan = 0;
         } else {
             $keuangan = Keuangan::create([
