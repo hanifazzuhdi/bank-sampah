@@ -41,16 +41,12 @@ class PenjualanController extends Controller
 
         //tambah penghasilan ke data keuangan dan buat catatan pemasukan
         $penghasilan = Keuangan::latest()->first();
-        if (($penghasilan)->isEmpty()) {
-            $penghasilan = 0;
-        } else {
             $keuangan = Keuangan::create([
                 'saldo' => $penghasilan->saldo + ($request->berat * $request->harga),
                 'debet' => $request->berat * $request->harga,
                 'kredit' => 0,
                 'keterangan' => "hasil penjualan ke pengepul"
             ]);
-        }
         try {
             $keuangan->save();
             return $this->sendResponse('Success', 'berhasil menjual sampah masyarakat', $keuangan, 200);
