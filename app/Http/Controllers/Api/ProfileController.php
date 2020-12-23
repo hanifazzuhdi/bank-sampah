@@ -17,7 +17,7 @@ class ProfileController extends Controller
         if (empty($user)) {
             return response('silakan login terlebih dahulu bos');
         }
-        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 500);
+        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 200);
     }
     public function index()
     {
@@ -25,12 +25,12 @@ class ProfileController extends Controller
         if (empty($user)) {
             return response('silakan login terlebih dahulu bos');
         }
-        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 500);
+        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 200);
     }
     public function update(Request $request)
     {
         $this->validate($request, [
-            'phone_number'  => 'string',
+            'phone_number'  => 'string|min:8',
         ]);
         $image = null;
 
@@ -50,6 +50,7 @@ class ProfileController extends Controller
         }
 
         $user = User::where('id', Auth::user()->id)->first();
+        $user->name = request('name') ?? $user->name;
         $user->avatar = $image;
         $user->phone_number = $request->phone_number;
         // $user->address = $request->address;
@@ -59,7 +60,7 @@ class ProfileController extends Controller
         }
 
         $user->update();
-        return $this->sendResponse('Success', 'profile berhasil di update Bos', $user, 500);
+        return $this->sendResponse('Success', 'profile berhasil di update Bos', $user, 200);
     }
     public function change(Request $request)
     {
@@ -71,9 +72,9 @@ class ProfileController extends Controller
                     $user->password = Hash::make($request->password_change);
                 }
                 $user->update();
-                return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 500);
+                return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 200);
             } else {
-                return $this->sendResponse('error', 'masukan password lama dengan benar bos', null, 200);
+                return $this->sendResponse('error', 'masukan password lama dengan benar bos', null, 400);
             }
         }
     }
