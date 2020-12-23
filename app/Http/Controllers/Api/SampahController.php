@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Model\Sampah;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SampahResource;
 use App\Model\Jenis;
 
 class SampahController extends Controller
