@@ -26,7 +26,7 @@ class UserController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return response()->json(compact('user', 'token'));
+        return response()->json(compact('user', 'token'), 202);
     }
 
     public function register()
