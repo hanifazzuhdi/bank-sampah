@@ -32,6 +32,8 @@ class PenyetoranController extends Controller
         if ($res) {
             SampahController::addSampah($data);
             TransaksiController::addSaldo($data);
+        } else {
+            $this->sendResponse('Failed', 'Gagal Melakukan Permintaan', null, 400);
         }
 
         return response([
@@ -47,7 +49,6 @@ class PenyetoranController extends Controller
             'address'       => 'required',
             'phone_number'  => 'required',
             'description'   => 'required',
-            'status'        => 'required',
         ]);
 
         // Validasi image
