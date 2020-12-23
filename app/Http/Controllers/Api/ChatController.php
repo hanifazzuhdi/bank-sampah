@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Chat;
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,7 @@ class ChatController extends Controller
 
     }
 
-    public function getMessage($user_id)
+    public function getChat($user_id)
     {
         $my_id = Auth::id();
 
@@ -48,7 +49,7 @@ class ChatController extends Controller
         return $this->sendResponse('Success', 'ambil pesan', $messages, 200);
     }
 
-    public function sendMessage(Request $request ,$id)
+    public function sendChat(Request $request ,$id)
     {
         $from = Auth::id();
         $to = $id;
@@ -68,9 +69,9 @@ class ChatController extends Controller
         );
         
         $pusher = new Pusher(
-            '714107c06ab063eee783',
-            '297099b10e2c437776cb',
-            '1116353',
+            '7c4e768837de4f546c9b',
+            'dd36d2b0ef5e33c5ec2d',
+            '1127854',
             $options
         );
         
