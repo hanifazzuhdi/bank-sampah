@@ -38,4 +38,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function penjemputan()
+    {
+        return $this->belongsTo('App\Api\Penjemputan', 'User_id', 'id');
+    }
 }

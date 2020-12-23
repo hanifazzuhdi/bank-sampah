@@ -50,4 +50,9 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::get('saldo', 'PenjualanController@index'); //mengambil jumlah saldo
     Route::post('sell', 'PenjualanController@store'); //menginput hasil penjualan
 
+    //Route penjemputan
+    Route::get('daftar', 'PenjemputanController@index'); //melihat permintaan penjemputan
+    Route::get('selesai', 'PenjemputanController@selesai'); //melihat yang sudah dijemput
+    Route::get('penolakan', 'PenjemputanController@penolakan'); //melihat yang tidak mau dijemput
+    Route::post('penolakan/{penjemputan}', 'PenjemputanController@tolak'); //menolak permintaan penjemputan
 });
