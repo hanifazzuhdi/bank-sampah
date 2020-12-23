@@ -81,4 +81,20 @@ class PenyetoranController extends Controller
             'data'   => $data
         ]);
     }
+
+    public function konfirmasiPenjemputan(Penjemputan $penjemputan)
+    {
+        $penjemputan->update([
+            'status'    => 1
+        ]);
+
+        return $this->sendResponse('Success', 'Barang Berhasil dijemput', $penjemputan, 200);
+    }
+
+    public function historyPenjemputan()
+    {
+        $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get();
+
+        return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
+    }
 }
