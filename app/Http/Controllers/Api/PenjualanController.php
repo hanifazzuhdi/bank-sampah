@@ -49,7 +49,7 @@ class PenjualanController extends Controller
             ]);
             try {
                 $keuangan->save();
-                $sampah->save();
+                $sampah->update();
                 return $this->sendResponse('Success', 'berhasil menjual sampah masyarakat', $keuangan, 200);
             } catch (\Throwable $th) {
                 return $this->sendResponse('Error', 'Gagal menjual sampah masyarakat', null, 500);
