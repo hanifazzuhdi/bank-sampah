@@ -11,6 +11,14 @@ use GuzzleHttp\Client;
 
 class ProfileController extends Controller
 {
+    public function gett()
+    {
+        $user = User::latest()->first('name');
+        if (empty($user)) {
+            return response('silakan login terlebih dahulu bos');
+        }
+        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 500);
+    }
     public function index()
     {
         $user = User::where('id', Auth::user()->id)->first();
