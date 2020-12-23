@@ -11,6 +11,6 @@ class Jenis extends Model
     // relasi
     public function sampah()
     {
-        $this->hasMany(Sampah::class);
+        $this->hasOne('App\Api\Sampah', 'jenis_sampah', 'id');
     }
 }
