@@ -40,9 +40,9 @@ class PenjualanController extends Controller
         $stok = $sampah->berat - $request->berat;
 
         //tambah penghasilan ke data keuangan dan buat catatan pemasukan
-        $penghasilan = Keuangan::latest()->first('saldo');
+        $penghasilan = Keuangan::latest()->first();
         $keuangan = Keuangan::create([
-            'saldo' => $penghasilan + $request->berat * $request->harga,
+            'saldo' => $penghasilan->saldo + $request->berat * $request->harga,
             'debet' => $request->berat * $request->harga,
             'keterangan' => "hasil penjualan ke pengepul"
         ]);
