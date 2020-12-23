@@ -11,6 +11,6 @@ class Sampah extends Model
     // Relasi
     public function jenis()
     {
-        return $this->hasOne('App\Model\Jenis', 'jenis_sampah', 'id');
+        return $this->belongsTo(Jenis::class);
     }
 }
