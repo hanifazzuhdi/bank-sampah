@@ -76,7 +76,7 @@ class PenyetoranController extends Controller
 
         return response([
             'status' => 'success',
-            'message' => 'Driver Sedang ke Lokasi Anda',
+            'message' => 'Driver Sedang ke Lokasi Anda Bos',
             'data'   => $data
         ]);
     }
