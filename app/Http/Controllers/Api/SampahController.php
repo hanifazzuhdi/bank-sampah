@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Model\Sampah;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SampahResource;
+use App\Model\Jenis;
 
 class SampahController extends Controller
 {
     public function index()
     {
+        $data = Sampah::get();
+
         return response([
             'status'    => 'success',
             'message'   => 'Data Loaded',
-            'data'      => Sampah::all()
+            'data'      =>  $data
         ]);
+    }
+
+    public function getJenis()
+    {
+        $data = Jenis::all();
+
+        return $this->sendResponse('Success', 'Data Jenis Sampah Dimuat', $data, 200);
     }
 
     public function show($id)
