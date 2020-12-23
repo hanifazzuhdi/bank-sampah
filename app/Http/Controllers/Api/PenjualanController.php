@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Model\Keuangan;
 use App\Model\Penjualan;
 use App\Model\Sampah;
-use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PenjualanController extends Controller
 {
@@ -34,18 +34,21 @@ class PenjualanController extends Controller
         ]);
         //kurangi stok sampah berdasarkan jenis
         $sampah = Sampah::where('id', 'jenis_sampah')->first();
+        if ($sampah->berat < $request->berat) {
+            return $this->sendResponse('Error', 'sampah andakurang', null, 500);
+        }
         $stok = $sampah->berat - $request->berat;
 
         //tambah penghasilan ke data keuangan dan buat catatan pemasukan
-        $penghasilan = Keuangan::first()->latest();
-        $keuangan = Penjualan::create([
-            'saldo' => $penghasilan->saldo + $request->berat * $request->harga,
+        $penghasilan = Keuangan::latest()->first('saldo');
+        $keuangan = Keuangan::create([
+            'saldo' => $penghasilan + $request->berat * $request->harga,
             'debet' => $request->berat * $request->harga,
             'keterangan' => "hasil penjualan ke pengepul"
         ]);
         try {
-            $penjualan->save();
-            return $this->sendResponse('Success', 'berhasil menjual sampah masyarakat', $penjualan, 200);
+            $keuangan->save();
+            return $this->sendResponse('Success', 'berhasil menjual sampah masyarakat', $keuangan, 200);
         } catch (\Throwable $th) {
             return $this->sendResponse('Error', 'Gagal menjual sampah masyarakat', null, 500);
         }
