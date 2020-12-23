@@ -10,7 +10,9 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $data = Tabungan::where('user_id', Auth::id())->get();
+        $data = Tabungan::where('user_id', Auth::id())->get()->toArray();
+
+        if (!$data) return $this->sendResponse();
 
         return response([
             'status'    => 'Success',
