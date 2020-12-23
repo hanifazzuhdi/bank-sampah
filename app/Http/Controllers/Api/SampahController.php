@@ -25,7 +25,7 @@ class SampahController extends Controller
         }
 
         return response([
-            'status'  => 'success',
+            'status'  => 'Success',
             'message' => 'Data Sampah dimuat',
             'data'    => $data
         ]);

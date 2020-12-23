@@ -35,7 +35,7 @@ class PenyetoranController extends Controller
         }
 
         return response([
-            'status' => 'success',
+            'status' => 'Success',
             'data'   => $res
         ], 201);
     }
@@ -75,7 +75,7 @@ class PenyetoranController extends Controller
         Penjemputan::create($data);
 
         return response([
-            'status' => 'success',
+            'status' => 'Success',
             'message' => 'Driver Sedang ke Lokasi Anda Bos',
             'data'   => $data
         ]);

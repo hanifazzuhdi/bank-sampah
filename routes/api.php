@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::get('profile', 'ProfileController@index'); //menampilkan profil user yang sedang login
     Route::post('profile', 'ProfileController@update'); //mengupdate profile
     Route::post('ganti', 'ProfileController@change'); //ganti password
-    Route::get('gett', 'ProfileController@gett');//route percobaan
+    Route::get('gett', 'ProfileController@gett'); //route percobaan
 
     // Route penyetoran
     Route::post('setor', 'PenyetoranController@store');
@@ -38,15 +38,15 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('setorDriver/{fee}', 'PenyetoranController@store');
 
     // Route Transaksi
-
     Route::get('getSaldo', 'TransaksiController@index');
+    Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik');
 
     // Route Gudang sampah
     Route::get('getSampah', 'SampahController@index');
     Route::get('getSampah/{id}', 'SampahController@show');
-   
+
     // Route Penjualan
-    Route::get('saldo', 'PenjualanController@index');//mengambil jumlah saldo
-    Route::post('sell', 'PenjualanController@store');//menginput hasil penjualan
+    Route::get('saldo', 'PenjualanController@index'); //mengambil jumlah saldo
+    Route::post('sell', 'PenjualanController@store'); //menginput hasil penjualan
 
 });
