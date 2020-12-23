@@ -33,7 +33,7 @@ class PenjualanController extends Controller
             'penghasilan' => $request->berat * $request->harga,
         ]);
         //kurangi stok sampah berdasarkan jenis
-        $sampah = Sampah::where('id', 'jenis_sampah')->first();
+        $sampah = Sampah::where('id', $request->jenis_sampah)->first();
         if ($sampah->berat < $request->berat) {
             return $this->sendResponse('Error', 'sampah andakurang', null, 500);
         }

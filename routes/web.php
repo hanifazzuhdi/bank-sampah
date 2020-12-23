@@ -22,4 +22,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'Web', 'middleware' => 'Auth'], function () {
     Route::post('tarik', 'PenarikanController@tarik');
 });
-

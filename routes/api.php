@@ -35,15 +35,15 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     // Route penyetoran
     Route::post('setor', 'PenyetoranController@store');
     Route::post('jemput', 'PenyetoranController@jemput');
-    Route::post('setorDriver/{fee}', 'PenyetoranController@store');
+    Route::post('setorDriver/{fee}', 'PenyetoranController@store');//
 
     // Route Transaksi
-    Route::get('getSaldo', 'TransaksiController@index');
-    Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik');
+    Route::get('getSaldo', 'TransaksiController@index');//untuk mengambil saldo nasabah
+    Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik');//tarik saldo nasabah oleh nasabah
 
     // Route Gudang sampah
-    Route::get('getSampah', 'SampahController@index');
-    Route::get('getSampah/{id}', 'SampahController@show');
+    Route::get('getSampah', 'SampahController@index');//untuk melihat data gudang sampah
+    Route::get('getSampah/{id}', 'SampahController@show');//untuk melihat data sampah per id
 
     // Route Penjualan
     Route::get('saldo', 'PenjualanController@index'); //mengambil jumlah saldo
