@@ -93,7 +93,9 @@ class PenyetoranController extends Controller
 
     public function historyPenjemputan()
     {
-        $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get();
+        $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get()->toArray();
+
+        if (!$data) return $this->sendResponse();
 
         return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
     }
