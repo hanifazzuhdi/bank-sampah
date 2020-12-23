@@ -41,6 +41,7 @@ class PenjualanController extends Controller
 
         //tambah penghasilan ke data keuangan dan buat catatan pemasukan
         $penghasilan = Keuangan::latest()->first('saldo');
+        dd($penghasilan);
             $keuangan = Keuangan::create([
                 'saldo' => $penghasilan + ($request->berat * $request->harga),
                 'debet' => $request->berat * $request->harga,
