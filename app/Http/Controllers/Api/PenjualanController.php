@@ -37,7 +37,7 @@ class PenjualanController extends Controller
         if ($sampah->berat < $request->berat) {
             return $this->sendResponse('Error', 'sampah andakurang', null, 500);
         } else {
-            $sampah->berat =$sampah->berat - $request->berat;
+            $sampah->berat = $sampah->berat - $request->berat;
 
             //tambah penghasilan ke data keuangan dan buat catatan pemasukan
             $penghasilan = Keuangan::latest()->first();

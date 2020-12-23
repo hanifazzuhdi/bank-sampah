@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -28,15 +29,18 @@ class UserController extends Controller
         return response()->json(compact('user', 'token'), 202);
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
             'phone_number' => 'required'
         ]);
 
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
         $user = User::create([
             'name' => request()->name,
             'email' => request()->email,
