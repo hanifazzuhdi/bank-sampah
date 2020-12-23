@@ -33,16 +33,16 @@ class PenjualanController extends Controller
             'penghasilan' => $request->berat * $request->harga,
         ]);
         //kurangi stok sampah berdasarkan jenis
-        $sampah = Sampah::where('id', 'jenis_sampah')->first();
+        $sampah = Sampah::where('id', $request->jenis_sampah)->first();
         if ($sampah->berat < $request->berat) {
             return $this->sendResponse('Error', 'sampah andakurang', null, 500);
         }
         $stok = $sampah->berat - $request->berat;
 
         //tambah penghasilan ke data keuangan dan buat catatan pemasukan
-        $penghasilan = Keuangan::latest()->first('saldo');
+        $penghasilan = Keuangan::latest()->first();
         $keuangan = Keuangan::create([
-            'saldo' => $penghasilan + $request->berat * $request->harga,
+            'saldo' => $request->berat * $request->harga,
             'debet' => $request->berat * $request->harga,
             'keterangan' => "hasil penjualan ke pengepul"
         ]);
