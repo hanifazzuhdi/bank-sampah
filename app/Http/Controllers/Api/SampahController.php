@@ -11,7 +11,7 @@ class SampahController extends Controller
 {
     public function index()
     {
-        $data = Sampah::with('jenis')->get();
+        $data = Sampah::get();
 
         return response([
             'status'    => 'success',
