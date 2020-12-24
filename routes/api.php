@@ -24,43 +24,45 @@ Route::post('login', 'Api\UserController@login');
 
 
 Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
-    // Route User
-    Route::get('profile', 'ProfileController@index'); //menampilkan profil user yang sedang login
+
+    // Route User          -> Nasabah, Pengurus1, Pengurus2
+    Route::get('profile', 'ProfileController@index');   //menampilkan profil user yang sedang login
     Route::post('profile', 'ProfileController@update'); //mengupdate profile
-    Route::post('ganti', 'ProfileController@change'); //ganti password
-    Route::get('gett', 'ProfileController@gett'); //route percobaan
+    Route::post('ganti', 'ProfileController@change');   //ganti password
+    Route::get('gett', 'ProfileController@gett');       //route percobaan
 
-    // Route penyetoran
-    Route::get('historyPenjemputan', 'PenyetoranController@historyPenjemputan');
-    Route::post('konfirmasiPenjemputan/{penjemputan}', 'PenyetoranController@konfirmasiPenjemputan');
-    Route::post('setorDriver/{fee}', 'PenyetoranController@store');
-    Route::post('setor', 'PenyetoranController@store');
-    Route::post('jemput', 'PenyetoranController@jemput');
+    // Route penyetoran    -> Nasabah
+    Route::get('historyPenjemputan', 'PenyetoranController@historyPenjemputan');    //Melihat History penjemputan sampah
+    Route::post('setorDriver/{fee}', 'PenyetoranController@store');                 //Nasabah Setor Sampah Dijemput Driver
+    Route::post('setor', 'PenyetoranController@store');                             //Nasabah Antar Sampah sendiri ke gudang
+    Route::post('jemput', 'PenyetoranController@jemput');                           //Nasabah minta permintaan jemput sampah oleh driver
 
-    // Route Transaksi
-    Route::get('getTabungan', 'TransaksiController@index'); //untuk melihat buku tabungan nasabah
-    Route::get('getSaldo', 'TransaksiController@show'); //untuk melihat saldo nasabah
-    Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik'); //tarik saldo nasabah oleh nasabah
+    // Route Transaksi     -> Nasabah
+    Route::get('getTabungan', 'TransaksiController@index');             //untuk melihat buku tabungan nasabah
+    Route::get('getSaldo', 'TransaksiController@show');                 //untuk melihat saldo nasabah
+    Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik');   //tarik saldo nasabah oleh nasabah
 
-    // Route Gudang sampah
-    Route::get('getSampah', 'SampahController@index');
-    Route::get('getSampah/{id}', 'SampahController@show');
-    Route::get('getJenis', 'SampahController@getJenis');
+    // Route Gudang sampah  -> Nasabah, Pengurus1, Pengurus2
+    Route::get('getSampah', 'SampahController@index');        // Melihat Sampah Yang ada di gudang
+    Route::get('getSampah/{id}', 'SampahController@show');    // Melihat Sampah berdasarkan id jenisnya
+    Route::get('getJenis', 'SampahController@getJenis');      // Melihat Jenis Sampah Dilayani
 
-    // Route Penjualan
-    Route::get('saldo', 'PenjualanController@index'); //mengambil jumlah saldo
-    Route::post('sell', 'PenjualanController@store'); //menginput hasil penjualan
+    // Route Penjualan      -> Pengurus 2
+    // Route::get();
+    Route::post('sell', 'PenjualanController@store');    //menginput hasil penjualan
+    // Route::get('saldo', 'PenjualanController@index'); //mengambil jumlah saldo
 
-    //Route penjemputan
-    Route::get('daftar', 'PenjemputanController@index'); //melihat permintaan penjemputan
-    Route::get('selesai', 'PenjemputanController@selesai'); //melihat yang sudah dijemput
-    Route::get('penolakan', 'PenjemputanController@penolakan'); //melihat yang tidak mau dijemput
-    Route::post('penolakan/{penjemputan}', 'PenjemputanController@tolak'); //menolak permintaan penjemputan
+    //Route penjemputan     -> Pengurus 1
+    Route::get('daftar', 'PenjemputanController@index');                        //melihat permintaan penjemputan
+    Route::get('selesai', 'PenjemputanController@selesai');                     //melihat yang sudah dijemput
+    Route::get('penolakan', 'PenjemputanController@penolakan');                 //melihat yang tidak mau dijemput
+    Route::post('penolakan/{penjemputan}', 'PenjemputanController@tolak');      //menolak permintaan penjemputan
+    Route::post('konfirmasiPenjemputan/{penjemputan}', 'PenjemputanController@konfirmasiPenjemputan'); //konfirmasi penjemputan
 
     //Route chat
-    Route::get('allmessage', 'ChatController@index'); //ambil semua pesan
-    Route::get('/chat/{id}', 'ChatController@getChat'); // buat nge get pesan
-    Route::post('chat/{id}', 'ChatController@sendChat'); // buat ngirim pesan
-    Route::delete('chat/{id} ', 'ChatController@destroy'); //hapus pesan
+    Route::get('allmessage', 'ChatController@index');       //ambil semua pesan
+    Route::get('/chat/{id}', 'ChatController@getChat');     // buat nge get pesan
+    Route::post('chat/{id}', 'ChatController@sendChat');    // buat ngirim pesan
+    Route::delete('chat/{id} ', 'ChatController@destroy');  //hapus pesan
 
 });

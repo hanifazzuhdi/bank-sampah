@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Keuangan extends Model
 {
-    protected $fillable = ['saldo','debet','kredit','keterangan'];
+    protected $fillable = ['saldo', 'debet', 'kredit', 'keterangan'];
 }

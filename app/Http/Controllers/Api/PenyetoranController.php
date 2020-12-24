@@ -75,15 +75,6 @@ class PenyetoranController extends Controller
         $this->sendResponse('Success', 'Driver Sedang kelokasi Anda', $res, 200);
     }
 
-    public function konfirmasiPenjemputan(Penjemputan $penjemputan)
-    {
-        $penjemputan->update([
-            'status'    => 1
-        ]);
-
-        return $this->sendResponse('Success', 'Barang Berhasil dijemput', $penjemputan, 200);
-    }
-
     public function historyPenjemputan()
     {
         $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get()->toArray();

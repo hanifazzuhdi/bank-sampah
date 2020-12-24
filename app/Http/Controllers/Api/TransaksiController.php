@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Model\Tabungan;
 use App\Http\Controllers\Controller;
+use App\Model\Keuangan;
 use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
@@ -59,6 +60,14 @@ class TransaksiController extends Controller
             'saldo'         => $data->saldo - $nominal
         ]);
 
-        return $this->sendResponse('Success', 'Dana Berhasil diamabil', $nominal, 202);
+        // Saldo Keuangan berkurang otomatis
+        Keuangan::create([
+            'keterangan' => 'Penarikan Uang Oleh Nasabah',
+            'debet'      => 0,
+            'kredit'     => $nominal,
+            'saldo'      => Keuangan::latest()->first('saldo') - $nominal
+        ]);
+
+        return $this->sendResponse('Success', 'Dana Berhasil di Tarik, Tunggu Bendahara mengirim Uang Anda', $nominal, 202);
     }
 }
