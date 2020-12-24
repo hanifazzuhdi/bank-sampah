@@ -36,10 +36,7 @@ class PenyetoranController extends Controller
             $this->sendResponse('Failed', 'Gagal Melakukan Permintaan', null, 400);
         }
 
-        return response([
-            'status' => 'Success',
-            'data'   => $res
-        ], 201);
+        return $this->sendResponse('Success', 'Sampah berhasil dijual', $res, 201);
     }
 
     public function jemput(Client $client)
@@ -73,13 +70,9 @@ class PenyetoranController extends Controller
         // jika ada orang iseng
         abort_if($data['user_id'] != Auth::id(), 403, 'ANDA TIDAK MEMILIKI AKSES KESINI');
 
-        Penjemputan::create($data);
+        $res = Penjemputan::create($data);
 
-        return response([
-            'status' => 'Success',
-            'message' => 'Driver Sedang ke Lokasi Anda Bos',
-            'data'   => $data
-        ]);
+        $this->sendResponse('Success', 'Driver Sedang kelokasi Anda', $res, 200);
     }
 
     public function konfirmasiPenjemputan(Penjemputan $penjemputan)

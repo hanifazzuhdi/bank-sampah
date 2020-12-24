@@ -38,7 +38,8 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('jemput', 'PenyetoranController@jemput');
 
     // Route Transaksi
-    Route::get('getSaldo', 'TransaksiController@index'); //untuk mengambil saldo nasabah
+    Route::get('getTabungan', 'TransaksiController@index'); //untuk melihat buku tabungan nasabah
+    Route::get('getSaldo', 'TransaksiController@show'); //untuk melihat saldo nasabah
     Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik'); //tarik saldo nasabah oleh nasabah
 
     // Route Gudang sampah

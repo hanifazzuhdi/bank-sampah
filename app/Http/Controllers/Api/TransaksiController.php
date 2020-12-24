@@ -14,11 +14,16 @@ class TransaksiController extends Controller
 
         if (!$data) return $this->sendResponse();
 
-        return response([
-            'status'    => 'Success',
-            'message'   => 'Data Loaded',
-            'data'      => $data
-        ]);
+        return $this->sendResponse('Success', 'Data Berhasil dimuat', $data, 200);
+    }
+
+    public function show()
+    {
+        $data = Tabungan::where('user_id', Auth::id())->latest()->first();
+
+        if (!$data) return $this->sendResponse();
+
+        return $this->sendResponse('Success', 'Data Berhasil dimuat', $data->saldo, 200);
     }
 
     public static function addSaldo($data)

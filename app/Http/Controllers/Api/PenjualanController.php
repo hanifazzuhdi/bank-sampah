@@ -14,8 +14,9 @@ class PenjualanController extends Controller
     public function index()
     {
         $saldo = Keuangan::latest()->first('saldo');
-        return $this->sendResponse('Success', 'ini dia saldo anda bos', $saldo, 500);
+        return $this->sendResponse('Success', 'ini dia saldo anda bos', $saldo, 200);
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -35,7 +36,7 @@ class PenjualanController extends Controller
         //kurangi stok sampah berdasarkan jenis
         $sampah = Sampah::where('jenis_sampah', $request->jenis_sampah)->first();
         if ($sampah->berat < $request->berat) {
-            return $this->sendResponse('Error', 'sampah andakurang', null, 500);
+            return $this->sendResponse('Error', 'sampah anda kurang', null, 500);
         } else {
             $sampah->berat = $sampah->berat - $request->berat;
 
