@@ -12,11 +12,7 @@ class SampahController extends Controller
     {
         $data = Sampah::with(['jenis'])->get();
 
-        return response([
-            'status'    => 'success',
-            'message'   => 'Data Loaded',
-            'data'      =>  $data
-        ]);
+        return $this->sendResponse('Success', 'Data Sampah Berhasil dimuat', $data, 200);
     }
 
     public function getJenis()
@@ -28,17 +24,9 @@ class SampahController extends Controller
 
     public function show($id)
     {
-        $data = Sampah::find($id);
+        $data = Sampah::findOrFail($id);
 
-        if (!$data) {
-            return $this->sendResponse();
-        }
-
-        return response([
-            'status'  => 'Success',
-            'message' => 'Data Sampah dimuat',
-            'data'    => $data
-        ]);
+        return $this->sendResponse('Success', 'Data Sampah Berhasil Dimuat', $data, 200);
     }
 
     public static function addSampah($data)
