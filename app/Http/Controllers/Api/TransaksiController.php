@@ -65,9 +65,9 @@ class TransaksiController extends Controller
             'keterangan' => 'Penarikan Uang Oleh Nasabah',
             'debet'      => 0,
             'kredit'     => $nominal,
-            'saldo'      => Keuangan::latest()->first('saldo') - $nominal
+            'saldo'      => Keuangan::latest()->first()->saldo - $nominal
         ]);
 
-        return $this->sendResponse('Success', 'Dana Berhasil di Tarik, Tunggu Bendahara mengirim Uang Anda', $nominal, 202);
+        return $this->sendResponse('Success', 'Dana Berhasil di Tarik', $nominal, 202);
     }
 }

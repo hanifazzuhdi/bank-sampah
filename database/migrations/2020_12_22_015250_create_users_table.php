@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone_number');
             $table->string('avatar')->nullable()->default('https://via.placeholder.com/150');
+            $table->string('address')->nullable();
             $table->unsignedBigInteger('role_id')->default(1);
             $table->rememberToken();
             $table->timestamps();
