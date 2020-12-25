@@ -27,7 +27,7 @@ class PenjemputanController extends Controller
 
     public function tolak(Penjemputan $penjemputan)
     {
-        abort_if($penjemputan->status == 1, 400, 'Penjemputan Ini Sudah Selesai');
+        abort_if($penjemputan->status == 1 or $penjemputan->status == 3, 400, 'Penjemputan Ini Sudah Selesai');
 
         $penjemputan->update([
             'status'    => 3
