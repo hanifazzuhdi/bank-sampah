@@ -49,7 +49,6 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route Penjualan      -> Pengurus 2
     Route::post('sell', 'PenjualanController@store');    //menginput hasil penjualan
-    // Route::get('saldo', 'PenjualanController@index'); //mengambil jumlah saldo
 
     //Route penjemputan     -> Pengurus 1
     Route::get('daftar', 'PenjemputanController@index');                        //melihat permintaan penjemputan

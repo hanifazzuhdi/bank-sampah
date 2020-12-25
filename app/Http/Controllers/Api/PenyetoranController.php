@@ -72,7 +72,7 @@ class PenyetoranController extends Controller
 
         $res = Penjemputan::create($data);
 
-        $this->sendResponse('Success', 'Driver Sedang kelokasi Anda', $res, 200);
+        return $this->sendResponse('Success', 'Driver Sedang kelokasi Anda', $res, 200);
     }
 
     public function historyPenjemputan()
