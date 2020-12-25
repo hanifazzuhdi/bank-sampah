@@ -55,7 +55,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::get('penjemputan/selesai', 'PenjemputanController@selesai');                                 //melihat yang sudah dijemput
     Route::get('penjemputan/penolakan', 'PenjemputanController@penolakan');                             //melihat yang tidak mau dijemput
     Route::post('penjemputan/penolakan/{penjemputan}', 'PenjemputanController@tolak');                  //menolak permintaan penjemputan
-    Route::post('konfirmasiPenjemputan/{penjemputan}', 'PenjemputanController@konfirmasiPenjemputan');  //konfirmasi penjemputan
+    Route::post('penjemputan/konfirmasi/{penjemputan}', 'PenjemputanController@konfirmasiPenjemputan');  //konfirmasi penjemputan
 
     //Route chat
     Route::get('allmessage', 'ChatController@index');       //ambil semua pesan
