@@ -69,6 +69,15 @@
             color: inherit;
             cursor: inherit;
         }
+
+        button {
+            border: none;
+            outline: none;
+            font-size: 18px;
+            background: transparent;
+            margin-right: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -77,7 +86,10 @@
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <a href="{{ url('/home') }}">Home</a>
+            <form action="{{route('logout')}}" method="post">
+                <button type="submit">Logout</button>
+                @csrf
+            </form>
             @endauth
         </div>
         @endif

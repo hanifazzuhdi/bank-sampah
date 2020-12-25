@@ -22,8 +22,11 @@ Auth::routes([
     'register' => false,
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], function () {
 
-Route::group(['namespace' => 'Web', 'middleware' => 'Auth'], function () {
+    // Rote Dashboard
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    // Route
     Route::post('tarik', 'PenarikanController@tarik');
 });

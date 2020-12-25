@@ -2,33 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Chat;
-use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Pusher\Pusher;
 use Auth;
+use App\User;
+use Pusher\Pusher;
+use App\Model\Chat;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
     public function index()
     {
-        $my_id = Auth::user()->id;
+        // Ambil User dengan role id pengurus 1
+        $chat = User::where('role_id', '2')->get();
 
-        $from = User::select('users.id', 'users.name', 'users.image')->distinct()
-            ->join('messages', 'users.id', '=', 'messages.to')
-            ->where('users.id', '!=', $my_id)
-            ->where('messages.from', '=', $my_id)->get()->toArray();
-
-        $to = User::select('users.id', 'users.name', 'users.image')->distinct()
-            ->join('messages', 'users.id', '=', 'messages.from')
-            ->where('users.id', '!=', $my_id)
-            ->where('messages.to', '=', $my_id)->get()->toArray();
-
-        $data = array_unique(array_merge($from, $to), SORT_REGULAR);
-        $users = array_values($data);
-        return $this->sendResponse('Success', 'kontak dong', $users, 200);
+        return $this->sendResponse('Success', 'Memuat Kontak', $chat, 200);
     }
 
     public function getChat($user_id)
@@ -77,6 +66,7 @@ class ChatController extends Controller
         $pusher->trigger('my-channel', 'my-event', $data);
         return $this->sendResponse('Success', 'kontak dong', $data, 200);
     }
+
     public function destroy($id)
     {
         $user = Auth::id();
