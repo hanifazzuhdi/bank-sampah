@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Model\Penjemputan;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PenjemputanController extends Controller
 {
@@ -28,6 +27,8 @@ class PenjemputanController extends Controller
 
     public function tolak(Penjemputan $penjemputan)
     {
+        abort_if($penjemputan->status == 1, 400, 'Penjemputan Ini Sudah Selesai');
+
         $penjemputan->update([
             'status'    => 3
         ]);
