@@ -14,10 +14,21 @@ class ChatController extends Controller
 {
     public function index()
     {
-        // Ambil User dengan role id pengurus 1
-        $chat = User::where('role_id', '2')->get();
+        $my_id = Auth::user()->id;
 
-        return $this->sendResponse('Success', 'Memuat Kontak', $chat, 200);
+        $from = User::select('users.id', 'users.name', 'users.avatar')->distinct()
+            ->join('chats', 'users.id', '=', 'chats.to')
+            ->where('users.id', '!=', $my_id)
+            ->where('chats.from', '=', $my_id)->get()->toArray();
+
+        $to = User::select('users.id', 'users.name', 'users.avatar')->distinct()
+            ->join('chats', 'users.id', '=', 'chats.from')
+            ->where('users.id', '!=', $my_id)
+            ->where('chats.to', '=', $my_id)->get()->toArray();
+
+        $data = array_unique(array_merge($from, $to), SORT_REGULAR);
+        $users = array_values($data);
+        return $this->sendResponse('Success', 'kontak dong', $users, 200);
     }
 
     public function getChat($user_id)
