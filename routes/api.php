@@ -62,4 +62,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::get('chat/{id}', 'ChatController@getChat');     //buat nge get pesan
     Route::post('chat/{id}', 'ChatController@sendChat');   //buat ngirim pesan
     Route::delete('chat/{id} ', 'ChatController@destroy'); //hapus pesan
+
+    // Fitur tambahan
+    Route::post('kirim/{nominal}', 'TransaksiController@kirim');    //Kirim uang sesama pengguna sammpah
 });

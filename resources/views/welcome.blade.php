@@ -100,7 +100,7 @@
             </div>
 
             <div class="links">
-                <a href="https://laracasts.com">Laracasts</a>
+                <a href="https://laracasts.com">Rais</a>
                 <a href="https://github.com/icatpojan">Irsyad Fauzan</a>
                 <a href="https://github.com/hanifazzuhdi">Hanif Az Zuhdi</a>
             </div>
