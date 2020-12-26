@@ -9,6 +9,12 @@ class Tabungan extends Model
 {
     protected $fillable = ['keterangan', 'jenis_sampah', 'berat', 'debet', 'kredit', 'saldo', 'user_id'];
 
+    // Accessor
+    public function getSaldoAttribute($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
+
     // Relation
     public function user()
     {

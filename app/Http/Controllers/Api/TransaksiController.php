@@ -11,9 +11,9 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $data = Tabungan::where('user_id', Auth::id())->get()->toArray();
+        $data = Tabungan::where('user_id', Auth::id())->get();
 
-        if (!$data) return $this->sendResponse();
+        if (empty($data->array)) return $this->sendResponse();
 
         return $this->sendResponse('Success', 'Data Berhasil dimuat', $data, 200);
     }
