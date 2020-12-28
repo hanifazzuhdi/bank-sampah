@@ -24,7 +24,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="nav-icon icon-basket"></i> 
+                <i class="nav-icon icon-basket"></i>
             </a>
         </li>
         <li class="nav-item nav-dropdown">

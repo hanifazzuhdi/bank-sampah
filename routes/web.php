@@ -24,7 +24,7 @@ Auth::routes([
 
 Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], function () {
 
-    // Rote Dashboard
+    // Route Dashboard
     Route::get('/home', 'HomeController@index')->name('home');
 
     // Route
