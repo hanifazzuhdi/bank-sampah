@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jenis extends Model
 {
-    protected $fillable = ['jenis_sampah', 'harga'];
+    protected $fillable = ['jenis_sampah', 'image', 'harga'];
 
     // relasi
     public function sampah()

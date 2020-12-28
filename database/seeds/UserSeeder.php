@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password'  => Hash::make('password'),
             'phone_number'  => '0812345678',
+            'address'  => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
             'role_id'   => 5
         ]);
 
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
             'email' => 'bendahara@gmail.com',
             'password'  => Hash::make('password'),
             'phone_number'  => '08999981907',
+            'address'  => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
             'role_id'   => 4
         ]);
 
@@ -34,6 +36,7 @@ class UserSeeder extends Seeder
             'email' => 'pengurus2@gmail.com',
             'password'  => Hash::make('password'),
             'phone_number'  => '08167145678',
+            'address'  => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
             'role_id'   => 3
         ]);
 
@@ -42,6 +45,7 @@ class UserSeeder extends Seeder
             'email' => 'pengurus1@gmail.com',
             'password'  => Hash::make('password'),
             'phone_number'  => '08123478161',
+            'address'  => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
             'role_id'   => 2
         ]);
 

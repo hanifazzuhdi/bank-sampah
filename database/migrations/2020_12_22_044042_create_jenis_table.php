@@ -15,6 +15,7 @@ class CreateJenisTable extends Migration
     {
         Schema::create('jenis', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->default('https://via.placeholder.com/150');
             $table->string('jenis_sampah');
             $table->string('harga');
             $table->timestamps();

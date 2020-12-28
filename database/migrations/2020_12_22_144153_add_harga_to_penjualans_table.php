@@ -14,7 +14,7 @@ class AddHargaToPenjualansTable extends Migration
     public function up()
     {
         Schema::table('penjualans', function (Blueprint $table) {
-            $table->string('harga')->nullable();
+            $table->string('harga')->after('berat')->nullable();
         });
     }
 

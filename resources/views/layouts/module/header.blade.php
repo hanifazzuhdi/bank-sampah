@@ -5,8 +5,8 @@
     <a class="navbar-brand" style="color: black" href="#">
         {{-- <img class="navbar-brand-full" src="" width="89" height="25" alt="SI AMANAH">
         <img class="navbar-brand-minimized" src="{{ asset('assets/dw-01/img/brand/sygnet.svg') }}" width="30"
-            height="30" alt="CoreUI Logo"> --}}
-<B>SAMP<i class="nav-icon icon-fire"></i>H</B>
+        height="30" alt="CoreUI Logo"> --}}
+        <B>SAMP<i class="nav-icon icon-fire"></i>H</B>
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>

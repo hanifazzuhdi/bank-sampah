@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Model\Role;
+use App\Model\Tabungan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,8 +40,20 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    // Relation
+    public function tabungans()
+    {
+        return $this->hasMany(Tabungan::class);
+    }
+
     public function penjemputan()
     {
         return $this->belongsTo('App\Api\Penjemputan', 'User_id', 'id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }
