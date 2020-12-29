@@ -17,9 +17,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $Customer = Auth::user()->name;
-        $User = User::where('role_id', 1)->count();
-        $Keuangan = Keuangan::latest()->first('saldo');
-        return view('home', compact('User', 'Customer', 'Keuangan'));
+        $user = User::where('role_id', 1)->count();
+
+        $keuangan = Keuangan::latest()->first('saldo');
+
+        return view('home', compact('user', 'keuangan'));
     }
 }
