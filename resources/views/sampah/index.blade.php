@@ -22,7 +22,7 @@
 
                             </div>
                             <div class="card-body">
-                                <div class="mt-5">
+                                <div class="mb-5">
                                     <a href="" class="btn btn-primary">Tambah Jenis</a>
                                 </div>
                                 @if (session('success'))

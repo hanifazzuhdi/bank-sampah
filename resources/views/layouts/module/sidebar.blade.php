@@ -12,7 +12,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('penarikan') }}">
                 <i class="nav-icon icon-cursor"></i> Penarikan
             </a>
         </li>
@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('keuangan') }}">
                 <i class="nav-icon icon-basket"></i> Keuangan
             </a>
         </li>
