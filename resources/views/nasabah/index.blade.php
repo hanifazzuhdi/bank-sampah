@@ -28,7 +28,7 @@
                                 @if (session('error'))
                                     <div class="alert alert-danger">{{ session('error') }}</div>
                                 @endif
-                                <a href="{{ route('register') }}" class="btn btn-primary btn-sm float-right">Tambah
+                                {{-- <a href="{{ route('register') }}" class="btn btn-primary btn-sm float-right">Tambah --}}
                                     Admin</a>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered">
