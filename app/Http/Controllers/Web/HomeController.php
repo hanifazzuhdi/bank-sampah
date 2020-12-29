@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $Customer = Auth::user()->name;
-        $User = User::where('role_id', '>',1);
+        $User = User::where('role_id', '>',1)->count();
         return view('home', compact('User', 'Customer'));
     }
 }
