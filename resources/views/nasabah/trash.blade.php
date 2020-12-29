@@ -28,27 +28,6 @@
                                 @if (session('error'))
                                     <div class="alert alert-danger">{{ session('error') }}</div>
                                 @endif
-                                <!-- FORM UNTUK FILTER DAN PENCARIAN -->
-                                <form action="{{ route('transaksi.index') }}" method="get">
-                                    <div class="input-group mb-3 col-md-6 float-right">
-                                        <select name="status" class="form-control mr-3">
-                                            <option value="">Pilih Status</option>
-                                            <option value="0">Baru</option>
-                                            <option value="1">Confirm</option>
-                                            <option value="2">Proses</option>
-                                            <option value="3">Dikirim</option>
-                                            <option value="4">Selesai</option>
-                                        </select>
-                                        <input type="text" name="q" class="form-control" placeholder="Cari..."
-                                            value="{{ request()->q }}">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="submit">Cari</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- FORM UNTUK FILTER DAN PENCARIAN -->
-
-                                <!-- TABLE UNTUK MENAMPILKAN DATA ORDER -->
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered">
                                         <thead>
