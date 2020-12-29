@@ -9,7 +9,7 @@
         <li class="nav-title">MANAJEMEN PRODUK</li>
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="nav-icon icon-target"></i> Kategori sampah
+                <i class="nav-icon icon-target"></i> Gudang Sampah
             </a>
         </li>
         <li class="nav-item">

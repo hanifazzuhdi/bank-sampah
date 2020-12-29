@@ -12,7 +12,6 @@ class UserController extends Controller
     public function index()
     {
         $User = User::all();
-        $Order_details = [];
         return view('nasabah.index', compact('User'));
     }
     public function show($id)
