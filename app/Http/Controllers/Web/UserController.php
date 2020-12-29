@@ -15,7 +15,7 @@ class UserController extends Controller
         $Order_details = [];
         return view('nasabah.index', compact('User'));
     }
-    public function delete($id)
+    public function show($id)
     {
         $user = User::find($id);
         if ($user) {

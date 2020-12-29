@@ -46,8 +46,8 @@
                                                 <tr>
                                                     <td><strong>{{ $row->id }}</strong></td>
                                                     <td><strong>{{ $row->name }}</strong><br>
-                                                    <td>{{ $row->nomor_telpon }}</td>
-                                                    <td>{{ $row->alamat }}</td>
+                                                    <td>{{ $row->phone_number }}</td>
+                                                    <td>{{ $row->address }}</td>
                                                     <td> <img src="{{ $row->avatar }}" width="100px" height="100px"
                                                             alt="{{ $row->name }}"></td>
                                                     <td>
