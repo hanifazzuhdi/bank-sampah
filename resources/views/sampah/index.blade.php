@@ -39,6 +39,7 @@
                                                 <th>ID</th>
                                                 <th>Kategori</th>
                                                 <th>Berat</th>
+                                                <th>Harga</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -47,6 +48,8 @@
                                                 <tr>
                                                     <td><strong>{{ $row->id }}</strong></td>
                                                     <td><strong>{{ $row->jenis->jenis_sampah }}</strong><br>
+                                                    <td><strong>{{ $row->berat }}</strong></td>
+                                                    <td><strong>{{ $row->jenis->harga }}</strong></td>
                                                     <td>
                                                         <form action="" method="">
                                                             @csrf
