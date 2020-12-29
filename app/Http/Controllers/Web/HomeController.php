@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\User;
+use App\Model\Keuangan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Keuangan;
-use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -17,10 +17,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $userAuth = User::where('id', Auth::id())->first();
+
         $user = User::where('role_id', 1)->count();
 
         $keuangan = Keuangan::latest()->first('saldo');
 
-        return view('home', compact('user', 'keuangan'));
+        $sapa = $this->sapa() . $userAuth->name;
+
+        return view('home', compact('userAuth', 'user', 'keuangan', 'sapa'));
     }
 }
