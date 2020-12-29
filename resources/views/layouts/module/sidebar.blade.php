@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('nasabah.index') }}">
                 <i class="nav-icon icon-user"></i> Nasabah
             </a>
         </li>

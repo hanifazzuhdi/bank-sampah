@@ -27,4 +27,6 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
     Route::get('/home', 'HomeController@index')->name('home');
     // Route
     Route::post('tarik', 'PenarikanController@tarik');
+    //Route user
+    Route::resource('nasabah', 'UserController');
 });
