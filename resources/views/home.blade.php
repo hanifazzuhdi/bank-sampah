@@ -22,7 +22,7 @@
                                     <div class="callout callout-info">
                                         <small class="text-muted">jumlah saldo bank</small>
                                         <br>
-                                        <strong class="h4">{{ number_format($Keuangan) }}</strong>
+                                        <strong class="h4">{{ $Keuangan }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
