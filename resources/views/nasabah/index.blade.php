@@ -29,7 +29,7 @@
                                     <div class="alert alert-danger">{{ session('error') }}</div>
                                 @endif
                                 {{-- <a href="{{ route('register') }}" class="btn btn-primary btn-sm float-right">Tambah --}}
-                                    Admin</a>
+                                    {{-- Admin</a> --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered">
                                         <thead>
@@ -44,13 +44,13 @@
                                         </thead>
                                         <tbody>
                                             @forelse ($User as $row)
-                                                <b style="color: white">{{ $row->image }}</b>
+                                                <b style="color: white">{{ $row->avatar }}</b>
                                                 <tr>
                                                     <td><strong>{{ $row->id }}</strong></td>
                                                     <td><strong>{{ $row->name }}</strong><br>
                                                     <td>{{ $row->nomor_telpon }}</td>
                                                     <td>{{ $row->alamat }}</td>
-                                                    <td> <img src="{{ $row->image }}" width="100px" height="100px"
+                                                    <td> <img src="{{ $row->avatar }}" width="100px" height="100px"
                                                             alt="{{ $row->name }}"></td>
                                                     <td>
                                                         {{-- <form action="{{ route('pembeli.destroy', $row->id) }}" method="delete"> --}}
