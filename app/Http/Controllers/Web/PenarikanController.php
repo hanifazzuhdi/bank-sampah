@@ -4,11 +4,17 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Model\Keuangan;
+use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class PenarikanController extends Controller
 {
+    public function index()
+    {
+        $User = User::all();
+        return view('penarikan.index', compact('User'));
+    }
     public function tarik(Request $request)
     {
         $validator = Validator::make($request->all(), [

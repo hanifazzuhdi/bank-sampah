@@ -58,7 +58,7 @@
                                                             @method('DELETE')
                                                             <button class="btn btn-danger btn-sm">black list</button>
                                                         </form>
-                                                        {{-- <form action="{{ route('pendapatan', $row->id) }}" method="get"> --}}
+                                                        <form action="{{ route('detail') }}" method="get">
                                                             @csrf
                                                             @method('GET')
                                                             <button class="btn btn-warning btn-sm mt-2">lihat</button>

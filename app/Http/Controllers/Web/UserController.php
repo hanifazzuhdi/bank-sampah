@@ -14,6 +14,10 @@ class UserController extends Controller
         $User = User::all();
         return view('nasabah.index', compact('User'));
     }
+    public function detail()
+    {
+        return view('nasabah.detail');
+    }
     public function show($id)
     {
         $user = User::find($id);

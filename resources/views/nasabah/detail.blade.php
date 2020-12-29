@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Daftar Pesanan</title>
+    <title>Detail User</title>
 @endsection
 
 @section('content')
     <main class="main">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item active">Orders</li>
+            <li class="breadcrumb-item active">User Detail</li>
         </ol>
         <div class="container-fluid">
             <div class="animated fadeIn">
@@ -21,22 +21,7 @@
                                 </h1>
                             </div>
                             <div class="card-body">
-                                @forelse ($shop as $asus)
-                                <img src="{{$asus->image}}" alt="toko ini ditutup pemerintah zimbabwe" width="200" height="300">
-                                <h2>{{$asus->name}}</h2>
-                                <h3>
-                                    {{$asus->description}}
-                                    <br>
-                                    Alamat:{{$asus->alamat}}
-                                </h3>
-                                @empty
-                                @endforelse
-                                <h3>
-                                    Jumlah produk:{{ $Product }}
-                                    <br>
-                                    Penghasilan:Rp.{{ number_format($Order_details) }}
-                                </h3>
-                                
+                                <h1>Belom ada Keterangan lebih lanjut dari pemerintah zimbabwe</h1>
                             </div>
                         </div>
                     </div>
