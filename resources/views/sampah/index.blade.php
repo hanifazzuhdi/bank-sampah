@@ -13,30 +13,7 @@
         <div class="container-fluid">
             <div class="animated fadeIn">
                 <div class="row">
-                    {{-- bagian buat nambah jenis --}}
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Jenis Sampah Baru</h4>
-                            </div>
-                            <div class="card-body">
-
-                                <form action="" method="post">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="Jenis sampah">Jenis Sampah</label>
-                                        <select name="jenis_sampah" class="form-control">
-                                            <option value="">None</option>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary btn-sm">Tambah</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- bagian buat nambah jenis --}}
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
