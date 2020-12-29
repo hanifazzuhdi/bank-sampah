@@ -28,7 +28,7 @@
                                     <div class="callout callout-danger">
                                         <small class="text-muted">Jumlah member</small>
                                         <br>
-                                        <strong class="h4">{{ number_format($User) }}</strong>
+                                        <strong class="h4">{{ $User }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
