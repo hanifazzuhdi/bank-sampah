@@ -28,8 +28,7 @@
                                 @if (session('error'))
                                     <div class="alert alert-danger">{{ session('error') }}</div>
                                 @endif
-                                {{-- <a href="{{ route('register') }}" class="btn btn-primary btn-sm float-right">Tambah --}}
-                                    {{-- Ad      --}}
+                               
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered">
                                         <thead>
@@ -53,15 +52,11 @@
                                                     <td> <img src="{{ $row->avatar }}" width="100px" height="100px"
                                                             alt="{{ $row->name }}"></td>
                                                     <td>
-                                                        <form action="{{ route('delete_nasabah', $row->id) }}" method="delete">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn btn-danger btn-sm">black list</button>
-                                                        </form>
-                                                        <form action="{{ route('detail') }}" method="get">
+                                                   
+                                                        <form action="" method="get">
                                                             @csrf
                                                             @method('GET')
-                                                            <button class="btn btn-warning btn-sm mt-2">lihat</button>
+                                                            <button class="btn btn-warning btn-sm mt-2">Tarik uang</button>
                                                         </form>
                                                     </td>
 

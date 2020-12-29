@@ -5,16 +5,15 @@
                 <i class="nav-icon icon-speedometer"></i> Dashboard
             </a>
         </li>
-
         <li class="nav-title">MANAJEMEN PRODUK</li>
         <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="nav-icon icon-target"></i> Kategori sampah
+            <a class="nav-link" href="{{ route('gudang') }}">
+                <i class="nav-icon icon-target"></i> Gudang Sampah
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="nav-icon icon-cursor"></i> transaksi
+            <a class="nav-link" href="{{ route('penarikan') }}">
+                <i class="nav-icon icon-cursor"></i> Penarikan
             </a>
         </li>
         <li class="nav-item">
@@ -23,8 +22,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="nav-icon icon-basket"></i>
+            <a class="nav-link" href="{{ route('keuangan') }}">
+                <i class="nav-icon icon-basket"></i> Keuangan
             </a>
         </li>
         <li class="nav-item nav-dropdown">
@@ -33,7 +32,7 @@
             </a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ route('trash') }}">
                         <i class="nav-icon icon-puzzle"></i>User black list
                     </a>
                 </li>
