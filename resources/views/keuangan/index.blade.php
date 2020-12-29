@@ -49,7 +49,8 @@
                                                     <td>{{ $row->debet }}</td>
                                                     <td>{{ $row->kredit }}</td>
                                                     <td>{{ $row->saldo }}</td>
-                                                    <td>{{ $row->creted_at }}</td>
+                                                    <td>{{ $row->created_at }}</td>
+                                                    <td>
                                                         <form action="" method="delete">
                                                             @csrf
                                                             @method('DELETE')
