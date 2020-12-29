@@ -3,6 +3,7 @@
 <title>Dashboard - Sampah</title>
 @endsection
 @section('content')
+
 <main class="main">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
@@ -22,14 +23,14 @@
                                     <div class="callout callout-info">
                                         <small class="text-muted">jumlah saldo bank</small>
                                         <br>
-                                        <strong class="h4">{{ $Keuangan }}</strong>
+                                        <strong class="h4"> {{$keuangan->saldo}} </strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="callout callout-danger">
                                         <small class="text-muted">Jumlah member</small>
                                         <br>
-                                        <strong class="h4">{{ number_format($User) }}</strong>
+                                        <strong class="h4">{{ number_format($user) }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
