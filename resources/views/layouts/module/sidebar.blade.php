@@ -33,7 +33,7 @@
             </a>
             <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ route('trash') }}">
                         <i class="nav-icon icon-puzzle"></i>User black list
                     </a>
                 </li>

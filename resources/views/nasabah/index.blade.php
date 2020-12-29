@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Daftar Pesanan</title>
+    <title>Daftar Nasabah</title>
 @endsection
 
 @section('content')
@@ -29,7 +29,7 @@
                                     <div class="alert alert-danger">{{ session('error') }}</div>
                                 @endif
                                 {{-- <a href="{{ route('register') }}" class="btn btn-primary btn-sm float-right">Tambah --}}
-                                    {{-- Admin</a> --}}
+                                    {{-- Ad      --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered">
                                         <thead>
@@ -53,7 +53,7 @@
                                                     <td> <img src="{{ $row->avatar }}" width="100px" height="100px"
                                                             alt="{{ $row->name }}"></td>
                                                     <td>
-                                                        {{-- <form action="{{ route('pembeli.destroy', $row->id) }}" method="delete"> --}}
+                                                        <form action="{{ route('delete_nasabah', $row->id) }}" method="delete">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-danger btn-sm">black list</button>
