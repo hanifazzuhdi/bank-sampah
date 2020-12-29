@@ -17,14 +17,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $userAuth = User::where('id', Auth::id())->first();
-
         $user = User::where('role_id', 1)->count();
 
         $keuangan = Keuangan::latest()->first('saldo');
 
-        $sapa = $this->sapa() . $userAuth->name;
+        $sapa = $this->sapa();
 
-        return view('home', compact('userAuth', 'user', 'keuangan', 'sapa'));
+        return view('home', compact('user', 'keuangan', 'sapa'));
     }
 }
