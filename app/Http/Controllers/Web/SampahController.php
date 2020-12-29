@@ -10,7 +10,7 @@ class SampahController extends Controller
 {
     public function index()
     {
-        $data = Sampah::with(['jenis'])->orderBy('id', 'ASC')->get();
+        $Sampah = Sampah::with(['jenis'])->orderBy('id', 'ASC')->get();
         return view('sampah.index', compact('Sampah'));
     }
 }
