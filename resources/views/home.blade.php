@@ -1,13 +1,7 @@
-<!-- FUNGSI EXTENDS DIGUNAKAN UNTUK ME-LOAD MASTER LAYOUTS YANG ADA, KARENA INI ADALAH HALAMAN HOME MAKA KITA ME-LOAD LAYOUTS ADMIN.BLADE.PHP -->
-<!-- KETIKA MELOAD FILE BLADE, MAKA EKSTENSI .BLADE.PHP TIDAK PERLU DITULISKAN -->
 @extends('layouts.admin')
-
-<!-- TAG YANG DIAPIT OLEH SECTION('TITLE') AKAN ME-REPLACE @YIELD('TITLE') PADA MASTER LAYOUTS -->
 @section('title')
 <title>Dashboard - Sampah</title>
 @endsection
-
-<!-- TAG YANG DIAPIT OLEH SECTION('CONTENT') AKAN ME-REPLACE @YIELD('CONTENT') PADA MASTER LAYOUTS -->
 @section('content')
 <main class="main">
     <ol class="breadcrumb">
@@ -18,8 +12,6 @@
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-md-12">
-                    {{-- <h1>SELAMAT DATANG PAK {{ ($Customer) }}</h1> --}}
-                    {{-- <p>semuanya berjalan normal walau hati sedang kacau dan kesepian</p> --}}
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">PERKEMBANGAN</h4>
@@ -30,14 +22,13 @@
                                     <div class="callout callout-info">
                                         <small class="text-muted">jumlah uang masuk</small>
                                         <br>
-                                        {{-- <strong class="h4">{{ number_format($Payment) }}</strong> --}}
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="callout callout-danger">
                                         <small class="text-muted">Jumlah member</small>
                                         <br>
-                                        {{-- <strong class="h4">{{ number_format($User) }}</strong> --}}
+                                        <strong class="h4">{{ number_format($User) }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">

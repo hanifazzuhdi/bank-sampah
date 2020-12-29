@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -14,6 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $Customer = Auth::user()->name;
+        $User = User::where('role_id', 1);
+        return view('home', compact('User', 'Customer'));
     }
 }

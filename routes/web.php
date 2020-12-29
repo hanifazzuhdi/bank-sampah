@@ -23,10 +23,8 @@ Auth::routes([
 ]);
 
 Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], function () {
-
     // Route Dashboard
     Route::get('/home', 'HomeController@index')->name('home');
-
     // Route
     Route::post('tarik', 'PenarikanController@tarik');
 });
