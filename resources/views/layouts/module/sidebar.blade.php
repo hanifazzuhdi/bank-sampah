@@ -13,7 +13,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="nav-icon icon-cursor"></i> transaksi
+                <i class="nav-icon icon-cursor"></i> Penarikan
             </a>
         </li>
         <li class="nav-item">
@@ -23,7 +23,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">
-                <i class="nav-icon icon-basket"></i>
+                <i class="nav-icon icon-basket">Keuangan</i>
             </a>
         </li>
         <li class="nav-item nav-dropdown">
