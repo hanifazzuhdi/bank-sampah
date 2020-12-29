@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    
+
     public function index()
     {
         $User = User::all();
@@ -44,5 +44,5 @@ class UserController extends Controller
         $User = User::onlyTrashed()->where('id', $id);
         $User->forceDelete();
         return $this->trash()->with(['success' => 'admin dikembalikan']);
-    }   
+    }
 }

@@ -37,7 +37,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6',
             'phone_number' => 'required'
 
-            ]);
+        ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
