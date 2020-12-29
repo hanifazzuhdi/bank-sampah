@@ -20,8 +20,9 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="callout callout-info">
-                                        <small class="text-muted">jumlah uang masuk</small>
+                                        <small class="text-muted">jumlah saldo bank</small>
                                         <br>
+                                        <strong class="h4">{{ number_format($Keuangan) }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -33,7 +34,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="callout callout-primary">
-                                        <small class="text-muted">Perlu Dikirim</small>
+                                        <small class="text-muted">pemasukan</small>
                                         <br>
                                         {{-- <strong class="h4">{{ number_format($Order) }}</strong> --}}
                                     </div>
