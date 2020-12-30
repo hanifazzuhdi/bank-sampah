@@ -13,4 +13,28 @@ class KaryawanController extends Controller
 
         return view('pages.karyawan', compact('users'));
     }
+
+    // for jquery
+    public function show($id)
+    {
+        $data = User::find($id);
+
+        switch (true) {
+            case $data->role_id == 4:
+                $data->role_id = 'Bendahara';
+                break;
+            case $data->role_id == 2:
+                $data->role_id = 'Pengurus 1';
+                break;
+            case $data->role_id == 3:
+                $data->role_id = 'Pengurus 2';
+                break;
+        }
+
+        echo json_encode($data);
+    }
+
+    public function update()
+    {
+    }
 }
