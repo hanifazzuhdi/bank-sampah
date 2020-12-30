@@ -26,9 +26,6 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
     // Route Dashboard
     Route::get('/home', 'HomeController@index')->name('home');
 
-    // Route
-    Route::post('tarik', 'PenarikanController@tarik');
-
     //Route user
     Route::resource('nasabah', 'UserController');
     Route::get('detail', 'UserController@detail')->name('detail'); //menampilkan data user
@@ -37,6 +34,9 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
     Route::get('trash/{id}', 'UserController@restore')->name('restore'); //mengembalikan data user
     Route::get('permanen/{id}', 'UserController@hapus_permanen')->name('permanen'); //hapus permanen user
     Route::get('gudang', 'SampahController@index')->name('gudang'); //menampilkan data user terblack list
+
+    // Route
+    Route::post('tarik', 'PenarikanController@tarik');
 
     //Route keuangan
     Route::get('keuangan', 'KeuanganController@index')->name('keuangan'); //menampilkan data keuangan bank sampah

@@ -28,6 +28,6 @@ class HomeController extends Controller
         $penjualan = DB::select("SELECT SUM(penghasilan) as penghasilan FROM penjualans WHERE MONTH(created_at) = $month");
         $transaksi = DB::select("SELECT COUNT(*) as jumlah FROM penyetorans WHERE MONTH(created_at) = $month");
 
-        return view('home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
+        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
     }
 }

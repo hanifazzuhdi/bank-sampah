@@ -20,11 +20,29 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('template/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    <!-- Custom CSS untuk satu page -->
+    @yield('style')
+
 </head>
 
 <body id="page-top">
 
-    @yield('content')
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        @include('components.side-nav')
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            @include('components.top-nav')
+
+            @yield('content')
+        </div>
+        <!-- End of Content Wrapper -->
+
+        <!-- Footer -->
+        @include('components.footer')
+
+    </div>
+    <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('template/vendor/jquery/jquery.min.js')}}"></script>
@@ -36,12 +54,8 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('template/js/sb-admin-2.min.js')}}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{asset('template/vendor/chart.js/Chart.min.js')}}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{asset('template/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('template/js/demo/chart-pie-demo.js')}}"></script>
+    <!-- Custom js untuk satu page -->
+    @yield('script')
 
 </body>
 
