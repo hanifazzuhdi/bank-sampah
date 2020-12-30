@@ -24,7 +24,7 @@
                             <div class="row mb-2">
                                 <div class="col">
                                     <label>Nama : </label>
-                                    <input type="text" class="form-control" name="nama" id="name">
+                                    <input type="text" class="form-control" name="name" id="name">
                                 </div>
                                 <div class="col">
                                     <label>Email : </label>
@@ -62,7 +62,6 @@
                             </div>
                             @method('put')
                             @csrf
-                        </form>
                     </div>
                 </div>
             </div>
@@ -70,9 +69,11 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
                     Close
                 </button>
-                <button class="btn btn-warning" onclick="return confirm('Yakin Ubah ?')">
+                <button class="btn btn-warning" type="submit">
                     Update
                 </button>
+                </form>
+
             </div>
         </div>
     </div>

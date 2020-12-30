@@ -34,14 +34,16 @@ class KaryawanController extends Controller
         echo json_encode($data);
     }
 
-    public function update()
+    public function update($id)
     {
         $data = request()->validate([
             'name'  => 'required',
-            'email' => 'required|email',
             'phone_number' => 'required',
-            'role'  =>  'required',
             'address' => 'required'
         ]);
+
+        User::find($id)->update($data);
+
+        return back();
     }
 }

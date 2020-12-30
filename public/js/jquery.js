@@ -11,8 +11,9 @@
 
             const id = $(this).data('id');
             const url = $(this).data('url');
+            console.log(url);
 
-            $('.modal-body form').attr('action', 'http://localhost:8000/karyawan/update/' + id )
+            $('.modal-body form').attr('action', url + 'update/' + id )
 
             $.ajax({
                 url: url + id ,
