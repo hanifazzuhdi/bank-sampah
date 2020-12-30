@@ -16,9 +16,9 @@ class CreateKeuangansTable extends Migration
         Schema::create('keuangans', function (Blueprint $table) {
             $table->id();
             $table->string('keterangan');
-            $table->string('debet');
-            $table->string('kredit');
-            $table->string('saldo');
+            $table->integer('debet');
+            $table->integer('kredit');
+            $table->integer('saldo');
             $table->timestamps();
         });
     }
