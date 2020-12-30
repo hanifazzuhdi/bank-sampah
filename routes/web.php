@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
 
     // Route Karyawan
     Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');
+    // Route::get
 
     //Route user
     Route::resource('nasabah', 'UserController');
