@@ -61,7 +61,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Pendapatan (monthly)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                IDR {{ number_format($penjualan, 0, ',', '.')}}</div>
+                                IDR {{ number_format($penjualan[0]->penghasilan, 0, ',', '.')}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
