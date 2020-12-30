@@ -108,7 +108,7 @@
                     </h6>
                     <a class="dropdown-item d-flex align-items-center" href="#">
                         <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="">
+                            <img class="rounded-circle" alt="">
                             <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
@@ -119,7 +119,7 @@
                     </a>
                     <a class="dropdown-item d-flex align-items-center" href="#">
                         <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="">
+                            <img class="rounded-circle" alt="">
                             <div class="status-indicator"></div>
                         </div>
                         <div>
@@ -130,7 +130,7 @@
                     </a>
                     <a class="dropdown-item d-flex align-items-center" href="#">
                         <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="">
+                            <img class="rounded-circle" alt="">
                             <div class="status-indicator bg-warning"></div>
                         </div>
                         <div>
