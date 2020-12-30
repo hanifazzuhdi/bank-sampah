@@ -2,6 +2,7 @@
 
 use App\Model\Jenis;
 use App\Model\Role;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
@@ -32,5 +33,6 @@ class RoleSeeder extends Seeder
         Role::create([
             'role_name' => 'admin'
         ]);
+       
     }
 }
