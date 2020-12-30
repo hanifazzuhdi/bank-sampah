@@ -18,7 +18,7 @@ class CreateKeuangansTable extends Migration
             $table->string('keterangan');
             $table->integer('debet');
             $table->integer('kredit');
-            $table->integer('saldo');
+            $table->bigInteger('saldo');
             $table->timestamps();
         });
     }
