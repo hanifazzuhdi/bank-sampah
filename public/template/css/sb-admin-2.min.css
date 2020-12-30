@@ -12060,22 +12060,24 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url(https://source.unsplash.com/HvhkrYr3V10/600x800);
+    background: url('https://source.unsplash.com/HvhkrYr3V10/600x800');
     background-position: center;
     background-size: cover;
-    /* background-color: #666871; */
+    background-color: #666871;
 }
 
 .bg-register-image {
     background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
     background-position: center;
-    background-size: cover
+    background-size: cover;
+    background-color: #666871;
 }
 
 .bg-password-image {
     background: url(https://source.unsplash.com/HvhkrYr3V10/600x800);
     background-position: center;
-    background-size: cover
+    background-size: cover;
+    background-color: #666871;
 }
 
 form.user .custom-checkbox.small label {
