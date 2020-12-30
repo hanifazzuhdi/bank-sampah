@@ -25,8 +25,8 @@ class HomeController extends Controller
         $keuangan = Keuangan::latest()->first('saldo');
 
         $month = date('m');
-        $penjualan = DB::select("SELECT SUM(penghasilan) as penghasilan FROM penjualans WHERE MONTH(created_at) = $month");
-        $transaksi = DB::select("SELECT COUNT(*) as jumlah FROM penyetorans WHERE MONTH(created_at) = $month");
+        $penjualan = Penjualan::whereMonth('created_at', $month)->sum('penghasilan');
+        $transaksi = Penyetoran::whereMonth('created_at', $month)->count();
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
     }

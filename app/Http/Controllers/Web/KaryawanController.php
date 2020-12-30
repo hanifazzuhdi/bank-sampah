@@ -36,5 +36,12 @@ class KaryawanController extends Controller
 
     public function update()
     {
+        $data = request()->validate([
+            'name'  => 'required',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+            'role'  =>  'required',
+            'address' => 'required'
+        ]);
     }
 }

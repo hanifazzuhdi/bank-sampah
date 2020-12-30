@@ -6,7 +6,7 @@
 <style>
     .updateAvatar {
         position: absolute;
-        bottom: 40%;
+        bottom: 30%;
         right: 52%;
         transform: translateX(50%);
     }
@@ -30,7 +30,7 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar karyawan</h6>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-karyawan">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-createKaryawan">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
