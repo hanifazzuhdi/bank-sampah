@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\User;
+use App\Model\Keuangan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Keuangan;
-use App\User;
-use Auth;
+use App\Model\Penjualan;
+use App\Model\Penyetoran;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,6 +24,10 @@ class HomeController extends Controller
 
         $keuangan = Keuangan::latest()->first('saldo');
 
-        return view('home', compact('user', 'keuangan'));
+        $month = date('m');
+        $penjualan = DB::select("SELECT SUM(penghasilan) as penghasilan FROM penjualans WHERE MONTH(created_at) = $month");
+        $transaksi = DB::select("SELECT COUNT(*) as jumlah FROM penyetorans WHERE MONTH(created_at) = $month");
+
+        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
     }
 }

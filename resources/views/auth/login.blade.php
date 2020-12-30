@@ -16,7 +16,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-5">WELCOME BACK !</h1>
+                                    <h1 class="h4 text-gray-900 mb-5">{{strtoupper($sapa)}} ADMIN</h1>
                                 </div>
 
                                 <form class="user mb-5" method="POST" action="{{route('login')}}">
