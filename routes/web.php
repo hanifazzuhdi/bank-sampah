@@ -14,17 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes([
     'register' => false,
 ]);
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], function () {
     // Route Dashboard
     Route::get('/home', 'HomeController@index')->name('home');
+
+    // Route Karyawan
+    Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');
 
     //Route user
     Route::resource('nasabah', 'UserController');
@@ -33,6 +36,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
     Route::get('trash', 'UserController@trash')->name('trash'); //menampilkan data user terblack list
     Route::get('trash/{id}', 'UserController@restore')->name('restore'); //mengembalikan data user
     Route::get('permanen/{id}', 'UserController@hapus_permanen')->name('permanen'); //hapus permanen user
+
+    // Route Sampah
     Route::get('gudang', 'SampahController@index')->name('gudang'); //menampilkan data user terblack list
 
     // Route
@@ -40,7 +45,6 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
 
     //Route keuangan
     Route::get('keuangan', 'KeuanganController@index')->name('keuangan'); //menampilkan data keuangan bank sampah
-
 
     //Route penarikan
     Route::get('penarikan', 'PenarikanController@index')->name('penarikan'); //menampilkan data user

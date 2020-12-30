@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item{{ request()->is("home") ? ' active' : '' }}">
         <a class="nav-link" href="{{route('home')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -36,9 +36,10 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Kelola : </h6>
-                <a class="collapse-item" href="">Daftar Karyawan</a>
-                <a class="collapse-item" href="{{route('nasabah.index')}}">Daftar Pengguna</a>
+                <h6 class="collapse-header">Kelola User</h6>
+                <a class="collapse-item" href="{{route('karyawan.index')}}">Daftar Karyawan</a>
+                <a class="collapse-item{{ request()->is("nasabah") ? ' active' : '' }}"
+                    href="{{route('nasabah.index')}}">Daftar Pengguna</a>
             </div>
         </div>
     </li>

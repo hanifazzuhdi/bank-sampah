@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = User::where('role_id', 1)->get();
-        return view('pages.nasabah', compact('user'));
+        $users = User::where('role_id', 1)->get();
+        return view('pages.nasabah', compact('users'));
     }
 
     public function detail()
