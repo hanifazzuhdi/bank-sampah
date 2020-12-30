@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\KaryawanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
 
     // Route Karyawan
     Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');
+    Route::get('/karyawan/{id}', 'KaryawanController@show')->name('karyawan.show');
+    Route::put('/karyawan/update/{id}', 'KaryawanController@update');
 
     //Route user
     Route::resource('nasabah', 'UserController');

@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{$title ?? "Dashboard - Sammpah.com"}}</title>
 
     <!-- Custom fonts for this template-->

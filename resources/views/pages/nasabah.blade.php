@@ -25,8 +25,8 @@
                             <th>Email</th>
                             <th>No. Telepon</th>
                             <th>Alamat</th>
-                            <th>Role</th>
                             <th>Dibuat</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -35,8 +35,8 @@
                             <th>Email</th>
                             <th>No. Telepon</th>
                             <th>Alamat</th>
-                            <th>Role</th>
                             <th>Dibuat</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -46,8 +46,12 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone_number}}</td>
                             <td>{{$user->address}}</td>
-                            <td>Nasabah</td>
                             <td>{{$user->created_at}}</td>
+                            <td class="text-center">
+                                <a href="">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
