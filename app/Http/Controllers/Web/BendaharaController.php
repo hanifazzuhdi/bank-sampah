@@ -28,22 +28,22 @@ class BendaharaController extends Controller
     {
         $penarikan = Penarikan::where('user id', $id)->get();
         $Saldo = Tabungan::where('user id', $id)->latest()->first('saldo');
-        $tabungan= Tabungan::where('user id', $id)->get();
+        $tabungan = Tabungan::where('user id', $id)->get();
 
         // return view('', compact('Saldo','penarikan');
     }
     public function tarik($id)
     {
-        
+
         $penarikan = Penarikan::where('id', $id)->get();
         $penarikan->status = 2;
         $penarikan->update();
-          // Saldo Keuangan berkurang otomatis
-          Keuangan::create([
+        // Saldo Keuangan berkurang otomatis
+        Keuangan::create([
             'keterangan' => 'Penarikan Uang Oleh Nasabah',
             'debet'      => 0,
             'kredit'     => $penarikan->kredit,
             'saldo'      => Keuangan::latest()->first()->saldo - $penarikan->kredit
+        ]);
     }
-
 }
