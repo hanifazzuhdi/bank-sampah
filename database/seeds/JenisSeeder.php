@@ -15,31 +15,31 @@ class JenisSeeder extends Seeder
         Jenis::create([
             'jenis_sampah' => 'Plastik',
             'harga'        => '500',
-            'image'        => env('APP_URL') . asset('/img/plastic.png')
+            'image'        => asset('/img/plastic.png')
         ]);
 
         Jenis::create([
             'jenis_sampah' => 'Kertas',
             'harga'        => '700',
-            'image'        => env('APP_URL') . asset('/img/paper.png')
+            'image'        => asset('/img/paper.png')
         ]);
 
         Jenis::create([
             'jenis_sampah' => 'Logam',
             'harga'        => '2000',
-            'image'        => env('APP_URL') . asset('/img/beam.png')
+            'image'        => asset('/img/beam.png')
         ]);
 
         Jenis::create([
             'jenis_sampah' => 'Elektronik',
             'harga'        => '5000',
-            'image'        => env('APP_URL') . asset('/img/flash.png')
+            'image'        => asset('/img/flash.png')
         ]);
 
         Jenis::create([
             'jenis_sampah' => 'Minyak',
             'harga'        => '3000',
-            'image'        => env('APP_URL') . asset('/img/oil.png')
+            'image'        => asset('/img/oil.png')
         ]);
     }
 }
