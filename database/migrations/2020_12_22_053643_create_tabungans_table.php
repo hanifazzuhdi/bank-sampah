@@ -18,9 +18,9 @@ class CreateTabungansTable extends Migration
             $table->string('keterangan');
             $table->unsignedBigInteger('jenis_sampah')->nullable();
             $table->integer('berat')->nullable();
-            $table->string('debet')->nullable();
-            $table->string('kredit')->nullable();
-            $table->string('saldo')->nullable();
+            $table->integer('debet')->nullable();
+            $table->integer('kredit')->nullable();
+            $table->integer('saldo')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

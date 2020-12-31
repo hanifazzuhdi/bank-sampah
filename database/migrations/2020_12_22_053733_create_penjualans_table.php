@@ -17,7 +17,7 @@ class CreatePenjualansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('jenis_sampah');
             $table->integer('berat');
-            $table->string('penghasilan');
+            $table->integer('penghasilan');
             $table->timestamps();
         });
     }
