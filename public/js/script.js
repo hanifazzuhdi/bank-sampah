@@ -3,10 +3,7 @@
 
         // Permintaan csrf token laravel
         $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Header': '*',
-                    }
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
 
         });
 
@@ -24,6 +21,10 @@
             $.ajax({
                 url: url + id ,
                 method: 'get',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Header': '*',
+                },
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
@@ -50,6 +51,10 @@
             $.ajax({
                 url: url + id ,
                 method: 'get',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Header': '*',
+                },
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
