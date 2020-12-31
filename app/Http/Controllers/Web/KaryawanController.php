@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KaryawanController extends Controller
 {
@@ -14,7 +15,21 @@ class KaryawanController extends Controller
         return view('pages.karyawan', compact('users'));
     }
 
-    // for jquery
+    public function update($id)
+    {
+        $data = request()->validate([
+            'name'  => 'required',
+            'phone_number' => 'required',
+            'address' => 'required'
+        ]);
+
+        User::find($id)->update($data);
+
+        alert()->success('Success', 'Data Berhasil Diubah');
+        return back();
+    }
+
+    // jquery
     public function show($id)
     {
         $data = User::find($id);
@@ -32,18 +47,5 @@ class KaryawanController extends Controller
         }
 
         echo json_encode($data);
-    }
-
-    public function update($id)
-    {
-        $data = request()->validate([
-            'name'  => 'required',
-            'phone_number' => 'required',
-            'address' => 'required'
-        ]);
-
-        User::find($id)->update($data);
-
-        return back();
     }
 }

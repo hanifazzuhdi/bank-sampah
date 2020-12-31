@@ -69,7 +69,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
                     Close
                 </button>
-                <button class="btn btn-warning" type="submit">
+                <button class="btn btn-warning" type="submit" onclick="return confirm ('Yakin Ubah ?')">
                     Update
                 </button>
                 </form>
