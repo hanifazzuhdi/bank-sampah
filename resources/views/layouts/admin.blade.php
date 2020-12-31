@@ -44,6 +44,8 @@
         @include('components.footer')
 
     </div>
+
+    @include('sweetalert::alert')
     <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->

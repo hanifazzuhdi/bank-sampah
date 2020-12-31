@@ -3,17 +3,83 @@
 namespace App\Http\Controllers\Web;
 
 use App\User;
+use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
     public function index()
     {
         $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 5)->get();
+
         return view('pages.karyawan', compact('users'));
     }
 
-    // for jquery
+    public function store()
+    {
+        $data = request()->validate([
+            'name'  => 'required',
+            'email' => 'required|email|unique:users',
+            'phone_number'  => 'required|min:6',
+            'role_id'   => 'required',
+            'password'  => 'required',
+            'address'   => 'required'
+        ]);
+
+        $data['password'] = Hash::make(request('password'));
+
+        User::create($data);
+
+        alert()->success('Success', 'Data Berhasil ditambahkan');
+        return back();
+    }
+
+    public function update($id, Client $client)
+    {
+        $data = request()->validate([
+            'name'  => 'required',
+            'phone_number' => 'required',
+            'address' => 'required'
+        ]);
+
+        // Validasi image
+        $image = base64_encode(file_get_contents(request('avatar')));
+        $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+            'form_params' => [
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
+                'action' => 'upload',
+                'source' => $image,
+                'format' => 'json'
+            ]
+        ]);
+
+        $get = $res->getBody()->getContents();
+        $hasil = json_decode($get);
+
+        // Get Link Avatar
+        $data['avatar'] = $hasil->image->display_url;
+
+        User::find($id)->update($data);
+
+        alert()->success('Success', 'Data Berhasil diubah');
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        // confirm
+        // alert()->question('Yakin Hapus ?', 'Data ini tidak akan bisa dikembalikan')
+        //     ->showConfirmButton('Delete', '#E53935')
+        //     ->showCancelButton('Cancel', '#aaa')->reverseButtons();
+
+        // delete
+        User::find($id)->delete();
+
+        return back();
+    }
+
+    // jquery
     public function show($id)
     {
         $data = User::find($id);
@@ -28,19 +94,11 @@ class KaryawanController extends Controller
             case $data->role_id == 3:
                 $data->role_id = 'Pengurus 2';
                 break;
+            default:
+                "Format Salah !";
+                break;
         }
 
         echo json_encode($data);
-    }
-
-    public function update()
-    {
-        $data = request()->validate([
-            'name'  => 'required',
-            'email' => 'required|email',
-            'phone_number' => 'required',
-            'role'  =>  'required',
-            'address' => 'required'
-        ]);
     }
 }
