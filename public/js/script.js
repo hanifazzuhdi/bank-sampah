@@ -3,7 +3,9 @@
 
         // Permintaan csrf token laravel
         $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                        'Access-Control-Allow-Origin' : '*',
+                        'Access-Control-Allow-Headers' : '*'
             });
 
 

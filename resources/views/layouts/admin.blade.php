@@ -11,8 +11,6 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @php header('Access-Control-Allow-Headers: *') @endphp
-
     <title>{{$title ?? "Dashboard - Sammpah.com"}}</title>
 
     <!-- Custom fonts for this template-->
