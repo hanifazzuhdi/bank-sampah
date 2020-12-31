@@ -10,7 +10,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DAFTAR JENIS SAMPAH</h6>
+            <h6 class="mt-2 font-weight-bold text-primary">DAFTAR JENIS SAMPAH</h6>
             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-create">
                 <i class="fas fa-plus"></i>
             </button>
@@ -23,7 +23,7 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <div>
                         <h6 class="m-0 font-weight-bold text-primary">{{$sampah->jenis_sampah}}</h6>
-                        <small>Harga : {{$sampah->harga}} /Kg</small>
+                        <small>Harga Beli : {{$sampah->harga}} /Kg</small>
                     </div>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -40,7 +40,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body d-flex justify-content-between">
-                    <img class="rounded border" src="{{$sampah->image}}" width="100px" height="100px"
+                    <img class="rounded border p-2" src="{{$sampah->image}}" width="100px" height="100px"
                         alt="Image Sampah">
                     <div class=" mt-5">
                         <small class="d-block">Dibuat Pada : {{$sampah->created_at}}</small>

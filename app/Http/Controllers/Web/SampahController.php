@@ -17,7 +17,8 @@ class SampahController extends Controller
 
     public function getGudang()
     {
-        $sampah = Sampah::with(['jenis'])->orderBy('id', 'ASC')->get();
-        // return view('sampah.index', compact('sampah'));
+        $sampahs = Sampah::with(['jenis'])->orderBy('id', 'ASC')->get();
+
+        return view('pages.gudang', compact('sampahs'));
     }
 }
