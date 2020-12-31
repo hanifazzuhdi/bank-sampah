@@ -21,7 +21,6 @@
             $.ajax({
                 url: url + id ,
                 method: 'get',
-                timeout: 10000,
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
@@ -48,7 +47,6 @@
             $.ajax({
                 url: url + id ,
                 method: 'get',
-                timeout: 10000,
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);

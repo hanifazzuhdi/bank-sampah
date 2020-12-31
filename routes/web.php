@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-header('Access-Control-Allow-Origin:*');
-header('Access-Control-Allow-Headers:*');
-
 Auth::routes([
     'register' => false,
 ]);
@@ -26,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
+Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], function () {
 
     // Route Dashboard      -> Admin, Bendahara
     Route::get('/home', 'HomeController@index')->name('home');
