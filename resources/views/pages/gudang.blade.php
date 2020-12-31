@@ -34,7 +34,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body d-flex justify-content-between">
-                    <img class="rounded border" src="{{$sampah->jenis->image}}" width="100px" height="100px"
+                    <img class="rounded border p-2" src="{{$sampah->jenis->image}}" width="100px" height="100px"
                         alt="Image Sampah">
                     <div class="">
                         <p>Kapasistas <span class="text-primary">{{$sampah->berat}}</span> Kg</p>
