@@ -1,6 +1,5 @@
 {{-- Modal Update--}}
-<div class="modal fade modal-karyawan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+<div class="modal fade modal-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -81,8 +80,7 @@
 
 
 {{-- Modal Create --}}
-<div class="modal fade modal-createKaryawan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+<div class="modal fade modal-create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -123,7 +121,7 @@
                                 <div class="col">
                                     <label>Role : </label>
                                     <select class="form-control" name="role_id" id="role">
-                                        <option value="4">Bendahara</option>
+                                        <option value="4" selected>Bendahara</option>
                                         <option value="3">Pengurus 2</option>
                                         <option value="2">Pengurus 1</option>
                                     </select>

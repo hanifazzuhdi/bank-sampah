@@ -1,5 +1,4 @@
-
-    // jquery + ajax update
+// jquery + ajax update
     $(function () {
 
     // Permintaan csrf token laravel

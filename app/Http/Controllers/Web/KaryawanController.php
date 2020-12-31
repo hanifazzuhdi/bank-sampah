@@ -66,6 +66,19 @@ class KaryawanController extends Controller
         return back();
     }
 
+    public function destroy($id)
+    {
+        // confirm
+        // alert()->question('Yakin Hapus ?', 'Data ini tidak akan bisa dikembalikan')
+        //     ->showConfirmButton('Delete', '#E53935')
+        //     ->showCancelButton('Cancel', '#aaa')->reverseButtons();
+
+        // delete
+        User::find($id)->delete();
+
+        return back();
+    }
+
     // jquery
     public function show($id)
     {

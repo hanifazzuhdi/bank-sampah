@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Web\KaryawanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +32,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
     Route::get('/karyawan/{id}', 'KaryawanController@show')->name('karyawan.show');
     Route::post('/karyawan/store', 'KaryawanController@store')->name('karyawan.store');
     Route::put('/karyawan/update/{id}', 'KaryawanController@update');
+    Route::delete('/karyawan/delete/{id}', 'KaryawanController@destroy');
 
     //Route user
     Route::resource('nasabah', 'UserController');

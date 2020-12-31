@@ -22,7 +22,6 @@ class CreateTabungansTable extends Migration
             $table->integer('kredit')->nullable();
             $table->integer('saldo')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->integer('status')->default(0);
             $table->timestamps();
 
             $table->foreign('jenis_sampah')->references('id')->on('jenis');

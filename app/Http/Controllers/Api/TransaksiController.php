@@ -53,8 +53,7 @@ class TransaksiController extends Controller
             'berat'         => $data['berat'],
             'debet'         => 0,
             'kredit'        => $nominal,
-            'saldo'         => $data->saldo - $nominal,
-            'status'        => 1
+            'saldo'         => $data->saldo - $nominal
         ]);
 
         return $this->sendResponse('Success', 'Menunggu Saldo dikirim', $nominal, 202);

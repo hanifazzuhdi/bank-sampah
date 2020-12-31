@@ -30,7 +30,7 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar karyawan</h6>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-createKaryawan">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-create">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
@@ -66,14 +66,18 @@
                             <td>{{$user->address}}</td>
                             <td>{{$user->created_at}}</td>
                             <td class="text-center">
-                                <a class="see" href="#" data-id="{{$user->id}}" data-toggle="modal"
-                                    data-target=".modal-karyawan" data-url="{{env('APP_URL') . '/karyawan/'}}">
+                                <a class="see text-decoration-none" href="#" data-id="{{$user->id}}" data-toggle="modal"
+                                    data-target=".modal-update" data-url="{{env('APP_URL') . '/karyawan/'}}">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a class="see" href="#" data-id="{{$user->id}}" data-toggle="modal"
-                                    data-target=".modal-karyawan" data-url="{{env('APP_URL') . '/karyawan/'}}">
-                                    <i class="fas fa-eraser"></i>
-                                </a>
+                                |
+                                <form class="d-inline" action="{{'karyawan/delete/' . $user->id}}" method="post">
+                                    <button class="btn p-0 btn-hapus" type="submit">
+                                        <i class=" fas fa-eraser text-danger"></i>
+                                    </button>
+                                    @csrf
+                                    @method('delete')
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -91,11 +95,12 @@
 @endsection
 
 @section('script')
+
 <script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
 
 {{-- jquery --}}
-<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('js/script.js')}}"></script>
 
 @endsection
