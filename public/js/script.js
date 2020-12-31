@@ -3,10 +3,8 @@
 
         // Permintaan csrf token laravel
         $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                        'Access-Control-Allow-Origin' : '*',
-                        'Access-Control-Allow-Headers' : '*'
-            });
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
 
 
         $('.see-nasabah').click(function () {
@@ -48,6 +46,9 @@
 
             $.ajax({
                 url: url + id ,
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    },
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
