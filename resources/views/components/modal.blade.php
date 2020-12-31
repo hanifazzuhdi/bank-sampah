@@ -20,6 +20,7 @@
                     </div>
 
                     <div class="col-md-8 p-3">
+                        {{-- start form --}}
                         <form action="" method="post">
                             <div class="row mb-2">
                                 <div class="col">
@@ -73,7 +74,7 @@
                     Update
                 </button>
                 </form>
-
+                {{-- end form --}}
             </div>
         </div>
     </div>
@@ -103,37 +104,46 @@
                     </div>
 
                     <div class="col-md-8 p-3">
-                        <form action="" method="post">
+                        {{-- start form --}}
+                        <form action="{{route('karyawan.store')}}" method="post">
                             <div class="row mb-2">
                                 <div class="col">
                                     <label>Nama : </label>
-                                    <input type="text" class="form-control" name="nama" id="name">
+                                    <input type="text" class="form-control" name="name" id="name">
                                 </div>
                                 <div class="col">
                                     <label>Email : </label>
-                                    <input type="email" class="form-control" id="email">
+                                    <input type="email" class="form-control" id="email" name="email">
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col">
                                     <label>No. Telepon : </label>
-                                    <input type="text" class="form-control" name="phone_number" id="phone_number">
+                                    <input type="number" class="form-control" name="phone_number" id="phone_number">
                                 </div>
 
                                 <div class="col">
                                     <label>Role : </label>
-                                    <input type="text" class="form-control" id="role">
+                                    <select class="form-control" name="role_id" id="role">
+                                        <option value="4">Bendahara</option>
+                                        <option value="3">Pengurus 2</option>
+                                        <option value="2">Pengurus 1</option>
+                                    </select>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password : </label>
+                                <input type="password" class="form-control" name="password" id="password">
                             </div>
 
                             <div class="form-group mb-2">
                                 <label>Alamat</label>
                                 <textarea class="form-control" name="address" cols="30" rows="3"
-                                    id="address"></textarea>
+                                    id="address">Pondok Programmer Kec. Kretek Bantul Yogyakarta</textarea>
                             </div>
                             @csrf
-                        </form>
                     </div>
                 </div>
             </div>
@@ -141,9 +151,11 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
                     Close
                 </button>
-                <button class="btn btn-primary" onclick="return confirm('Yakin Ubah ?')">
+                <button class="btn btn-primary">
                     Create
                 </button>
+                </form>
+                {{-- End form --}}
             </div>
         </div>
     </div>

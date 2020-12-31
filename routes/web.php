@@ -24,12 +24,14 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], function () {
-    // Route Dashboard
+
+    // Route Dashboard      -> Admin, Bendahara
     Route::get('/home', 'HomeController@index')->name('home');
 
-    // Route Karyawan
+    // Route Karyawan       ->Admin
     Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');
     Route::get('/karyawan/{id}', 'KaryawanController@show')->name('karyawan.show');
+    Route::post('/karyawan/store', 'KaryawanController@store')->name('karyawan.store');
     Route::put('/karyawan/update/{id}', 'KaryawanController@update');
 
     //Route user

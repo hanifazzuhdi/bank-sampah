@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
@@ -13,6 +13,25 @@ class KaryawanController extends Controller
         $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 5)->get();
 
         return view('pages.karyawan', compact('users'));
+    }
+
+    public function store()
+    {
+        $data = request()->validate([
+            'name'  => 'required',
+            'email' => 'required|email|unique:users',
+            'phone_number'  => 'required|min:6',
+            'password'  => 'required',
+            'role_id'   => 'required',
+            'address'   => 'required'
+        ]);
+
+        $data['password'] = Hash::make(request('password'));
+
+        User::create($data);
+
+        alert()->success('Success', 'Data Berhasil ditambahkan');
+        return back();
     }
 
     public function update($id)
@@ -25,7 +44,7 @@ class KaryawanController extends Controller
 
         User::find($id)->update($data);
 
-        alert()->success('Success', 'Data Berhasil Diubah');
+        alert()->success('Success', 'Data Berhasil diubah');
         return back();
     }
 
@@ -43,6 +62,9 @@ class KaryawanController extends Controller
                 break;
             case $data->role_id == 3:
                 $data->role_id = 'Pengurus 2';
+                break;
+            default:
+                "Format Salah !";
                 break;
         }
 

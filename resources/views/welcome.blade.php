@@ -96,7 +96,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Bank-Sampa<a class="login" href="{{route('login')}}">h</a>
+                API Bank-Sampa<a class="login" href="{{route('login')}}">h</a>
             </div>
 
             <div class="links">
