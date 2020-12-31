@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Model\Penarikan;
 use App\Model\Penyetoran;
 use App\Model\Tabungan;
 use App\User;
@@ -23,25 +24,33 @@ class BendaharaController extends Controller
     // • Melihat Data dan Buku Tabungan Semua Nasabah (Agar bisa melayani penarikan uang oleh nasabah)
     // • Melihat Semua Data Penjualan Sampah Ke Pengepul
     // • Melihat Total Keuangan Bank Sampah
-   
+
     public function penyetoran()
     {
-        $penyetoran = Penyetoran::with(['user:name','jenis']);
+        $penyetoran = Penyetoran::with(['user:name', 'jenis']);
     }
-   
+
     public function user()
     {
-        // $tabungan = Tabungan::with(['User:id,name,email'])->distinc()->latest();
         $user = User::all();
-        // return view('', compact('User'));
-
+        // return view('', compact('user'));
     }
     public function saldo($id)
     {
-        
+        $penarikan = Penarikan::where('user id', $id)->get();
         $Saldo = Tabungan::where('user id', $id)->latest();
-        // return view('', compact('Saldo'));
+        // return view('', compact('Saldo','penarikan');
     }
-
+    public function tarik($id)
+    {
+        $penarikan = Penarikan::where('id', $id)->get();
+        $penarikan->status = 2;
+        $penarikan->update();
+        $Tabungan = Tabungan::create([
+            'user_id'       => $penarikan->user_id,
+            'kredit'        => $penarikan->kredit,
+            'keterangan'        => 'nasabah mengambil uang',
+        ]);
+    }
 
 }

@@ -15,6 +15,10 @@ class CreatePenarikanTable extends Migration
     {
         Schema::create('penarikan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->integer('kredit')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }
