@@ -2,6 +2,7 @@
 
 @section('style')
 <link href="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
 @endsection
 
 @section('content')
@@ -13,8 +14,11 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-create">
+                <i class="fas fa-plus"></i>
+            </button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -48,7 +52,9 @@
                             <td>{{$user->address}}</td>
                             <td>{{$user->created_at}}</td>
                             <td class="text-center">
-                                <a href="">
+                                <a class="see-nasabah text-decoration-none" href="#" data-id="{{$user->id}}"
+                                    data-toggle="modal" data-target=".modal-update"
+                                    data-url="{{env('APP_URL') . '/karyawan/'}}">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>
@@ -60,14 +66,20 @@
         </div>
     </div>
 
+    @include('components.modal')
+
 </div>
 <!-- /.container-fluid -->
 
 @endsection
 
-
 @section('script')
+
 <script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
+
+{{-- jquery --}}
+<script src="{{asset('js/script.js')}}"></script>
+
 @endsection

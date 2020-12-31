@@ -8343,7 +8343,7 @@ button.bg-dark:hover {
 }
 
 .w-50 {
-    width: 50% !important
+    width: 45% !important
 }
 
 .w-75 {
@@ -8505,6 +8505,12 @@ button.bg-dark:hover {
 .mt-4,
 .my-4 {
     margin-top: 1.5rem !important
+}
+
+
+.mt-4_5,
+.my-4_5 {
+    margin-top: 2rem !important;
 }
 
 .mr-4,
