@@ -47,10 +47,20 @@ class TransaksiController extends Controller
             return $this->sendResponse('Failed', 'Jual Sampah Dulu Biar Kaya', 'null', 404);
         }
 
+        Tabungan::create([
+            'user_id'       => Auth::id(),
+            'keterangan'    => 'Penarikan Saldo',
+            'jenis_sampah'  => $data['jenis_sampah'],
+            'berat'         => $data['berat'],
+            'debet'         => 0,
+            'kredit'        => $nominal,
+            'saldo'         => $data->saldo - $nominal
+        ]);
         Penarikan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => 'Penarikan Saldo',
             'kredit'        => $nominal,
+            'status'        => 1,
         ]);
 
         return $this->sendResponse('Success', 'Menunggu Saldo dikirim', $nominal, 202);

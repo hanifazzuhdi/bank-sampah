@@ -10,6 +10,7 @@ class KeuanganController extends Controller
     public function index()
     {
         $Keuangan = Keuangan::all();
-        return view('keuangan.index', compact('Keuangan'));
+        $saldo = Keuangan::latest()->first('saldo');
+        return view('keuangan.index', compact('Keuangan','saldo'));
     }
 }

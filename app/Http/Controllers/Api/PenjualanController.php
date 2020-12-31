@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 class PenjualanController extends Controller
 {
-    // public function index()
-    // {
-    //     $saldo = Keuangan::latest()->first('saldo');
-    //     return $this->sendResponse('Success', 'ini dia saldo anda bos', $saldo, 200);
-    // }
 
+    public function index()
+    {
+        $Penjualan = Penjualan::all();
+        // return view('', compact('Penjualan'));
+    }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
