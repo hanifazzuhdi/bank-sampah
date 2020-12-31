@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Headers:*');
+
 Auth::routes([
     'register' => false,
 ]);
@@ -46,15 +49,15 @@ Route::group(['namespace' => 'Web', 'middleware' => ['auth', 'user.web']], funct
     Route::get('sampah', 'SampahController@getSampah')->name('sampah.index'); //menampilkan data List sampah
     Route::get('gudang', 'SampahController@getGudang')->name('gudang.index'); //menampilkan data gudang sampah
 
-    //Route keuangan bank 
+    //Route keuangan bank
     Route::get('keuangan', 'KeuanganController@index')->name('keuangan'); //menampilkan data keuangan bank sampah dan saldo
     Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik'); //menarik saldo oleh admin dari keuangan
-    
+
     //Route bendahara
     Route::get('penarikan', 'PenarikanController@index')->name('tarik_sis'); //menampilkan data user
     Route::get('saldo/{id}', 'BendaharaController@saldo')->name('saldo'); //menampilkan data saldo user dan request penarikanya berdasarkan id
     Route::post('penarikan/{id}', 'BendaharaController@tarik')->name('penarikan'); //mengkonfirmasi penarikan nasabah oleh bendahara
-    
+
     //Route penyetoran
     Route::get('penyetoran', 'BendaharaController@penyetoran')->name('penyetoran'); //menampilkan riwayan penyetoran
 
