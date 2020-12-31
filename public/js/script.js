@@ -22,6 +22,7 @@
                 url: url + id ,
                 method: 'get',
                 dataType: 'json',
+                timeout: 15000,
                 success: function (data) {
                     console.log(data);
                     $('#avatar').attr('src', data.avatar);
@@ -48,6 +49,7 @@
                 url: url + id ,
                 method: 'get',
                 dataType: 'json',
+                timeout: 15000,
                 success: function (data) {
                     console.log(data);
                     $('#avatar').attr('src', data.avatar);
