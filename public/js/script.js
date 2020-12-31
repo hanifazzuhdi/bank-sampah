@@ -1,11 +1,11 @@
+  // Permintaan csrf token laravel
+  $.ajaxSetup({
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+});
+
+
 // jquery + ajax update
     $(function () {
-
-        // Permintaan csrf token laravel
-        $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-        });
-
 
         $('.see-nasabah').click(function () {
             const id = $(this).data('id');
@@ -20,6 +20,9 @@
             $('#address').attr('disabled', 'disabled');
             $.ajax({
                 url: url + id ,
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    },
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
@@ -46,6 +49,9 @@
 
             $.ajax({
                 url: url + id ,
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    },
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
