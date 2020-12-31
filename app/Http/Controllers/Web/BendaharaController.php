@@ -37,7 +37,8 @@ class BendaharaController extends Controller
 
     }
     public function saldo($id)
-    {penarikan
+    {
+        
         $Saldo = Tabungan::where('user id', $id)->latest();
         // return view('', compact('Saldo'));
     }
