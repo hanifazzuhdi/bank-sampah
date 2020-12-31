@@ -1,22 +1,8 @@
-@extends('layouts.admin', ['title' => "Daftar Nasabah - Sammpah.com"])
+@extends('layouts.admin', ['title' => "Daftar Karyawan - Sammpah.com"])
 
 @section('style')
 <link href="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
-<style>
-    .updateAvatar {
-        position: absolute;
-        bottom: 40%;
-        right: 52%;
-        transform: translateX(50%);
-    }
-
-    .updateAvatar input {
-        width: 90px;
-        color: rgba(255, 255, 255, 0);
-    }
-</style>
-
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
 @endsection
 
 @section('content')
@@ -82,7 +68,8 @@
                                 </a>
                                 |
                                 <form class="d-inline" action="{{'karyawan/delete/' . $user->id}}" method="post">
-                                    <button class="btn p-0 btn-hapus" type="submit">
+                                    <button class="btn p-0 btn-hapus" type="submit"
+                                        onclick="return confirm ('Yakin Hapus ?')">
                                         <i class=" fas fa-eraser text-danger"></i>
                                     </button>
                                     @csrf

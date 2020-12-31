@@ -1,0 +1,17 @@
+.updateAvatar {
+    position: absolute;
+    bottom: 40%;
+    right: 52%;
+    transform: translateX(50%);
+}
+
+.updateAvatar input {
+    width: 90px;
+    color: rgba(255, 255, 255, 0);
+}
+
+.userDelete {
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
