@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\User;
+use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,8 +22,8 @@ class KaryawanController extends Controller
             'name'  => 'required',
             'email' => 'required|email|unique:users',
             'phone_number'  => 'required|min:6',
-            'password'  => 'required',
             'role_id'   => 'required',
+            'password'  => 'required',
             'address'   => 'required'
         ]);
 
@@ -34,13 +35,30 @@ class KaryawanController extends Controller
         return back();
     }
 
-    public function update($id)
+    public function update($id, Client $client)
     {
         $data = request()->validate([
             'name'  => 'required',
             'phone_number' => 'required',
             'address' => 'required'
         ]);
+
+        // Validasi image
+        $image = base64_encode(file_get_contents(request('avatar')));
+        $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+            'form_params' => [
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
+                'action' => 'upload',
+                'source' => $image,
+                'format' => 'json'
+            ]
+        ]);
+
+        $get = $res->getBody()->getContents();
+        $hasil = json_decode($get);
+
+        // Get Link Avatar
+        $data['avatar'] = $hasil->image->display_url;
 
         User::find($id)->update($data);
 

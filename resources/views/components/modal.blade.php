@@ -12,57 +12,56 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4 d-flex justify-content-center border-right pt-4">
-                        <img id="avatar" class="rounded-circle" src="" alt="Avatar" width="150px" height="150px">
+                        <img id="avatar" class="rounded-circle border" src="" alt="Avatar" width="150px" height="150px">
 
-                        <form class="updateAvatar" action="" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="avatar" id="avatar">
-                        </form>
+                        {{-- start form --}}
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="updateAvatar">
+                                <input type="file" name="avatar" id="avatar">
+                            </div>
                     </div>
 
                     <div class="col-md-8 p-3">
-                        {{-- start form --}}
-                        <form action="" method="post">
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <label>Nama : </label>
-                                    <input type="text" class="form-control" name="name" id="name">
-                                </div>
-                                <div class="col">
-                                    <label>Email : </label>
-                                    <input type="email" class="form-control" disabled id="email">
-                                </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Nama : </label>
+                                <input type="text" class="form-control" name="name" id="name">
+                            </div>
+                            <div class="col">
+                                <label>Email : </label>
+                                <input type="email" class="form-control" disabled id="email">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>No. Telepon : </label>
+                                <input type="text" class="form-control" name="phone_number" id="phone_number">
                             </div>
 
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <label>No. Telepon : </label>
-                                    <input type="text" class="form-control" name="phone_number" id="phone_number">
-                                </div>
-
-                                <div class="col">
-                                    <label>Role : </label>
-                                    <input type="text" class="form-control" disabled id="role">
-                                </div>
+                            <div class="col">
+                                <label>Role : </label>
+                                <input type="text" class="form-control" disabled id="role">
                             </div>
+                        </div>
 
-                            <div class="form-group mb-2">
-                                <label>Alamat</label>
-                                <textarea class="form-control" name="address" cols="30" rows="3"
-                                    id="address"></textarea>
-                            </div>
+                        <div class="form-group mb-2">
+                            <label>Alamat</label>
+                            <textarea class="form-control" name="address" cols="30" rows="3" id="address"></textarea>
+                        </div>
 
-                            <div class="row">
-                                <div class="col">
-                                    <label>Created At : </label>
-                                    <input class="form-control" type="text" disabled id="created_at">
-                                </div>
-                                <div class="col">
-                                    <label>Updated At : </label>
-                                    <input class="form-control" type="text" disabled id="updated_at">
-                                </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Created At : </label>
+                                <input class="form-control" type="text" disabled id="created_at">
                             </div>
-                            @method('put')
-                            @csrf
+                            <div class="col">
+                                <label>Updated At : </label>
+                                <input class="form-control" type="text" disabled id="updated_at">
+                            </div>
+                        </div>
+                        @method('put')
+                        @csrf
                     </div>
                 </div>
             </div>
@@ -94,13 +93,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4 d-flex justify-content-center border-right pt-4">
+                    <div class="col-md-4 text-center border-right pt-4">
                         <img id="avatar" class="rounded-circle" src="https://via.placeholder.com/150" alt="Avatar"
                             width="150px" height="150px">
 
-                        <form class="updateAvatar" action="" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="avatar" id="avatar">
-                        </form>
+                        <p class="d-block text-muted mt-5"> *Avatar diisi secara otomatis </p>
                     </div>
 
                     <div class="col-md-8 p-3">

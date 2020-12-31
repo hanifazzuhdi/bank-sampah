@@ -53,18 +53,11 @@ class TransaksiController extends Controller
             'berat'         => $data['berat'],
             'debet'         => 0,
             'kredit'        => $nominal,
-            'saldo'         => $data->saldo - $nominal
+            'saldo'         => $data->saldo - $nominal,
+            'status'        => 1
         ]);
 
-        // Saldo Keuangan berkurang otomatis
-        Keuangan::create([
-            'keterangan' => 'Penarikan Uang Oleh Nasabah',
-            'debet'      => 0,
-            'kredit'     => $nominal,
-            'saldo'      => Keuangan::latest()->first()->saldo - $nominal
-        ]);
-
-        return $this->sendResponse('Success', 'Dana Berhasil di Tarik', $nominal, 202);
+        return $this->sendResponse('Success', 'Menunggu Saldo dikirim', $nominal, 202);
     }
 
     public function kirim($nominal)

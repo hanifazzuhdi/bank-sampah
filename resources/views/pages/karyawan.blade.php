@@ -6,7 +6,7 @@
 <style>
     .updateAvatar {
         position: absolute;
-        bottom: 30%;
+        bottom: 40%;
         right: 52%;
         transform: translateX(50%);
     }
@@ -69,6 +69,10 @@
                                 <a class="see" href="#" data-id="{{$user->id}}" data-toggle="modal"
                                     data-target=".modal-karyawan" data-url="{{env('APP_URL') . '/karyawan/'}}">
                                     <i class="fas fa-eye"></i>
+                                </a>
+                                <a class="see" href="#" data-id="{{$user->id}}" data-toggle="modal"
+                                    data-target=".modal-karyawan" data-url="{{env('APP_URL') . '/karyawan/'}}">
+                                    <i class="fas fa-eraser"></i>
                                 </a>
                             </td>
                         </tr>
