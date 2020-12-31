@@ -16,7 +16,11 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar karyawan</h6>
+<<<<<<< HEAD
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-createKaryawan">
+=======
             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-create">
+>>>>>>> d1845d01a4efa580f31c1528c7ce93d8e9cec219
                 <i class="fas fa-plus"></i>
             </button>
         </div>
@@ -52,6 +56,12 @@
                             <td>{{$user->address}}</td>
                             <td>{{$user->created_at}}</td>
                             <td class="text-center">
+<<<<<<< HEAD
+                                <a class="see" href="#" data-id="{{$user->id}}" data-toggle="modal"
+                                    data-target=".modal-karyawan" data-url="{{env('APP_URL') . '/karyawan/'}}">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+=======
                                 <a class="see text-decoration-none" href="#" data-id="{{$user->id}}" data-toggle="modal"
                                     data-target=".modal-update" data-url="{{env('APP_URL') . '/karyawan/'}}">
                                     <i class="fas fa-eye"></i>
@@ -65,6 +75,7 @@
                                     @csrf
                                     @method('delete')
                                 </form>
+>>>>>>> d1845d01a4efa580f31c1528c7ce93d8e9cec219
                             </td>
                         </tr>
                         @endforeach
@@ -88,6 +99,10 @@
 <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
 
 {{-- jquery --}}
+<<<<<<< HEAD
+<script src="{{asset('js/jquery.js')}}"></script>
+=======
 <script src="{{asset('js/script.js')}}"></script>
+>>>>>>> d1845d01a4efa580f31c1528c7ce93d8e9cec219
 
 @endsection

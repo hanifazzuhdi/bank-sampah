@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Model\Tabungan;
 use App\Http\Controllers\Controller;
 use App\Model\Keuangan;
+use App\Model\Penarikan;
 use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
@@ -54,6 +55,12 @@ class TransaksiController extends Controller
             'debet'         => 0,
             'kredit'        => $nominal,
             'saldo'         => $data->saldo - $nominal
+        ]);
+        Penarikan::create([
+            'user_id'       => Auth::id(),
+            'keterangan'    => 'Penarikan Saldo',
+            'kredit'        => $nominal,
+            'status'        => 1,
         ]);
 
         return $this->sendResponse('Success', 'Menunggu Saldo dikirim', $nominal, 202);

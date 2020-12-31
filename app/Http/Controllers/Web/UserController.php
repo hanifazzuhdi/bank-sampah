@@ -40,6 +40,6 @@ class UserController extends Controller
     {
         $User = User::onlyTrashed()->where('id', $id);
         $User->forceDelete();
-        return $this->trash()->with(['success' => 'user dikembalikan']);
+        return $this->trash()->with(['success' => 'user dihapus permanen']);
     }
 }
