@@ -1,7 +1,14 @@
   // Permintaan csrf token laravel
   $.ajaxSetup({
     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-});
+    });
+
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url = "http://sammpah.herokuapp.com/"; // site that doesn’t send Access-Control-*
+    fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+    .then(response => response.text())
+    .then(contents => console.log(contents))
+    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
 
 // jquery + ajax update
@@ -20,9 +27,6 @@
             $('#address').attr('disabled', 'disabled');
             $.ajax({
                 url: url + id ,
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    },
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
@@ -49,9 +53,6 @@
 
             $.ajax({
                 url: url + id ,
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    },
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
