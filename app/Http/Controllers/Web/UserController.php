@@ -13,11 +13,6 @@ class UserController extends Controller
         return view('pages.nasabah', compact('users'));
     }
 
-    public function detail()
-    {
-        return view('nasabah.detail');
-    }
-
     public function show($id)
     {
         $user = User::find($id);

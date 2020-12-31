@@ -18,12 +18,12 @@ class JenisSeeder extends Seeder
         ]);
 
         Jenis::create([
-            'jenis_sampah' => 'kertas',
+            'jenis_sampah' => 'Kertas',
             'harga'        => '700'
         ]);
 
         Jenis::create([
-            'jenis_sampah' => 'logam',
+            'jenis_sampah' => 'Logam',
             'harga'        => '2000'
         ]);
 

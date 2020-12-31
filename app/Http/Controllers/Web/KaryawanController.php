@@ -76,6 +76,7 @@ class KaryawanController extends Controller
         // delete
         User::find($id)->delete();
 
+        alert()->success('Success', 'Data Success dihapus');
         return back();
     }
 

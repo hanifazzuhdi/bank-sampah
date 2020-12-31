@@ -13,6 +13,12 @@
                     <div class="col-md-4 d-flex justify-content-center border-right pt-4">
                         <img id="avatar" class="rounded-circle border" src="" alt="Avatar" width="150px" height="150px">
 
+                        <div class="userDelete border-top pt-1">
+                            <form action="">
+                                hapus
+                            </form>
+                        </div>
+
                         {{-- start form --}}
                         <form action="" method="POST" enctype="multipart/form-data">
                             <div class="updateAvatar">
@@ -68,6 +74,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
                     Close
                 </button>
+
                 <button class="btn btn-warning" type="submit" onclick="return confirm ('Yakin Ubah ?')">
                     Update
                 </button>
@@ -77,7 +84,6 @@
         </div>
     </div>
 </div>
-
 
 {{-- Modal Create --}}
 <div class="modal fade modal-create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -136,7 +142,7 @@
                             <div class="form-group mb-2">
                                 <label>Alamat</label>
                                 <textarea class="form-control" name="address" cols="30" rows="3"
-                                    id="address">Pondok Programmer Kec. Kretek Bantul Yogyakarta</textarea>
+                                    id="address"></textarea>
                             </div>
                             @csrf
                     </div>

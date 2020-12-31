@@ -41,7 +41,7 @@
                     href="{{route('karyawan.index')}}">Daftar Karyawan</a>
                 <a class="collapse-item{{ request()->is("nasabah") ? ' active' : '' }}"
                     href="{{route('nasabah.index')}}">Daftar Pengguna</a>
-                <a class="collapse-item{{ request()->is("nasabah") ? ' active' : '' }}"
+                <a class="collapse-item{{ request()->is("blacklist") ? ' active' : '' }}"
                     href="{{route('nasabah.index')}}">Daftar Blacklist</a>
             </div>
         </div>
@@ -57,8 +57,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kelola Sampah</h6>
-                <a class="collapse-item" href="buttons.html">List Jenis</a>
-                <a class="collapse-item" href="cards.html">Gudang Sampah</a>
+                <a class="collapse-item{{ request()->is("sampah") ? ' active' : '' }}"
+                    href="{{route('sampah.index')}}">List Jenis</a>
+                <a class="collapse-item{{ request()->is("gudang") ? ' active' : '' }}"
+                    href="{{route('gudang.index')}}">Gudang Sampah</a>
             </div>
         </div>
     </li>
