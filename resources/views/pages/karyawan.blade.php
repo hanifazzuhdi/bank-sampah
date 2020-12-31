@@ -91,10 +91,6 @@
 <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
 
 {{-- jquery --}}
-<<<<<<< HEAD <script src="{{asset('js/jquery.js')}}">
-    </script>
-    =======
-    <script src="{{asset('js/script.js')}}"></script>
-    >>>>>>> d1845d01a4efa580f31c1528c7ce93d8e9cec219
+<script src="{{asset('js/script.js')}}"></script>
 
-    @endsection
+@endsection
