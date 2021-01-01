@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Web\KaryawanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +20,10 @@ Auth::routes([
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::fallback(function () {
+    return view('404');
 });
 
 Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
