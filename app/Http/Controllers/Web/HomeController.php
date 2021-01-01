@@ -21,9 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::where('role_id', 1)->count();
-
         $keuangan = Keuangan::latest()->first('saldo');
-
         $month = date('m');
         $penjualan = Penjualan::whereMonth('created_at', $month)->sum('penghasilan');
         $transaksi = Penyetoran::whereMonth('created_at', $month)->count();
