@@ -11,7 +11,8 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="mt-2 font-weight-bold text-primary">DAFTAR JENIS SAMPAH</h6>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-sampah-create">
+            <button class="btn btn-primary btn-sm btn-create-jenis" data-toggle="modal"
+                data-target="#modal-sampah-create">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
@@ -34,7 +35,11 @@
                             aria-labelledby="dropdownMenuLink">
                             <div class="dropdown-header">Action</div>
 
-                            <a class="dropdown-item" href="#">Edit</a>
+                            <button class="dropdown-item update-jenis" data-toggle="modal"
+                                data-target="#modal-sampah-update"
+                                data-url=" {{env('APP_URL') . '/sampah/' . $sampah->id}}">
+                                Edit
+                            </button>
 
                             <form action="{{'sampah/' . $sampah->id}}" method="POST">
                                 <button class="dropdown-item" type="submit"
@@ -79,5 +84,8 @@
 <script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
+
+{{-- jquery --}}
+<script src="{{asset('js/script.js')}}"></script>
 
 @endsection

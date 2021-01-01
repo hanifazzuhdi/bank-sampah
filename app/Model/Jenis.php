@@ -8,6 +8,11 @@ class Jenis extends Model
 {
     protected $fillable = ['jenis_sampah', 'image', 'harga'];
 
+    public function getHargaAttribute($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
+
     public function getCreatedAtAttribute()
     {
         return \Carbon\Carbon::parse($this->attributes['created_at'])
