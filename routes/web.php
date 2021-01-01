@@ -45,6 +45,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     // Route Sampah         -> Admin
     Route::get('sampah', 'SampahController@getSampah')->name('sampah.index'); //menampilkan data List sampah
     Route::get('gudang', 'SampahController@getGudang')->name('gudang.index'); //menampilkan data gudang sampah
+    Route::post('sampah', 'SampahController@store')->name('sampah.store');    //Membuat jenis sampah baru
+    Route::delete('sampah/{id}', 'SampahController@destroy');                   //Menghapus jenis sampah
 
     //Route keuangan bank
     Route::get('keuangan', 'KeuanganController@index')->name('keuangan'); //menampilkan data keuangan bank sampah dan saldo

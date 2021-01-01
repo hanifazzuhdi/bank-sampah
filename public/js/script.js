@@ -13,6 +13,7 @@
             console.log(url);
 
             $('.btn-warning').hide();
+            $('.updateAvatar').hide();
             $('.userDelete').show();
             $('.modal-body form').attr('action', url + 'update/' + id );
             $('#name').attr('disabled', 'disabled');
@@ -22,7 +23,6 @@
                 url: url + id ,
                 method: 'get',
                 dataType: 'json',
-                timeout: 15000,
                 success: function (data) {
                     console.log(data);
                     $('#avatar').attr('src', data.avatar);
@@ -49,7 +49,6 @@
                 url: url + id ,
                 method: 'get',
                 dataType: 'json',
-                timeout: 15000,
                 success: function (data) {
                     console.log(data);
                     $('#avatar').attr('src', data.avatar);

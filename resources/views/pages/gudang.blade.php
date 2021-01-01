@@ -47,6 +47,10 @@
             @endforeach
 
         </div>
+
+        <div class="card-footer">
+            {{$sampahs->links()}}
+        </div>
     </div>
 
     @include('components.modal')

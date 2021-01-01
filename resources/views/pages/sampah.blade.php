@@ -11,7 +11,7 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="mt-2 font-weight-bold text-primary">DAFTAR JENIS SAMPAH</h6>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-create">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-sampah-create">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
@@ -33,13 +33,21 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLink">
                             <div class="dropdown-header">Action</div>
+
                             <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Hapus</a>
+
+                            <form action="{{'sampah/' . $sampah->id}}" method="POST">
+                                <button class="dropdown-item" type="submit"
+                                    onclick="return confirm ('Yakin Hapus Data ?')">Hapus
+                                </button>
+                                @method('DELETE')
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body d-flex justify-content-between">
+                <div class=" card-body d-flex justify-content-between">
                     <img class="rounded border p-2" src="{{$sampah->image}}" width="100px" height="100px"
                         alt="Image Sampah">
                     <div class=" mt-5">
@@ -51,12 +59,18 @@
             @endforeach
 
         </div>
-    </div>
 
-    @include('components.modal')
+        <div class="card-footer d-flex justify-content-end">
+            <div class="mr-4">
+                {{$sampahs->links()}}
+            </div>
+        </div>
+    </div>
 
 </div>
 <!-- /.container-fluid -->
+
+@include('components.modal-sampah')
 
 @endsection
 
