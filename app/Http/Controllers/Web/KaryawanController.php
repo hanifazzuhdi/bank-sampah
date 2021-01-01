@@ -43,22 +43,24 @@ class KaryawanController extends Controller
             'address' => 'required'
         ]);
 
-        // Validasi image
-        $image = base64_encode(file_get_contents(request('avatar')));
-        $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
-            'form_params' => [
-                'key' => '6d207e02198a847aa98d0a2a901485a5',
-                'action' => 'upload',
-                'source' => $image,
-                'format' => 'json'
-            ]
-        ]);
+        if (request('avatar')) {
+            // Validasi image
+            $image = base64_encode(file_get_contents(request('avatar')));
+            $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+                'form_params' => [
+                    'key' => '6d207e02198a847aa98d0a2a901485a5',
+                    'action' => 'upload',
+                    'source' => $image,
+                    'format' => 'json'
+                ]
+            ]);
 
-        $get = $res->getBody()->getContents();
-        $hasil = json_decode($get);
+            $get = $res->getBody()->getContents();
+            $hasil = json_decode($get);
 
-        // Get Link Avatar
-        $data['avatar'] = $hasil->image->display_url;
+            // Get Link Avatar
+            $data['avatar'] = $hasil->image->display_url;
+        }
 
         User::find($id)->update($data);
 

@@ -15,10 +15,11 @@ $(function () {
         const url = $(this).data('url');
         console.log(url + id);
 
+        $('.modal-body form').attr('action', url + 'update/' + id);
+
         $('.btn-warning').hide();
         $('.updateAvatar').hide();
         $('.userDelete').show();
-        $('.modal-body form').attr('action', url + 'update/' + id);
         $('#name').attr('disabled', 'disabled');
         $('#phone_number').attr('disabled', 'disabled');
         $('#address').attr('disabled', 'disabled');
@@ -64,6 +65,14 @@ $(function () {
                 $('#updated_at').val(data.updated_at);
             }
         });
+    });
+
+    $('.btn-create-karyawan').click(function () {
+        $('.modal-body form').attr('action', '/karyawan/store');
+    });
+
+    $('.btn-create-user').click(function () {
+        $('.modal-body form').attr('action', '/karyawan/store');
     });
 
     // Jenis Sampah
