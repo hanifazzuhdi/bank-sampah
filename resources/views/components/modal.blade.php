@@ -110,23 +110,23 @@
                             <div class="row mb-2">
                                 <div class="col">
                                     <label>Nama : </label>
-                                    <input type="text" class="form-control" name="name" id="name">
+                                    <input type="text" class="form-control" name="name">
                                 </div>
                                 <div class="col">
                                     <label>Email : </label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control" name="email">
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col">
                                     <label>No. Telepon : </label>
-                                    <input type="number" class="form-control" name="phone_number" id="phone_number">
+                                    <input type="number" class="form-control" name="phone_number">
                                 </div>
 
                                 <div class="col">
                                     <label>Role : </label>
-                                    <select class="form-control" name="role_id" id="role">
+                                    <select class="form-control" name="role_id">
                                         <option value="4" selected>Bendahara</option>
                                         <option value="3">Pengurus 2</option>
                                         <option value="2">Pengurus 1</option>
@@ -136,13 +136,12 @@
 
                             <div class="form-group">
                                 <label>Password : </label>
-                                <input type="password" class="form-control" name="password" id="password">
+                                <input type="password" class="form-control" name="password">
                             </div>
 
                             <div class="form-group mb-2">
                                 <label>Alamat</label>
-                                <textarea class="form-control" name="address" cols="30" rows="3"
-                                    id="address"></textarea>
+                                <textarea class="form-control" name="address" cols="30" rows="3"></textarea>
                             </div>
                             @csrf
                     </div>

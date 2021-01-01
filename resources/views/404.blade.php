@@ -9,9 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{$title ?? "Dashboard - Sammpah.com"}}</title>
+    <title>404 Page Not Found</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('template/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -22,8 +20,11 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('template/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
-    <!-- Custom CSS untuk satu page -->
-    @yield('style')
+    <style>
+        #wrapper {
+            height: 100vh;
+        }
+    </style>
 
 </head>
 
@@ -31,22 +32,52 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        @include('components.side-nav')
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            @include('components.top-nav')
 
-            @yield('content')
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- 404 Error Text -->
+                    <div class="text-center mt-5 pt-5">
+                        <div class="error mx-auto" data-text="404">404</div>
+                        <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                        <p class="text-gray-500 mb-2">
+                            Sepertinya Anda Tersesat ... <i class="fas fa-user-secret"></i>
+                        </p>
+                        <a href="{{route('home')}}">&larr; Segera Kembali</a>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Sammpah <?= date('Y') ?></span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
         <!-- End of Content Wrapper -->
 
-        <!-- Footer -->
-        @include('components.footer')
-
     </div>
-
-    @include('sweetalert::alert')
     <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('template/vendor/jquery/jquery.min.js')}}"></script>
@@ -57,9 +88,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('template/js/sb-admin-2.min.js')}}"></script>
-
-    <!-- Custom js untuk satu page -->
-    @yield('script')
 
 </body>
 

@@ -16,7 +16,7 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar karyawan</h6>
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target=".modal-create">
+            <button class="btn btn-primary btn-sm btn-create-karyawan" data-toggle="modal" data-target=".modal-create">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
