@@ -29,15 +29,15 @@ class UserController extends Controller
 
         User::create($data);
 
-        alert()->success('Success', 'Data Berhasil dibuat');
+        alert()->success('Success', 'Data Berhasil Dibuat');
         return back();
     }
 
     public function blacklist()
     {
-        $user = User::onlyTrashed()->get();
+        $users = User::onlyTrashed()->get();
 
-        return view('nasabah.trash', compact('user'));
+        return view('pages.blacklist', compact('users'));
     }
 
     public function softDelete($id)
@@ -46,15 +46,17 @@ class UserController extends Controller
 
         $user->delete();
 
-        alert()->success('Success', 'Data Berhasil diblacklist');
+        alert()->success('Success', 'Data Berhasil Diblacklist');
         return back();
     }
 
     public function restore($id)
     {
-        $User = User::onlyTrashed()->where('id', $id);
-        $User->restore();
-        return $this->trash()->with(['success' => 'user dikembalikan']);
+        $user = User::onlyTrashed()->where('id', $id);
+        $user->restore();
+
+        alert()->success('Success', 'Data Berhasil DIpulihkan');
+        return back();
     }
 
     public function delete($id)

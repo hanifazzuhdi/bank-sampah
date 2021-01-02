@@ -47,6 +47,12 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function getDeletedAtAttribute()
+    {
+        return \Carbon\Carbon::parse($this->attributes['deleted_at'])
+            ->translatedFormat('d F Y H:i');
+    }
+
     // Relation
     public function tabungans()
     {

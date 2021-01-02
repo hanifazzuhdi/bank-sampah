@@ -13,17 +13,19 @@
                     <div class="col-md-4 d-flex justify-content-center border-right pt-4">
                         <img id="avatar" class="rounded-circle border" src="" alt="Avatar" width="150px" height="150px">
 
-                        <div class="d-flex userDelete">
+                        <div class="userDelete">
                             <form action="">
-                                <button class="btn border p-2 bg-danger" type="submit" title="Delete User">
-                                    <i class="fas fa-user-slash text-white"></i>
+                                <button class="btn border p-2 bg-danger text-white" type="submit" title="Delete User">
+                                    <i class="fas fa-user-slash"></i>
+                                    <small> Hapus</small>
                                 </button>
                             </form>
 
                             <form class="ml-5 form-blacklist" action="" method="POST">
-                                <button class="btn border p-2 bg-warning" type="submit" title="Blacklist User"
-                                    onclick="return confirm ('Yakin Blacklist User ?')">
+                                <button class="btn border p-2 bg-warning text-black" type="submit"
+                                    title="Blacklist User" onclick="return confirm ('Yakin Blacklist User ?')">
                                     <i class="fas fa-user-times"></i>
+                                    <small> Blacklist</small>
                                 </button>
                                 @csrf
                             </form>

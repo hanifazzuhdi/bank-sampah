@@ -21,7 +21,7 @@ $(function () {
 
         $('.btn-warning').hide();
         $('.updateAvatar').hide();
-        $('.userDelete').show();
+        $('.userDelete').css('display', 'flex');
         $('#name').attr('disabled', 'disabled');
         $('#phone_number').attr('disabled', 'disabled');
         $('#address').attr('disabled', 'disabled');
