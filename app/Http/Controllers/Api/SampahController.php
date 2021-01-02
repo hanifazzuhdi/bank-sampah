@@ -25,7 +25,7 @@ class SampahController extends Controller
     public function show($id)
     {
         $data = Sampah::findOrFail($id);
-
+a
         return $this->sendResponse('Success', 'Data Sampah Berhasil Dimuat', $data, 200);
     }
 
