@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\Penyetoran;
 use App\Model\Role;
 use App\Model\Tabungan;
 use App\Traits\FormatDate;
@@ -54,6 +55,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
     // Relation
+    public function penyetoran()
+    {
+        return $this->hasMany(Penyetoran::class);
+    }
+
     public function tabungans()
     {
         return $this->hasMany(Tabungan::class);

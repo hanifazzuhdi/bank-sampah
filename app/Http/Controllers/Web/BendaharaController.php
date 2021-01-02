@@ -7,14 +7,13 @@ use App\Model\Tabungan;
 use App\Model\Keuangan;
 use App\Model\Penarikan;
 use App\Model\Penyetoran;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class BendaharaController extends Controller
 {
     public function index()
     {
-        $datas = Penyetoran::with(['user', 'jenis'])->get();
+        $datas = Penyetoran::with('user', 'jenis')->get();
 
         return view('pages.penyetoran', compact('datas'));
     }

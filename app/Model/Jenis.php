@@ -12,6 +12,11 @@ class Jenis extends Model
     protected $fillable = ['jenis_sampah', 'image', 'harga'];
 
     // relasi
+    public function penyetoran()
+    {
+        return $this->hasMany(Penyetoran::class);
+    }
+
     public function sampah()
     {
         $this->hasOne('App\Model\Sampah', 'jenis_sampah', 'id');

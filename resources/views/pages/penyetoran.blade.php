@@ -7,8 +7,6 @@
 
 @section('content')
 
-@dump($datas)
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -22,27 +20,30 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Keterangan</th>
-                            <th>Debet</th>
-                            <th>Kredit</th>
-                            <th>Saldo</th>
-                            <th>Dibuat</th>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Jenis Sampah</th>
+                            <th>Berat</th>
+                            <th>Penghasilan</th>
+                            <th>Waktu Penyetoran</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Keterangan</th>
-                            <th>Debet</th>
-                            <th>Kredit</th>
-                            <th>Saldo</th>
-                            <th>Dibuat</th>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Jenis Sampah</th>
+                            <th>Berat</th>
+                            <th>Penghasilan</th>
+                            <th>Waktu Penyetoran</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach ($datas as $data)
                         <tr>
-                            <td>{{$data->user_id}}</td>
-                            <td>{{$data->jenis_sampah}}</td>
+                            <td>{{$data->id}}</td>
+                            <td>{{$data->user->name}}</td>
+                            <td>{{$data->jenis->jenis_sampah}}</td>
                             <td>{{$data->berat}}</td>
                             <td>{{number_format ($data->penghasilan, 0, ',', '.')}}</td>
                             <td>{{$data->created_at}}</td>

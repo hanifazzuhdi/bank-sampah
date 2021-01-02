@@ -72,22 +72,22 @@
     </div>
 
     <!-- Nav Item - Keuangan -->
-    <li class="nav-item">
-        <a class="nav-link{{ request()->is('keuangan') ? ' active' : '' }}" href="{{route('keuangan')}}">
-            <i class="fas fa-fw fa-chart-line"></i>
-            <span>Keuangan</span></a>
+    <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
+        <a class=" nav-link" href="{{route('keuangan')}}">
+        <i class="fas fa-fw fa-chart-line"></i>
+        <span>Keuangan</span></a>
     </li>
 
     <!-- Nav Item - Permintaan -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('bendahara.index')}}">
+        <a class="nav-link">
             <i class="fas fa-fw fa-money-check"></i>
             <span>Permintaan Tarik</span></a>
     </li>
 
     <!-- Nav Item - Penyetoran -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item{{ request()->is('penyetoran') ? ' active' : '' }}">
+        <a class="nav-link" href="{{route('bendahara.index')}}">
             <i class="fas fa-fw fa-hand-holding-water"></i>
             <span>Penyetoran</span></a>
     </li>
