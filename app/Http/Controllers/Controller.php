@@ -11,6 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    // Send Response Cepat
     public function sendResponse($status = 'Failed', $msg = 'data not found', $data = null, $code = 404)
     {
         return response([
@@ -20,6 +21,13 @@ class Controller extends BaseController
         ], $code);
     }
 
+    // Number Format
+    public function saldoFormat($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
+
+    // Sapa Login
     public function sapa()
     {
         $jam = date('H:i');

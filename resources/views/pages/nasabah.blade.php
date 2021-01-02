@@ -17,7 +17,7 @@
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
             <button class="btn btn-primary btn-sm btn-create-user" data-toggle="modal" data-target=".modal-create">
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-user-plus"></i>
             </button>
         </div>
         <div class="card-body">

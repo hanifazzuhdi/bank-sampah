@@ -13,14 +13,24 @@
                     <div class="col-md-4 d-flex justify-content-center border-right pt-4">
                         <img id="avatar" class="rounded-circle border" src="" alt="Avatar" width="150px" height="150px">
 
-                        <div class="userDelete border-top pt-1">
+                        <div class="d-flex userDelete">
                             <form action="">
-                                hapus
+                                <button class="btn border p-2 bg-danger" type="submit" title="Delete User">
+                                    <i class="fas fa-user-slash text-white"></i>
+                                </button>
+                            </form>
+
+                            <form class="ml-5 form-blacklist" action="" method="POST">
+                                <button class="btn border p-2 bg-warning" type="submit" title="Blacklist User"
+                                    onclick="return confirm ('Yakin Blacklist User ?')">
+                                    <i class="fas fa-user-times"></i>
+                                </button>
+                                @csrf
                             </form>
                         </div>
 
                         {{-- start form --}}
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form class="form-create" action="" method="POST" enctype="multipart/form-data">
                             <div class="updateAvatar">
                                 <input type="file" name="avatar" id="avatar">
                             </div>
@@ -85,6 +95,7 @@
     </div>
 </div>
 
+
 {{-- Modal Create --}}
 <div class="modal fade modal-create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -124,7 +135,7 @@
                                     <input type="number" class="form-control" name="phone_number">
                                 </div>
 
-                                <div class="col">
+                                <div class="col select-role">
                                     <label>Role : </label>
                                     <select class="form-control" name="role_id">
                                         <option value="4" selected>Bendahara</option>

@@ -86,14 +86,14 @@ class KaryawanController extends Controller
             case $data->role_id == 4:
                 $data->role_id = 'Bendahara';
                 break;
-            case $data->role_id == 2:
-                $data->role_id = 'Pengurus 1';
-                break;
             case $data->role_id == 3:
                 $data->role_id = 'Pengurus 2';
                 break;
-            default:
-                "Format Salah !";
+            case $data->role_id == 2:
+                $data->role_id = 'Pengurus 1';
+                break;
+            case $data->role_id == 1:
+                $data->role_id = 'Nasabah';
                 break;
         }
 

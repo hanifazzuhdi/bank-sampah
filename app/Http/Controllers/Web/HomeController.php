@@ -23,7 +23,7 @@ class HomeController extends Controller
 
         $month = date('m');
         $penjualan = Penjualan::whereMonth('created_at', $month)->sum('penghasilan');
-        $transaksi = Penyetoran::whereMonth('created_at', $month)->count();
+        $transaksi = Penyetoran::whereMonth('created_at', $month)->count();;
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
     }
