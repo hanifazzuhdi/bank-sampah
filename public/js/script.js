@@ -10,19 +10,23 @@ $(function () {
     });
 
     // Karyawan dan nasabah
+
+    // update
     $('.see-nasabah').click(function () {
         const id = $(this).data('id');
         const url = $(this).data('url');
         console.log(url + id);
 
-        $('.modal-body form').attr('action', url + 'update/' + id);
+        $('.modal-body .form-blacklist').attr('action' ,'/nasabah/blacklist/' + id);
+        $('.modal-body .form-delete').attr('action' ,'/nasabah/delete/' + id);
 
         $('.btn-warning').hide();
         $('.updateAvatar').hide();
-        $('.userDelete').show();
+        $('.userDelete').css('display', 'flex');
         $('#name').attr('disabled', 'disabled');
         $('#phone_number').attr('disabled', 'disabled');
         $('#address').attr('disabled', 'disabled');
+
         $.ajax({
             url: url + id,
             method: 'get',
@@ -47,7 +51,7 @@ $(function () {
         const url = $(this).data('url');
         console.log(url + id);
 
-        $('.modal-body form').attr('action', url + 'update/' + id);
+        $('.modal-body .form-create').attr('action', url + 'update/' + id);
 
         $.ajax({
             url: url + id,
@@ -67,19 +71,24 @@ $(function () {
         });
     });
 
+    // create
     $('.btn-create-karyawan').click(function () {
         $('.modal-body form').attr('action', '/karyawan/store');
+
+        $('.select-role').show();
     });
 
     $('.btn-create-user').click(function () {
-        $('.modal-body form').attr('action', '/karyawan/store');
+        $('.modal-body form').attr('action', '/nasabah/store');
+
+        $('.select-role').hide();
     });
 
     // Jenis Sampah
-    $('.update-jenis').click(function (){
+    $('.update-jenis').click(function () {
 
         const url = $(this).data('url');
-        console.log (url);
+        console.log(url);
 
         $('#modal-sampah-update form').attr('action', url + '/update');
 

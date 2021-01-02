@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,33 +14,57 @@ class UserController extends Controller
         return view('pages.nasabah', compact('users'));
     }
 
-    public function show($id)
+    public function store()
     {
-        $user = User::find($id);
-        if ($user) {
-            $user->delete();
-            return $this->index()->with(['success' => 'user dihapus']);
-        }
-        return $this->sendResponse('Error', 'Gagal menghapus data', null, 500);
+        $data = request()->validate([
+            'name'          => 'required',
+            'email'         => 'required',
+            'phone_number'  => 'required',
+            'password'      => 'required',
+            'address'       => 'required',
+        ]);
+
+        $data['password'] = Hash::make(request('password'));
+        $data['role_id']  = 1;
+
+        User::create($data);
+
+        alert()->success('Success', 'Data Berhasil Dibuat');
+        return back();
     }
 
-    public function trash()
+    public function blacklist()
     {
-        $User = User::onlyTrashed()->get();
-        return view('nasabah.trash', compact('User'));
+        $users = User::onlyTrashed()->get();
+
+        return view('pages.blacklist', compact('users'));
+    }
+
+    public function softDelete($id)
+    {
+        $user = User::findOrfail($id);
+
+        $user->delete();
+
+        alert()->success('Success', 'Data Berhasil Diblacklist');
+        return back();
     }
 
     public function restore($id)
     {
-        $User = User::onlyTrashed()->where('id', $id);
-        $User->restore();
-        return $this->trash()->with(['success' => 'user dikembalikan']);
+        $user = User::onlyTrashed()->where('id', $id)->first();
+        $user->restore();
+
+        alert()->success('Success', 'Data Berhasil Dipulihkan');
+        return back();
     }
 
-    public function hapus_permanen($id)
+    public function delete($id)
     {
-        $User = User::onlyTrashed()->where('id', $id);
-        $User->forceDelete();
-        return $this->trash()->with(['success' => 'user dihapus permanen']);
+        $user = User::withTrashed()->where('id', $id)->first();
+        $user->forceDelete();
+
+        alert()->success('Success', 'Data Berhasil Dihapus');
+        return back();
     }
 }

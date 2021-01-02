@@ -50,7 +50,7 @@ class TransaksiController extends Controller
 
     public function tarik()
     {
-        $request = request()->validate([
+        request()->validate([
             'nama'      => 'required',
             'rekening'  => 'required',
             'nominal'   => 'required',

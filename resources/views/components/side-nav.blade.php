@@ -41,8 +41,8 @@
                     href="{{route('karyawan.index')}}">Daftar Karyawan</a>
                 <a class="collapse-item{{ request()->is("nasabah") ? ' active' : '' }}"
                     href="{{route('nasabah.index')}}">Daftar Pengguna</a>
-                <a class="collapse-item{{ request()->is("blacklist") ? ' active' : '' }}"
-                    href="{{route('nasabah.index')}}">Daftar Blacklist</a>
+                <a class="collapse-item{{ request()->is("nasabah/blacklist") ? ' active' : '' }}"
+                    href="{{route('nasabah.blacklist')}}">Daftar Blacklist</a>
             </div>
         </div>
     </li>

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Model\Role;
 use App\Model\Tabungan;
+use App\Traits\FormatDate;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,6 +15,8 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use SoftDeletes;
+    use FormatDate;
+
     protected $dates = ['deleted_at'];
 
     /**
@@ -44,16 +47,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function getCreatedAtAttribute()
+    public function getDeletedAtAttribute()
     {
-        return \Carbon\Carbon::parse($this->attributes['created_at'])
-            ->format('d, F Y H:i');
-    }
-
-    public function getUpdatedAtAttribute()
-    {
-        return \Carbon\Carbon::parse($this->attributes['updated_at'])
-            ->diffForHumans();
+        return \Carbon\Carbon::parse($this->attributes['deleted_at'])
+            ->translatedFormat('d F Y H:i');
     }
 
     // Relation

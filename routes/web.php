@@ -29,21 +29,22 @@ Route::fallback(function () {
 Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
 
     // Route Dashboard      -> Admin, Bendahara
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');  //Dashboard
 
     // Route Karyawan       -> Admin
-    Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');
-    Route::get('/karyawan/{id}', 'KaryawanController@show')->name('karyawan.show');
-    Route::post('/karyawan/store', 'KaryawanController@store')->name('karyawan.store');
-    Route::put('/karyawan/update/{id}', 'KaryawanController@update');
-    Route::delete('/karyawan/delete/{id}', 'KaryawanController@destroy');
+    Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');        //menampilkan data karyawan
+    Route::get('/karyawan/{id}', 'KaryawanController@show')->name('karyawan.show');     //menampilkan karyawan per id
+    Route::post('/karyawan/store', 'KaryawanController@store')->name('karyawan.store'); //membuat karyawan baru oleh admin
+    Route::put('/karyawan/update/{id}', 'KaryawanController@update');                   //update data karyawan
+    Route::delete('/karyawan/delete/{id}', 'KaryawanController@destroy');               //hapus permanen data karyawan
 
     //Route Naasabah        -> Admin
-    Route::get('nasabah', 'UserController@index')->name('nasabah.index');
-    Route::get('trash', 'UserController@trash')->name('trash');                     //menampilkan data user terblack list
-    Route::get('nasabah/{id}', 'UserController@delete')->name('delete_nasabah');    //soft delete atau blokir user
-    Route::get('trash/{id}', 'UserController@restore')->name('restore');            //mengembalikan data user
-    Route::get('permanen/{id}', 'UserController@hapus_permanen')->name('permanen'); //hapus permanen user
+    Route::get('nasabah', 'UserController@index')->name('nasabah.index');                    //menampilkan data user
+    Route::get('nasabah/blacklist', 'UserController@blacklist')->name('nasabah.blacklist');  //menampilkan data user terblack list
+    Route::post('nasabah/store', 'UserController@store')->name('nasabah.store');             //buat user baru oleh admin
+    Route::post('nasabah/blacklist/{id}', 'UserController@softDelete');                      //soft delete atau blokir user
+    Route::post('nasabah/restore/{id}', 'UserController@restore');                           //mengembalikan data user
+    Route::post('nasabah/delete/{id}', 'UserController@delete');                           //hapus permanen user
 
     // Route Sampah         -> Admin
     Route::get('sampah', 'SampahController@getSampah')->name('sampah.index');             //menampilkan data List sampah
@@ -56,13 +57,13 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
 
 
     //Route keuangan bank
-    Route::get('keuangan', 'KeuanganController@index')->name('keuangan'); //menampilkan data keuangan bank sampah dan saldo
-    Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik'); //menarik saldo oleh admin dari keuangan
+    Route::get('keuangan', 'KeuanganController@index')->name('keuangan');       //menampilkan data keuangan bank sampah dan saldo
+    Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik');     //menarik saldo oleh admin dari keuangan
 
     //Route bendahara
-    Route::get('penarikan', 'PenarikanController@index')->name('tarik_sis'); //menampilkan data user
-    Route::get('saldo/{id}', 'BendaharaController@saldo')->name('saldo'); //menampilkan data saldo user dan request penarikanya berdasarkan id
-    Route::post('penarikan/{id}', 'BendaharaController@tarik')->name('penarikan'); //mengkonfirmasi penarikan nasabah oleh bendahara
+    Route::get('penarikan', 'PenarikanController@index')->name('tarik_sis');        //menampilkan data user
+    Route::get('saldo/{id}', 'BendaharaController@saldo')->name('saldo');           //menampilkan data saldo user dan request penarikanya berdasarkan id
+    Route::post('penarikan/{id}', 'BendaharaController@tarik')->name('penarikan');  //mengkonfirmasi penarikan nasabah oleh bendahara
 
     //Route penyetoran
     Route::get('penyetoran', 'BendaharaController@penyetoran')->name('penyetoran'); //menampilkan riwayan penyetoran

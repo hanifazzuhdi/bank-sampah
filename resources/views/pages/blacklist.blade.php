@@ -15,10 +15,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
-            <button class="btn btn-primary btn-sm btn-create-user" data-toggle="modal" data-target=".modal-create">
-                <i class="fas fa-user-plus"></i>
-            </button>
+            <h6 class="m-0 font-weight-bold text-primary">DAFTAR USER BLACKLIST</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -29,7 +26,7 @@
                             <th>Email</th>
                             <th>No. Telepon</th>
                             <th>Alamat</th>
-                            <th>Dibuat</th>
+                            <th>Diblacklist</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -39,7 +36,7 @@
                             <th>Email</th>
                             <th>No. Telepon</th>
                             <th>Alamat</th>
-                            <th>Dibuat</th>
+                            <th>Diblacklist</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
@@ -50,13 +47,15 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone_number}}</td>
                             <td>{{$user->address}}</td>
-                            <td>{{$user->created_at}}</td>
+                            <td>{{$user->deleted_at}}</td>
                             <td class="text-center">
-                                <a class="see-nasabah text-decoration-none" href="#" data-id="{{$user->id}}"
-                                    data-toggle="modal" data-target=".modal-update"
-                                    data-url="{{env('APP_URL') . '/karyawan/'}}">
-                                    <i class="fas fa-eye"></i>
-                                </a>
+                                <form action="{{'/nasabah/restore/' . $user->id}}" method="POST">
+                                    <button class="btn p-0" type="submit"
+                                        onclick="return confirm ('Yakin Dipulihkan ?')">
+                                        <i class="fas fa-user-shield text-success"></i>
+                                    </button>
+                                    @csrf
+                                </form>
                             </td>
                         </tr>
                         @endforeach

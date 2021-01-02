@@ -17,7 +17,7 @@
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">Daftar karyawan</h6>
             <button class="btn btn-primary btn-sm btn-create-karyawan" data-toggle="modal" data-target=".modal-create">
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-user-plus"></i>
             </button>
         </div>
         <div class="card-body">
@@ -60,7 +60,7 @@
                                 <form class="d-inline" action="{{'karyawan/delete/' . $user->id}}" method="post">
                                     <button class="btn p-0 btn-hapus" type="submit"
                                         onclick="return confirm ('Yakin Hapus ?')">
-                                        <i class=" fas fa-eraser text-danger"></i>
+                                        <i class=" fas fa-user-slash text-danger"></i>
                                     </button>
                                     @csrf
                                     @method('delete')
