@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
+use App\User;
+use App\Model\Tabungan;
 use App\Model\Keuangan;
 use App\Model\Penarikan;
 use App\Model\Penyetoran;
-use App\Model\Tabungan;
-use App\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BendaharaController extends Controller
 {
     public function index()
     {
-        if (request()->user()->hasRole('bendahara')) {
-            return view('bendahara.index');
-        } else {
-            return redirect('/');
-        }
+        $datas = Penyetoran::with('user', 'jenis')->get();
+
+        return view('pages.penyetoran', compact('datas'));
     }
+
     public function penyetoran()
     {
         $penyetoran = Penyetoran::all();
     }
+
     public function saldo($id)
     {
         $penarikan = Penarikan::where('user id', $id)->get();
@@ -32,6 +31,7 @@ class BendaharaController extends Controller
 
         // return view('', compact('Saldo','penarikan');
     }
+
     public function tarik($id)
     {
 

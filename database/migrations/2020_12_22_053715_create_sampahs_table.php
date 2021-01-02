@@ -19,7 +19,7 @@ class CreateSampahsTable extends Migration
             $table->integer('berat');
             $table->timestamps();
 
-            $table->foreign('jenis_sampah')->references('id')->on('jenis');
+            $table->foreign('jenis_sampah')->references('id')->on('jenis')->onDelete('cascade');
         });
     }
 

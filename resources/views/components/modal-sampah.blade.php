@@ -84,6 +84,9 @@
                             <label>Image : </label>
                             <br>
                             <input type="file" name="image" class="mt-1">
+                            <small class="text-help text-danger">*Hapus URL default jika anda ingin mengupload
+                                image
+                                dengan metode ini</small>
                         </div>
                     </div>
                     @csrf

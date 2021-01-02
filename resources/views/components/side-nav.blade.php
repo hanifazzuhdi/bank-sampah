@@ -1,4 +1,3 @@
-<!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -9,7 +8,6 @@
         <div class="sidebar-brand-text mx-3">SAMMPAH</div>
     </a>
 
-    <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
@@ -19,7 +17,6 @@
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -28,6 +25,7 @@
     </div>
 
     <!-- Nav Item - Kelola User -->
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
@@ -40,7 +38,7 @@
                 <a class="collapse-item{{ request()->is("karyawan") ? ' active' : '' }}"
                     href="{{route('karyawan.index')}}">Daftar Karyawan</a>
                 <a class="collapse-item{{ request()->is("nasabah") ? ' active' : '' }}"
-                    href="{{route('nasabah.index')}}">Daftar Pengguna</a>
+                    href="{{route('nasabah.index')}}">Daftar Nasabah</a>
                 <a class="collapse-item{{ request()->is("nasabah/blacklist") ? ' active' : '' }}"
                     href="{{route('nasabah.blacklist')}}">Daftar Blacklist</a>
             </div>
@@ -73,39 +71,32 @@
         Bendahara
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
+    <!-- Nav Item - Keuangan -->
+    <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
+        <a class=" nav-link" href="{{route('keuangan')}}">
+        <i class="fas fa-fw fa-chart-line"></i>
+        <span>Keuangan</span></a>
     </li>
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item - Permintaan -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+        <a class="nav-link">
+            <i class="fas fa-fw fa-money-check"></i>
+            <span>Permintaan Tarik</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Penyetoran -->
+    <li class="nav-item{{ request()->is('penyetoran') ? ' active' : '' }}">
+        <a class="nav-link" href="{{route('bendahara.index')}}">
+            <i class="fas fa-fw fa-hand-holding-water"></i>
+            <span>Penyetoran</span></a>
+    </li>
+
+    <!-- Nav Item - Penjualan -->
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <i class="fas fa-fw fa-file-invoice-dollar"></i>
+            <span>Penjualan</span></a>
     </li>
 
     <!-- Divider -->

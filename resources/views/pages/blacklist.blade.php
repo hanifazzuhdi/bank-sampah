@@ -48,11 +48,19 @@
                             <td>{{$user->phone_number}}</td>
                             <td>{{$user->address}}</td>
                             <td>{{$user->deleted_at}}</td>
-                            <td class="text-center">
+                            <td class="text-center d-flex justify-content-around">
                                 <form action="{{'/nasabah/restore/' . $user->id}}" method="POST">
                                     <button class="btn p-0" type="submit"
-                                        onclick="return confirm ('Yakin Dipulihkan ?')">
+                                        onclick="return confirm ('Yakin Dipulihkan ?')" title="Pulihkan">
                                         <i class="fas fa-user-shield text-success"></i>
+                                    </button>
+                                    @csrf
+                                </form>
+                                |
+                                <form action="{{'/nasabah/delete/' . $user->id}}" method="POST">
+                                    <button class="btn p-0" type="submit" onclick="return confirm ('Yakin Dihapus ?')"
+                                        title="Hapus">
+                                        <i class=" fas fa-user-slash text-danger"></i>
                                     </button>
                                     @csrf
                                 </form>
