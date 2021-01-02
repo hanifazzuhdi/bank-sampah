@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::where('role_id', 1)->count();
+        $user = User::where('role_id', 1)->where('deleted_at', null)->count();
 
         $keuangan = Keuangan::latest()->first('saldo');
 
