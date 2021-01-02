@@ -28,4 +28,8 @@ class HomeController extends Controller
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
     }
+    public function laporan()
+    {
+
+    }
 }
