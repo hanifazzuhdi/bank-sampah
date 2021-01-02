@@ -2,28 +2,14 @@
 
 namespace App\Model;
 
+use App\Traits\FormatDate;
 use Illuminate\Database\Eloquent\Model;
 
 class Jenis extends Model
 {
+    use FormatDate;
+
     protected $fillable = ['jenis_sampah', 'image', 'harga'];
-
-    public function getHargaAttribute($value)
-    {
-        return number_format($value, 0, ',', '.');
-    }
-
-    public function getCreatedAtAttribute()
-    {
-        return \Carbon\Carbon::parse($this->attributes['created_at'])
-            ->format('d, F Y H:i');
-    }
-
-    public function getUpdatedAtAttribute()
-    {
-        return \Carbon\Carbon::parse($this->attributes['updated_at'])
-            ->diffForHumans();
-    }
 
     // relasi
     public function sampah()

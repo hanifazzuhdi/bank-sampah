@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
 
 class PenyetoranController extends Controller
 {
-
     public function store($fee = 0)
     {
         $data = request()->validate([

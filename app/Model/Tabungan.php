@@ -3,17 +3,14 @@
 namespace App\Model;
 
 use App\User;
+use App\Traits\FormatDate;
 use Illuminate\Database\Eloquent\Model;
 
 class Tabungan extends Model
 {
-    protected $fillable = ['keterangan', 'jenis_sampah', 'berat', 'debet', 'kredit', 'saldo', 'user_id', 'status'];
+    use FormatDate;
 
-    // Accessor
-    public function getSaldoAttribute($value)
-    {
-        return number_format($value, 0, ',', '.');
-    }
+    protected $fillable = ['keterangan', 'jenis_sampah', 'berat', 'debet', 'kredit', 'saldo', 'user_id', 'status'];
 
     // Relation
     public function user()
