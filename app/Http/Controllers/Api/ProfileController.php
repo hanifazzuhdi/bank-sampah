@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use Auth;
 use App\User;
-use Illuminate\Http\Request;
-use Hash;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -33,7 +33,6 @@ class ProfileController extends Controller
             'phone_number'  => 'required|string|min:8',
             'name'          => 'required'
         ]);
-        $image = null;
 
         if ($request->image) {
             $img = base64_encode(file_get_contents($request->image));
@@ -52,7 +51,7 @@ class ProfileController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $user->name = request('name') ?? $user->name;
-        $user->avatar = $image;
+        $user->avatar = request('image') ? $image : Auth::user()->avatar;
         $user->phone_number = $request->phone_number;
         // $user->address = $request->address;
 
