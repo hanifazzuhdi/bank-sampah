@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDeletedAtToUsersTable extends Migration
+class AddNamaRekeningToPenarikanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddDeletedAtToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dateTime('deleted_at')->nullable();
+        Schema::table('penarikan', function (Blueprint $table) {
+            $table->string('nama')->after('user_id');
+            $table->string('rekening')->after('nama');
         });
     }
 
@@ -25,8 +26,9 @@ class AddDeletedAtToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
+        Schema::table('penarikan', function (Blueprint $table) {
+            $table->dropColumn('nama');
+            $table->dropColumn('rekening');
         });
     }
 }
