@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\User;
 use App\Model\Keuangan;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Model\Penjualan;
 use App\Model\Penyetoran;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {

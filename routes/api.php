@@ -38,9 +38,9 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('jemput', 'PenyetoranController@jemput');                           //Nasabah minta permintaan jemput sampah oleh driver
 
     // Route Transaksi     -> Nasabah
-    Route::get('getTabungan', 'TransaksiController@index');             //untuk melihat buku tabungan nasabah
-    Route::get('getSaldo', 'TransaksiController@show');                 //untuk melihat saldo nasabah
-    Route::post('tarikSaldo/{nominal}', 'TransaksiController@tarik');   //tarik saldo nasabah oleh nasabah
+    Route::get('getTabungan', 'TransaksiController@index');   //untuk melihat buku tabungan nasabah
+    Route::get('getSaldo', 'TransaksiController@show');       //untuk melihat saldo nasabah
+    Route::post('tarikSaldo', 'TransaksiController@tarik');   //tarik saldo nasabah oleh nasabah
 
     // Route Gudang sampah  -> Nasabah, Pengurus1, Pengurus2
     Route::get('getSampah', 'SampahController@index');        // Melihat Sampah Yang ada di gudang
@@ -64,5 +64,5 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::delete('chat/{id} ', 'ChatController@destroy'); //hapus pesan
 
     // Fitur tambahan
-    Route::post('kirim/{nominal}', 'TransaksiController@kirim');    //Kirim uang sesama pengguna sammpah
+    Route::post('kirim', 'TransaksiController@kirim');    //Kirim uang sesama pengguna sammpah
 });
