@@ -18,6 +18,7 @@ $(function () {
         console.log(url + id);
 
         $('.modal-body .form-blacklist').attr('action' ,'/nasabah/blacklist/' + id);
+        $('.modal-body .form-delete').attr('action' ,'/nasabah/delete/' + id);
 
         $('.btn-warning').hide();
         $('.updateAvatar').hide();

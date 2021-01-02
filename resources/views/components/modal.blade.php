@@ -14,11 +14,13 @@
                         <img id="avatar" class="rounded-circle border" src="" alt="Avatar" width="150px" height="150px">
 
                         <div class="userDelete">
-                            <form action="">
-                                <button class="btn border p-2 bg-danger text-white" type="submit" title="Delete User">
-                                    <i class="fas fa-user-slash"></i>
+                            <form class="form-delete" action="" method="post">
+                                <button class="btn border p-2 bg-danger text-white" type="submit" title="Delete User"
+                                    onclick="return confirm ('Yakin Hapus User ?')">
+                                    <i class=" fas fa-user-slash"></i>
                                     <small> Hapus</small>
                                 </button>
+                                @csrf
                             </form>
 
                             <form class="ml-5 form-blacklist" action="" method="POST">

@@ -52,17 +52,19 @@ class UserController extends Controller
 
     public function restore($id)
     {
-        $user = User::onlyTrashed()->where('id', $id);
+        $user = User::onlyTrashed()->where('id', $id)->first();
         $user->restore();
 
-        alert()->success('Success', 'Data Berhasil DIpulihkan');
+        alert()->success('Success', 'Data Berhasil Dipulihkan');
         return back();
     }
 
     public function delete($id)
     {
-        $User = User::onlyTrashed()->where('id', $id);
-        $User->forceDelete();
-        return $this->trash()->with(['success' => 'user dihapus permanen']);
+        $user = User::withTrashed()->where('id', $id)->first();
+        $user->forceDelete();
+
+        alert()->success('Success', 'Data Berhasil Dihapus');
+        return back();
     }
 }

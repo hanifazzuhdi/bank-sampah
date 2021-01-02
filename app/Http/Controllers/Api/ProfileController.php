@@ -30,7 +30,8 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'phone_number'  => 'string|min:8',
+            'phone_number'  => 'required|string|min:8',
+            'name'          => 'required'
         ]);
         $image = null;
 

@@ -52,7 +52,7 @@
                                 <form action="{{'/nasabah/restore/' . $user->id}}" method="POST">
                                     <button class="btn p-0" type="submit"
                                         onclick="return confirm ('Yakin Dipulihkan ?')">
-                                        <i class="fas fa-user-shield"></i>
+                                        <i class="fas fa-user-shield text-success"></i>
                                     </button>
                                     @csrf
                                 </form>
