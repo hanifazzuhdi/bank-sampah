@@ -7,6 +7,17 @@
 
     <!-- Page Heading -->
 
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <i class="fas fa-home breadcrumb-item"></i>
+                <li class="breadcrumb-item"> <a class="text-decoration-none" href="{{route('home')}}"> Home </a> </li>
+                <li class="breadcrumb-item active" aria-current="page"> Kelola Sampah </li>
+                <li class="breadcrumb-item active" aria-current="page"> Jenis Sampah </li>
+            </ol>
+        </div>
+    </div>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">

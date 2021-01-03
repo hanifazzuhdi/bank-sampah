@@ -27,12 +27,12 @@
     <!-- Nav Item - Kelola User -->
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#toggleUser" aria-expanded="true"
+            aria-controls="toggleUser">
             <i class="fas fa-fw fa-users"></i>
             <span>Kelola User</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="toggleUser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kelola User</h6>
                 <a class="collapse-item{{ request()->is("karyawan") ? ' active' : '' }}"
@@ -47,12 +47,12 @@
 
     <!-- Nav Item - Kelola Sampah -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-trash"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#toggleSampah" aria-expanded="true"
+            aria-controls="toggleSampah">
+            <i class="fas fa-fw fa-warehouse"></i>
             <span>Kelola Sampah</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="toggleSampah" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kelola Sampah</h6>
                 <a class="collapse-item{{ request()->is("sampah") ? ' active' : '' }}"
@@ -80,21 +80,31 @@
 
     <!-- Nav Item - Permintaan -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#permintaan" aria-expanded="true"
+            aria-controls="collapseTwo">
             <i class="fas fa-fw fa-money-check"></i>
-            <span>Permintaan Tarik</span></a>
+            <span>Penarikan</span>
+        </a>
+        <div id="permintaan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Penarikan Saldo</h6>
+                <a class="collapse-item{{ request()->is("sampah") ? ' active' : '' }}" href="#">Tarik Via Teller</a>
+                <a class="collapse-item{{ request()->is("gudang") ? ' active' : '' }}" href="#">Permintaan Tarik
+                    Saldo</a>
+            </div>
+        </div>
     </li>
 
     <!-- Nav Item - Penyetoran -->
     <li class="nav-item{{ request()->is('penyetoran') ? ' active' : '' }}">
-        <a class="nav-link" href="{{route('bendahara.index')}}">
+        <a class="nav-link" href="{{route('bendahara.penyetoran')}}">
             <i class="fas fa-fw fa-hand-holding-water"></i>
             <span>Penyetoran</span></a>
     </li>
 
     <!-- Nav Item - Penjualan -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item{{ request()->is('penjualan') ? ' active' : '' }}">
+        <a class="nav-link" href="{{route('bendahara.penjualan')}}">
             <i class="fas fa-fw fa-file-invoice-dollar"></i>
             <span>Penjualan</span></a>
     </li>

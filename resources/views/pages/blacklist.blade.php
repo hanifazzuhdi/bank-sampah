@@ -11,6 +11,17 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <i class="fas fa-home mt-0_5 breadcrumb-item"></i>
+                <li class="breadcrumb-item"> <a class="text-decoration-none" href="{{route('home')}}"> Home </a> </li>
+                <li class="breadcrumb-item "> Kelola User </li>
+                <li class="breadcrumb-item active" aria-current="page"> User Blacklist </li>
+            </ol>
+        </div>
+    </div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

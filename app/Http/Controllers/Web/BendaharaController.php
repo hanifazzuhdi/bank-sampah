@@ -8,19 +8,22 @@ use App\Model\Keuangan;
 use App\Model\Penarikan;
 use App\Model\Penyetoran;
 use App\Http\Controllers\Controller;
+use App\Model\Penjualan;
 
 class BendaharaController extends Controller
 {
-    public function index()
+    public function penyetoran()
     {
         $datas = Penyetoran::with('user', 'jenis')->get();
 
         return view('pages.penyetoran', compact('datas'));
     }
 
-    public function penyetoran()
+    public function penjualan()
     {
-        $penyetoran = Penyetoran::all();
+        $datas = Penjualan::with('jenis')->get();
+
+        return view('pages.penjualan', compact('datas'));
     }
 
     public function saldo($id)

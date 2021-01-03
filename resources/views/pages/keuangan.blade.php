@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['title' => "Daftar Karyawan - Sammpah.com"])
+@extends('layouts.admin', ['title' => "Keuangan - Sammpah.com"])
 
 @section('style')
 <link href="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
@@ -10,7 +10,15 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <i class="fas fa-home breadcrumb-item mt-0_5"></i>
+                <li class="breadcrumb-item"> <a class="text-decoration-none" href="{{route('home')}}"> Home </a> </li>
+                <li class="breadcrumb-item active" aria-current="page"> Keuangan </li>
+            </ol>
+        </div>
+
         <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
@@ -24,7 +32,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-2">
-                                Pemasukan (monthly)</div>
+                                Pemasukan (bulanan)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 IDR {{ number_format($pemasukan, 0, ',', '.') }}
                             </div>
@@ -44,7 +52,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-2">
-                                Pengeluaran (monthly)</div>
+                                Pengeluaran (bulanan)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 IDR {{ number_format($pengeluaran, 0, ',', '.') }}
                             </div>

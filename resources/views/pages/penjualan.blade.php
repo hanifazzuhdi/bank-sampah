@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['title' => "Daftar Nasabah - Sammpah.com"])
+@extends('layouts.admin', ['title' => 'Daftar Penjualan Sampah - Sammpah.com'])
 
 @section('style')
 <link href="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
@@ -11,63 +11,56 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-3">
         <div aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <i class="fas fa-home mt-0_5 breadcrumb-item"></i>
+                <i class="fas fa-home breadcrumb-item mt-0_5"></i>
                 <li class="breadcrumb-item"> <a class="text-decoration-none" href="{{route('home')}}"> Home </a> </li>
-                <li class="breadcrumb-item "> Kelola User </li>
-                <li class="breadcrumb-item active" aria-current="page"> Nasabah </li>
+                <li class="breadcrumb-item active" aria-current="page"> Penjualan </li>
             </ol>
         </div>
+
+        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DAFTAR NASABAH</h6>
-            <button class="btn btn-primary btn-sm btn-create-user" data-toggle="modal" data-target=".modal-create">
-                <i class="fas fa-user-plus"></i>
-            </button>
+            <h6 class="m-0 font-weight-bold text-primary">DATA PENYETORAN NASABAH</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nama</th>
                             <th>Email</th>
-                            <th>No. Telepon</th>
-                            <th>Alamat</th>
-                            <th>Dibuat</th>
-                            <th>Aksi</th>
+                            <th>Nama</th>
+                            <th>Jenis Sampah</th>
+                            <th>Berat</th>
+                            <th>Penghasilan</th>
+                            <th>Waktu Penyetoran</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nama</th>
                             <th>Email</th>
-                            <th>No. Telepon</th>
-                            <th>Alamat</th>
-                            <th>Dibuat</th>
-                            <th>Aksi</th>
+                            <th>Nama</th>
+                            <th>Jenis Sampah</th>
+                            <th>Berat</th>
+                            <th>Penghasilan</th>
+                            <th>Waktu Penyetoran</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($datas as $data)
                         <tr>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->phone_number}}</td>
-                            <td>{{$user->address}}</td>
-                            <td>{{$user->created_at}}</td>
-                            <td class="text-center">
-                                <a class="see-nasabah text-decoration-none" href="#" data-id="{{$user->id}}"
-                                    data-toggle="modal" data-target=".modal-update"
-                                    data-url="{{env('APP_URL') . '/karyawan/'}}">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </td>
+                            <td>{{$data->user->email}}</td>
+                            <td>{{$data->user->name}}</td>
+                            <td>{{$data->jenis->jenis_sampah}}</td>
+                            <td>{{$data->berat}}</td>
+                            <td>{{number_format ($data->penghasilan, 0, ',', '.')}}</td>
+                            <td>{{$data->created_at}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -75,8 +68,6 @@
             </div>
         </div>
     </div>
-
-    @include('components.modal')
 
 </div>
 <!-- /.container-fluid -->

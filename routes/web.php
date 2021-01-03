@@ -55,12 +55,15 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     // Gudang
     Route::get('gudang', 'SampahController@getGudang')->name('gudang.index');             //menampilkan data gudang sampah
 
-    //Route keuangan bank
+    //Route keuangan bank   -> Admin, Bendahara
     Route::get('keuangan', 'KeuanganController@index')->name('keuangan');       //menampilkan data keuangan bank sampah dan saldo
     Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik');     //menarik saldo oleh admin dari keuangan
 
-    //Route penyetoran
-    Route::get('penyetoran', 'BendaharaController@index')->name('bendahara.index'); //menampilkan riwayat penyetoran
+    //Route penyetoran      -> Admin, Bendahara
+    Route::get('penyetoran', 'BendaharaController@penyetoran')->name('bendahara.penyetoran'); //menampilkan riwayat penyetoran
+
+    // Route Penjualan
+    Route::get('penjualan', 'BendaharaController@penjualan')->name('bendahara.penjualan');  //Menampilkan data penjualan
 
     //Route
     Route::get('penarikan', 'PenarikanController@index')->name('tarik_sis');        //menampilkan data user
