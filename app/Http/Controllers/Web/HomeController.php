@@ -20,11 +20,14 @@ class HomeController extends Controller
         $user = User::where('role_id', 1)->where('deleted_at', null)->count();
 
         $keuangan = Keuangan::latest()->first('saldo');
-
         $month = date('m');
         $penjualan = Penjualan::whereMonth('created_at', $month)->sum('penghasilan');
         $transaksi = Penyetoran::whereMonth('created_at', $month)->count();;
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
+    }
+    public function laporan()
+    {
+
     }
 }
