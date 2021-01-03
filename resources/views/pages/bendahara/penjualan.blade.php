@@ -62,7 +62,14 @@
                             <td>{{$data->berat}}</td>
                             <td>{{$data->harga}}</td>
                             <td>{{$data->jenis->harga}}</td>
-                            <td>{{number_format ($data->penghasilan - ($data->jenis->harga * $data->berat), 0, ',', '.')}}
+                            <td>
+                                @if ($data->harga < $data->jenis->harga)
+                                    <span class="text-danger">
+                                        {{number_format ($data->penghasilan - ($data->jenis->harga * $data->berat), 0, ',', '.')}}
+                                    </span>
+                                    @else
+                                    {{number_format ($data->penghasilan - ($data->jenis->harga * $data->berat), 0, ',', '.')}}
+                                    @endif
                             </td>
                             <td>{{$data->created_at}}</td>
                         </tr>

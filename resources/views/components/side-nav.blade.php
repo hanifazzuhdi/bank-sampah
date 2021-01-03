@@ -63,6 +63,13 @@
         </div>
     </li>
 
+
+    <li class="nav-item{{ request()->is("home") ? ' active' : '' }}">
+        <a class="nav-link" href="{{route('home')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Laporan</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

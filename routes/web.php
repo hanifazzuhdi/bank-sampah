@@ -44,7 +44,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::post('nasabah/store', 'UserController@store')->name('nasabah.store');             //buat user baru oleh admin
     Route::post('nasabah/blacklist/{id}', 'UserController@softDelete');                      //soft delete atau blokir user
     Route::post('nasabah/restore/{id}', 'UserController@restore');                           //mengembalikan data user
-    Route::post('nasabah/delete/{id}', 'UserController@delete');                           //hapus permanen user
+    Route::post('nasabah/delete/{id}', 'UserController@delete');                             //hapus permanen user
 
     // Route Sampah         -> Admin
     Route::get('sampah', 'SampahController@getSampah')->name('sampah.index');             //menampilkan data List sampah

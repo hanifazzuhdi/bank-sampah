@@ -13,7 +13,7 @@ class SampahController extends Controller
     {
         $sampahs = Jenis::paginate(6);
 
-        return view('pages.sampah', compact('sampahs'));
+        return view('pages.admin.sampah', compact('sampahs'));
     }
 
     // for ajax
@@ -114,6 +114,6 @@ class SampahController extends Controller
     {
         $sampahs = Sampah::with(['jenis'])->orderBy('id', 'ASC')->paginate(6);
 
-        return view('pages.gudang', compact('sampahs'));
+        return view('pages.admin.gudang', compact('sampahs'));
     }
 }

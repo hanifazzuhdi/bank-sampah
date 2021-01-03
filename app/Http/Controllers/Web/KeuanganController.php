@@ -16,6 +16,6 @@ class KeuanganController extends Controller
         $pengeluaran = Keuangan::whereMonth('created_at', date('m'))->sum('kredit');
         $pemasukan = Keuangan::whereMonth('created_at', date('m'))->where('id', '!=', 1)->sum('debet');
 
-        return view('pages.keuangan', compact('keuangan', 'saldo', 'pengeluaran', 'pemasukan'));
+        return view('pages.bendahara.keuangan', compact('keuangan', 'saldo', 'pengeluaran', 'pemasukan'));
     }
 }

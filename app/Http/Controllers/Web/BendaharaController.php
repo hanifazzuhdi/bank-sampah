@@ -18,14 +18,14 @@ class BendaharaController extends Controller
     {
         $datas = Penyetoran::with('user', 'jenis')->get();
 
-        return view('pages.penyetoran', compact('datas'));
+        return view('pages.bendahara.penyetoran', compact('datas'));
     }
 
     public function penjualan()
     {
         $datas = Penjualan::with('jenis')->get();
 
-        return view('pages.penjualan', compact('datas'));
+        return view('pages.bendahara.penjualan', compact('datas'));
     }
 
     public function saldo($id)

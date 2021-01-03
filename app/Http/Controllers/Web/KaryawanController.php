@@ -13,7 +13,7 @@ class KaryawanController extends Controller
     {
         $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 5)->get();
 
-        return view('pages.karyawan', compact('users'));
+        return view('pages.admin.karyawan', compact('users'));
     }
 
     public function store()

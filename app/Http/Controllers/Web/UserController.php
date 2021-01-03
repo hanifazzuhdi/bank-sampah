@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('role_id', 1)->get();
-        return view('pages.nasabah', compact('users'));
+        return view('pages.admin.nasabah', compact('users'));
     }
 
     public function store()
@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $users = User::onlyTrashed()->get();
 
-        return view('pages.blacklist', compact('users'));
+        return view('pages.admin.blacklist', compact('users'));
     }
 
     public function softDelete($id)
