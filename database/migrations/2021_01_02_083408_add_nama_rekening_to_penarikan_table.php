@@ -14,7 +14,7 @@ class AddNamaRekeningToPenarikanTable extends Migration
     public function up()
     {
         Schema::table('penarikan', function (Blueprint $table) {
-            $table->string('nama')->after('user_id');
+            $table->string('alias')->after('user_id');
             $table->string('rekening')->after('nama');
         });
     }
@@ -27,7 +27,7 @@ class AddNamaRekeningToPenarikanTable extends Migration
     public function down()
     {
         Schema::table('penarikan', function (Blueprint $table) {
-            $table->dropColumn('nama');
+            $table->dropColumn('alias');
             $table->dropColumn('rekening');
         });
     }

@@ -18,7 +18,6 @@
         </div>
     </div>
 
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="mt-2 font-weight-bold text-primary">GUDANG PENYIMPANAN SAMPAH</h6>

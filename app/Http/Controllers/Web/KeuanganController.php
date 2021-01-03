@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class KeuanganController extends Controller
 {
+    // GET
     public function index()
     {
         $keuangan = Keuangan::orderBy('id', 'desc')->get();
@@ -18,4 +19,16 @@ class KeuanganController extends Controller
 
         return view('pages.bendahara.keuangan', compact('keuangan', 'saldo', 'pengeluaran', 'pemasukan'));
     }
+
+    public function penarikan()
+    {
+        return view('pages.bendahara.penarikan.penarikan');
+    }
+
+    public function permintaan()
+    {
+        return view('pages.bendahara.penarikan.permintaan');
+    }
+
+    // POST
 }

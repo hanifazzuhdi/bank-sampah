@@ -64,7 +64,7 @@
     </li>
 
 
-    <li class="nav-item{{ request()->is("home") ? ' active' : '' }}">
+    <li class="nav-item">
         <a class="nav-link" href="{{route('home')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Laporan</span></a>
@@ -80,7 +80,7 @@
 
     <!-- Nav Item - Keuangan -->
     <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
-        <a class=" nav-link" href="{{route('keuangan')}}">
+        <a class=" nav-link" href="{{route('keuangan.index')}}">
         <i class="fas fa-fw fa-chart-line"></i>
         <span>Keuangan</span></a>
     </li>
@@ -95,8 +95,10 @@
         <div id="permintaan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Penarikan Saldo</h6>
-                <a class="collapse-item{{ request()->is("sampah") ? ' active' : '' }}" href="#">Tarik Via Teller</a>
-                <a class="collapse-item{{ request()->is("gudang") ? ' active' : '' }}" href="#">Permintaan Tarik
+                <a class="collapse-item{{ request()->is("penarikan/tunai") ? ' active' : '' }}"
+                    href="{{route('keuangan.penarikan')}}">Tarik Via Teller</a>
+                <a class="collapse-item{{ request()->is("penarikan/permintaan") ? ' active' : '' }}"
+                    href="{{route('keuangan.permintaan')}}">Permintaan Tarik
                     Saldo</a>
             </div>
         </div>

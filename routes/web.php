@@ -3,16 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Auth::routes([
     'register' => false,
@@ -56,18 +46,21 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::get('gudang', 'SampahController@getGudang')->name('gudang.index');             //menampilkan data gudang sampah
 
     //Route keuangan bank   -> Admin, Bendahara
-    Route::get('keuangan', 'KeuanganController@index')->name('keuangan');       //menampilkan data keuangan bank sampah dan saldo
-    Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik');     //menarik saldo oleh admin dari keuangan
+    Route::get('keuangan', 'KeuanganController@index')->name('keuangan.index');       //menampilkan data keuangan bank sampah dan saldo
 
     //Route penyetoran      -> Admin, Bendahara
     Route::get('penyetoran', 'BendaharaController@penyetoran')->name('bendahara.penyetoran'); //menampilkan riwayat penyetoran
 
-    // Route Penjualan
+    // Route Penjualan      -> Andmin, Bendahara
     Route::get('penjualan', 'BendaharaController@penjualan')->name('bendahara.penjualan');  //Menampilkan data penjualan
 
-    //Route
-    Route::get('penarikan', 'PenarikanController@index')->name('tarik_sis');        //menampilkan data user
+    //Route Penarikan       -> Bendahara
+    Route::get('penarikan/tunai', 'KeuanganController@penarikan')->name('keuangan.penarikan');            //menampilkan data user
+    Route::get('penarikan/permintaan', 'KeuanganController@permintaan')->name('keuangan.permintaan');     //menampilkan data user
+
+
+
+    Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik');         //menarik saldo oleh admin dari keuangan
     Route::get('saldo/{id}', 'BendaharaController@saldo')->name('saldo');           //menampilkan data saldo user dan request penarikanya berdasarkan id
     Route::post('penarikan/{id}', 'BendaharaController@tarik')->name('penarikan');  //mengkonfirmasi penarikan nasabah oleh bendahara
-
 });
