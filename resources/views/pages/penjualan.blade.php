@@ -34,32 +34,36 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Email</th>
-                            <th>Nama</th>
+                            <th>ID</th>
                             <th>Jenis Sampah</th>
                             <th>Berat</th>
-                            <th>Penghasilan</th>
-                            <th>Waktu Penyetoran</th>
+                            <th>Harga Jual (/Kg)</th>
+                            <th>Harga Beli (/Kg)</th>
+                            <th>Keuntungan</th>
+                            <th>Waktu Penjualan</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Email</th>
-                            <th>Nama</th>
+                            <th>ID</th>
                             <th>Jenis Sampah</th>
                             <th>Berat</th>
-                            <th>Penghasilan</th>
-                            <th>Waktu Penyetoran</th>
+                            <th>Harga Jual</th>
+                            <th>Harga Beli</th>
+                            <th>Keuntungan</th>
+                            <th>Waktu Penjualan</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach ($datas as $data)
                         <tr>
-                            <td>{{$data->user->email}}</td>
-                            <td>{{$data->user->name}}</td>
+                            <td>{{$data->id}}</td>
                             <td>{{$data->jenis->jenis_sampah}}</td>
                             <td>{{$data->berat}}</td>
-                            <td>{{number_format ($data->penghasilan, 0, ',', '.')}}</td>
+                            <td>{{$data->harga}}</td>
+                            <td>{{$data->jenis->harga}}</td>
+                            <td>{{number_format ($data->penghasilan - ($data->jenis->harga * $data->berat), 0, ',', '.')}}
+                            </td>
                             <td>{{$data->created_at}}</td>
                         </tr>
                         @endforeach

@@ -14,9 +14,11 @@ class PenjualanController extends Controller
 
     public function index()
     {
-        $Penjualan = Penjualan::all();
-        // return view('', compact('Penjualan'));
+        $data = Sampah::all();
+
+        return $this->sendResponse('Success', 'data berhasil diload', $data, 200);
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

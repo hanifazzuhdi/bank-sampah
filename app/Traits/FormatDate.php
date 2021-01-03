@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 trait FormatDate
 {
-    protected $newDateFormat = 'd F Y H:i';
+    protected $newDateFormat = 'l, d F Y H:i';
 
     // Mengganti format value dari kolom created_at saat akan di tampilkan
     public function getCreatedAtAttribute()

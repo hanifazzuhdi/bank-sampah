@@ -48,6 +48,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::get('getJenis', 'SampahController@getJenis');      // Melihat Jenis Sampah Dilayani
 
     // Route Penjualan      -> Pengurus 2
+    Route::get('gudang', 'PenjualanController@index');   //untuk melihat kapasitas sampah di gudang
     Route::post('sell', 'PenjualanController@store');    //menginput hasil penjualan
 
     //Route penjemputan     -> Pengurus 1

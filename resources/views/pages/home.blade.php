@@ -7,8 +7,15 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
+
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <i class="fas fa-home breadcrumb-item mt-0_5"></i>
+                <li class="breadcrumb-item active" aria-current="page"> Home </li>
+            </ol>
+        </div>
+
+        <a class=" d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
