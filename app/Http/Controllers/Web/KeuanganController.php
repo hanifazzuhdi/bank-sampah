@@ -28,7 +28,9 @@ class KeuanganController extends Controller
 
     public function getPermintaan()
     {
-        return view('pages.bendahara.penarikan.permintaan');
+        $datas = Penarikan::where('status', 1);
+
+        return view('pages.bendahara.penarikan.permintaan', compact('datas'));
     }
 
     // POST
@@ -39,8 +41,8 @@ class KeuanganController extends Controller
             'nominal' => 'required|integer'
         ]);
 
-        $user = User::where('email', request('email'))->first();
-        $tabungan = Tabungan::where('user_id', $user->id)->latest()->first();
+        $user = User::where('email', request('email'))->firstOrfail();
+        $tabungan = Tabungan::where('user_id', $user->id)->latest()->firstOrFail();
 
         if ($tabungan->saldo < request('nominal')) {
             alert()->warning('Gagal', 'Saldo Nasabah Tidak Cukup');

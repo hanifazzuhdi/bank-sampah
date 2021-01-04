@@ -56,8 +56,8 @@ class TransaksiController extends Controller
 
         $data = Tabungan::where('user_id', Auth::id())->latest()->first();
 
-        if ($data == null or request('nominal') > $data->saldo) {
-            return $this->sendResponse('Failed', 'Jual Sampah Dulu Biar Kaya', 'null', 404);
+        if ($data == null or request('nominal') > ($data->saldo - 3000)) {
+            return $this->sendResponse('Failed', 'Saldo Anda Tidak Cukup', 'null', 404);
         }
 
         Tabungan::create([
@@ -65,10 +65,10 @@ class TransaksiController extends Controller
             'keterangan'    => 'Penarikan Saldo',
             'debit'         => null,
             'kredit'        => request('nominal'),
-            'saldo'         => $data->saldo - request('nominal')
+            'saldo'         => ($data->saldo -= request('nominal')) - 3000
         ]);
 
-        Penarikan::create([
+        $penarikan = Penarikan::create([
             'user_id'       => Auth::id(),
             'nama'          => request('nama'),
             'rekening'      => request('rekening'),
@@ -77,7 +77,7 @@ class TransaksiController extends Controller
             'status'        => 1,
         ]);
 
-        return $this->sendResponse('Success', 'Permintaan Sedang di Proses, Menunggu Saldo dikirim', request('nominal'), 202);
+        return $this->sendResponse('Success', 'Permintaan Sedang di Proses, Menunggu Saldo dikirim', $penarikan, 202);
     }
 
     public function kirim($nominal)

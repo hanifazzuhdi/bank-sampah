@@ -13,7 +13,7 @@ Route::get('/', function () {
 });
 
 Route::fallback(function () {
-    return view('404');
+    return view('errors.404');
 });
 
 Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {

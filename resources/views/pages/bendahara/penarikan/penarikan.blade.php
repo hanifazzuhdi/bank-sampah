@@ -24,7 +24,7 @@
             <h6 class="m-0 font-weight-bold text-primary">FORM PENARIKAN TUNAI</h6>
         </a>
 
-        <div class="collapse" id="form-penarikan-tunai">
+        <div class="collapse show" id="form-penarikan-tunai">
             <div class="card-body">
 
                 <form action="{{route('keuangan.tarik')}}" method="POST">

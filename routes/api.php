@@ -52,10 +52,10 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('sell', 'PenjualanController@store');    //menginput hasil penjualan
 
     //Route penjemputan     -> Pengurus 1
-    Route::get('penjemputan/daftar', 'PenjemputanController@index');                                    //melihat permintaan penjemputan
-    Route::get('penjemputan/selesai', 'PenjemputanController@selesai');                                 //melihat yang sudah dijemput
-    Route::get('penjemputan/penolakan', 'PenjemputanController@penolakan');                             //melihat yang tidak mau dijemput
-    Route::post('penjemputan/penolakan/{penjemputan}', 'PenjemputanController@tolak');                  //menolak permintaan penjemputan
+    Route::get('penjemputan/daftar', 'PenjemputanController@index');                                     //melihat permintaan penjemputan
+    Route::get('penjemputan/selesai', 'PenjemputanController@selesai');                                  //melihat yang sudah dijemput
+    Route::get('penjemputan/penolakan', 'PenjemputanController@penolakan');                              //melihat yang tidak mau dijemput
+    Route::post('penjemputan/penolakan/{penjemputan}', 'PenjemputanController@tolak');                   //menolak permintaan penjemputan
     Route::post('penjemputan/konfirmasi/{penjemputan}', 'PenjemputanController@konfirmasiPenjemputan');  //konfirmasi penjemputan
 
     //Route chat            -> Nasabah dan Pengurus 1
