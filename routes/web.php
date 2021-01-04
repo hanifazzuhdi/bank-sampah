@@ -58,9 +58,10 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::get('penarikan/tunai', 'KeuanganController@getPenarikan')->name('keuangan.penarikan');            //menampilkan form penarikan
     Route::get('penarikan/permintaan', 'KeuanganController@getPermintaan')->name('keuangan.permintaan');     //menampilkan data permintaan
     Route::post('penarikan/tunai/store', 'KeuanganController@penarikan')->name('keuangan.tarik');            //Kirim form penarikan tunai
+    Route::post('penarikan/konfirmasi/{id}', 'KeuanganController@konfirmasi');
+    Route::post('penarikan/tolak/{id}', 'KeuanganController@tolak');
 
 
-    Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik');         //menarik saldo oleh admin dari keuangan
-    Route::get('saldo/{id}', 'BendaharaController@saldo')->name('saldo');           //menampilkan data saldo user dan request penarikanya berdasarkan id
-    Route::post('penarikan/{id}', 'BendaharaController@tarik')->name('penarikan');  //mengkonfirmasi penarikan nasabah oleh bendahara
+    // Route
+    Route::get('nasabah/tabungan/{id}', 'UserController@tabungan');
 });

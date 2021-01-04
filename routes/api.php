@@ -3,16 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -38,9 +28,10 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('jemput', 'PenyetoranController@jemput');                           //Nasabah minta permintaan jemput sampah oleh driver
 
     // Route Transaksi     -> Nasabah
-    Route::get('getTabungan', 'TransaksiController@index');   //untuk melihat buku tabungan nasabah
-    Route::get('getSaldo', 'TransaksiController@show');       //untuk melihat saldo nasabah
-    Route::post('tarikSaldo', 'TransaksiController@tarik');   //tarik saldo nasabah oleh nasabah
+    Route::get('getTabungan', 'TransaksiController@index');     //untuk melihat buku tabungan nasabah
+    Route::get('getSaldo', 'TransaksiController@show');         //untuk melihat saldo nasabah
+    Route::get('riwayat/tarik', 'TransaksiController@riwayat'); //Melihat riwayat penarikan saldo
+    Route::post('tarikSaldo', 'TransaksiController@tarik');     //tarik saldo nasabah oleh nasabah
 
     // Route Gudang sampah  -> Nasabah, Pengurus1, Pengurus2
     Route::get('getSampah', 'SampahController@index');        // Melihat Sampah Yang ada di gudang
@@ -52,7 +43,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('sell', 'PenjualanController@store');    //menginput hasil penjualan
 
     //Route penjemputan     -> Pengurus 1
-    Route::get('penjemputan/daftar', 'PenjemputanController@index');                                     //melihat permintaan penjemputan
+    Route::get('penjemputan/daftar', 'PenjemputanController@index');                                    //melihat permintaan penjemputan
     Route::get('penjemputan/selesai', 'PenjemputanController@selesai');                                  //melihat yang sudah dijemput
     Route::get('penjemputan/penolakan', 'PenjemputanController@penolakan');                              //melihat yang tidak mau dijemput
     Route::post('penjemputan/penolakan/{penjemputan}', 'PenjemputanController@tolak');                   //menolak permintaan penjemputan
@@ -64,6 +55,4 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::post('chat/{id}', 'ChatController@sendChat');   //buat ngirim pesan
     Route::delete('chat/{id} ', 'ChatController@destroy'); //hapus pesan
 
-    // Fitur tambahan
-    Route::post('kirim', 'TransaksiController@kirim');    //Kirim uang sesama pengguna sammpah
 });

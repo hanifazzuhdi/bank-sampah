@@ -28,7 +28,7 @@ class KeuanganController extends Controller
 
     public function getPermintaan()
     {
-        $datas = Penarikan::where('status', 1);
+        $datas = Penarikan::where('status', 1)->get();
 
         return view('pages.bendahara.penarikan.permintaan', compact('datas'));
     }
@@ -81,5 +81,44 @@ class KeuanganController extends Controller
         alert()->success('Success', 'Saldo Berhasil ditarik');
 
         return redirect(route('keuangan.penarikan'))->with('data', $penarikan);
+    }
+
+    // Konfirmasi
+    public function konfirmasi($id)
+    {
+        $penarikan = Penarikan::where('id', $id)->first();
+        $penarikan->status = 2;
+        $penarikan->update();
+
+        // Saldo Keuangan berkurang otomatis
+        Keuangan::create([
+            'keterangan' => 'Penarikan Uang Oleh Nasabah',
+            'debit'      => 0,
+            'kredit'     => $penarikan->kredit,
+            'saldo'      => Keuangan::latest()->first()->saldo -= $penarikan->kredit
+        ]);
+
+        alert()->success('Success', 'Dana Berhasil dikirim');
+        return back();
+    }
+
+    // tolak
+    public function tolak($id)
+    {
+        $penarikan = Penarikan::where('id', $id)->first();
+        $penarikan->status = 0;
+        $penarikan->update();
+
+        // kembalikan saldo nasabah
+        Tabungan::create([
+            'user_id'       => $penarikan->user_id,
+            'keterangan'    => 'Pengembalian Saldo Transaksi Gagal',
+            'debit'         => $penarikan->kredit,
+            'kredit'        => null,
+            'saldo'         => Tabungan::latest()->first()->saldo += $penarikan->kredit + 3000
+        ]);
+
+        alert()->info('Success', 'Permintaan Berhasil ditolak');
+        return back();
     }
 }

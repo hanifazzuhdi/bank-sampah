@@ -78,13 +78,6 @@
         Bendahara
     </div>
 
-    <!-- Nav Item - Keuangan -->
-    <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
-        <a class=" nav-link" href="{{route('keuangan.index')}}">
-        <i class="fas fa-fw fa-chart-line"></i>
-        <span>Keuangan</span></a>
-    </li>
-
     <!-- Nav Item - Permintaan -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#permintaan" aria-expanded="true"
@@ -102,6 +95,13 @@
                     Saldo</a>
             </div>
         </div>
+    </li>
+
+    <!-- Nav Item - Keuangan -->
+    <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
+        <a class=" nav-link" href="{{route('keuangan.index')}}">
+        <i class="fas fa-fw fa-chart-line"></i>
+        <span>Keuangan</span></a>
     </li>
 
     <!-- Nav Item - Penyetoran -->
