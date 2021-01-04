@@ -69,7 +69,7 @@
 
             <div class="text-center pt-2 text-white">
                 <h5> SLIP PENARIKAN </h5>
-                <small>No : {{session('data')->id . date('/d/m/y')}}</small>
+                <small>No : {{session('data')->id . date('-d/m/y-') . session('data')->user_id}}</small>
             </div>
         </div>
 
