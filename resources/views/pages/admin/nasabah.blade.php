@@ -40,7 +40,7 @@
                             <th>No. Telepon</th>
                             <th>Alamat</th>
                             <th>Dibuat</th>
-                            <th>Aksi</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -50,7 +50,7 @@
                             <th>No. Telepon</th>
                             <th>Alamat</th>
                             <th>Dibuat</th>
-                            <th>Aksi</th>
+                            <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -62,11 +62,29 @@
                             <td>{{$user->address}}</td>
                             <td>{{$user->created_at}}</td>
                             <td class="text-center">
-                                <a class="see-nasabah text-decoration-none" href="#" data-id="{{$user->id}}"
-                                    data-toggle="modal" data-target=".modal-update"
-                                    data-url="{{env('APP_URL') . '/karyawan/'}}">
-                                    <i class="fas fa-eye"></i>
-                                </a>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle text-decoration-none" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                        aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-header">Action</div>
+
+                                        <a class="see-nasabah dropdown-item" href="#" data-id="{{$user->id}}"
+                                            data-toggle="modal" data-target=".modal-update"
+                                            data-url="{{env('APP_URL') . '/karyawan/'}}">
+                                            Detail
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{'/nasabah/tabungan/' . $user->id}}"
+                                            target="_blank">
+                                            Buku tabungan
+                                        </a>
+
+                                    </div>
+
+                                </div>
                             </td>
                         </tr>
                         @endforeach

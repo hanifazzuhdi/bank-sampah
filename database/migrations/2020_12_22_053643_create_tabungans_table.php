@@ -15,9 +15,9 @@ class CreateTabungansTable extends Migration
     {
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id();
-            $table->string('keterangan');
             $table->integer('debit')->nullable();
             $table->integer('kredit')->nullable();
+            $table->string('keterangan');
             $table->integer('saldo')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

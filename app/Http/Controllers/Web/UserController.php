@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Model\Tabungan;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,6 +13,15 @@ class UserController extends Controller
     {
         $users = User::where('role_id', 1)->get();
         return view('pages.admin.nasabah', compact('users'));
+    }
+
+    public function tabungan($id)
+    {
+        $datas = Tabungan::with('user')->where('user_id', $id)->get();
+
+        $user = User::findOrFail($id);
+
+        return view('pages.tabungan', compact('datas', 'user'));
     }
 
     public function store()

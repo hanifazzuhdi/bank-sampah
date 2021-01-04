@@ -63,13 +63,6 @@
         </div>
     </li>
 
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('home')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Laporan</span></a>
-    </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -77,13 +70,6 @@
     <div class="sidebar-heading">
         Bendahara
     </div>
-
-    <!-- Nav Item - Keuangan -->
-    <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
-        <a class=" nav-link" href="{{route('keuangan.index')}}">
-        <i class="fas fa-fw fa-chart-line"></i>
-        <span>Keuangan</span></a>
-    </li>
 
     <!-- Nav Item - Permintaan -->
     <li class="nav-item">
@@ -102,6 +88,13 @@
                     Saldo</a>
             </div>
         </div>
+    </li>
+
+    <!-- Nav Item - Keuangan -->
+    <li class="nav-item{{ request()->is('keuangan') ? ' active' : '' }}"">
+        <a class=" nav-link" href="{{route('keuangan.index')}}">
+        <i class="fas fa-fw fa-chart-line"></i>
+        <span>Keuangan</span></a>
     </li>
 
     <!-- Nav Item - Penyetoran -->
