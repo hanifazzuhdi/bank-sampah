@@ -50,9 +50,10 @@ class ProfileController extends Controller
         }
 
         $user = User::where('id', Auth::user()->id)->first();
+
         $user->name = request('name') ?? $user->name;
-        $user->avatar = request('image') ? $image : Auth::user()->avatar;
-        
+        $user->avatar = request('image') ? $image : $user->avatar;
+
         $user->phone_number = $request->phone_number;
         // $user->address = $request->address;
 
@@ -75,7 +76,7 @@ class ProfileController extends Controller
                 $user->update();
                 return $this->sendResponse('Success', 'password berhasil di ganti Bos', $user, 200);
             } else {
-                return $this->sendResponse('error', 'masukan password lama dengan benar bos', null, 400);
+                return $this->sendResponse('Error', 'masukan password lama dengan benar bos', null, 400);
             }
         }
     }
