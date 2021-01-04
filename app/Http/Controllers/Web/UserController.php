@@ -17,9 +17,11 @@ class UserController extends Controller
 
     public function tabungan($id)
     {
-        $data = Tabungan::where('user_id', $id)->get();
+        $datas = Tabungan::with('user')->where('user_id', $id)->get();
 
-        return view('pages.tabungan', compact('data'));
+        $user = User::findOrFail($id);
+
+        return view('pages.tabungan', compact('datas', 'user'));
     }
 
     public function store()

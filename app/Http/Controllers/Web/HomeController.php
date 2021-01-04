@@ -7,6 +7,8 @@ use App\Model\Keuangan;
 use App\Model\Penjualan;
 use App\Model\Penyetoran;
 use App\Http\Controllers\Controller;
+use App\Model\Jenis;
+use App\Model\Sampah;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,7 @@ class HomeController extends Controller
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi'));
     }
+
     public function laporan()
     {
     }

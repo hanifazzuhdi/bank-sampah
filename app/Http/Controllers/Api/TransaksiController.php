@@ -63,7 +63,7 @@ class TransaksiController extends Controller
         Tabungan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => 'Penarikan Saldo',
-            'debit'         => null,
+            'debit'         => 0,
             'kredit'        => request('nominal'),
             'saldo'         => ($data->saldo -= request('nominal')) - 3000
         ]);

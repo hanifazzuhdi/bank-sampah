@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     //Route Naasabah        -> Admin
     Route::get('nasabah', 'UserController@index')->name('nasabah.index');                    //menampilkan data user
     Route::get('nasabah/blacklist', 'UserController@blacklist')->name('nasabah.blacklist');  //menampilkan data user terblack list
+    Route::get('nasabah/tabungan/{id}', 'UserController@tabungan');                          // menampilkan buku tabungan nasabah
     Route::post('nasabah/store', 'UserController@store')->name('nasabah.store');             //buat user baru oleh admin
     Route::post('nasabah/blacklist/{id}', 'UserController@softDelete');                      //soft delete atau blokir user
     Route::post('nasabah/restore/{id}', 'UserController@restore');                           //mengembalikan data user
@@ -63,5 +64,4 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
 
 
     // Route
-    Route::get('nasabah/tabungan/{id}', 'UserController@tabungan');
 });

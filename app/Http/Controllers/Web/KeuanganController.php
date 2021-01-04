@@ -114,7 +114,7 @@ class KeuanganController extends Controller
             'user_id'       => $penarikan->user_id,
             'keterangan'    => 'Pengembalian Saldo Transaksi Gagal',
             'debit'         => $penarikan->kredit,
-            'kredit'        => null,
+            'kredit'        => 0,
             'saldo'         => Tabungan::latest()->first()->saldo += $penarikan->kredit + 3000
         ]);
 
