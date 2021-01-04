@@ -15,9 +15,6 @@
             </ol>
         </div>
 
-        {{-- <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
-
     </div>
 
     {{-- Form Penarikan --}}
@@ -59,8 +56,15 @@
         </div>
     </div>
 
+
+    {{-- Jika Penarikan Success --}}
     @if (session('data'))
-    <div class="card">
+    <div class="d-flex justify-content-end mb-2">
+        <a class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" onclick="printContent('slip')"><i
+                class="fas fa-download fa-sm text-white-50"></i> Print Slip</a>
+    </div>
+
+    <div class="card" id="slip">
         <div class="card-header d-flex justify-content-between align-items-center bg-info">
             <div class="text-white">
                 <img src="{{asset('img/logo.png')}}" width="60px" alt="">
@@ -96,12 +100,12 @@
         </div>
 
         <div class="card-footer bg-white d-flex justify-content-around mt-2">
-            <div class="penerima mt-2">
+            <div class="penerima mt-3">
                 <p class="text-info mb-6">
                     jumlah diatas telah diterima dengan benar
                 </p>
 
-                <p class="border-top text-center pt-1">
+                <p class="border-top text-center pt-2">
                     Penerima
                 </p>
             </div>
@@ -111,7 +115,7 @@
                     Bantul, {{session('data')->created_at}}
                 </p>
 
-                <p class="border-top text-center pt-1">
+                <p class="border-top text-center pt-2">
                     Bendahara
                 </p>
             </div>
@@ -121,4 +125,16 @@
 
 </div>
 
+@endsection
+
+@section('script')
+<script>
+    function printContent(el){
+	var restorepage = document.body.innerHTML;
+	var printcontent = document.getElementById(el).innerHTML;
+	document.body.innerHTML = printcontent;
+	window.print();
+	document.body.innerHTML = restorepage;
+}
+</script>
 @endsection
