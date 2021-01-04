@@ -15,8 +15,9 @@
             </ol>
         </div>
 
-        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        {{-- <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="window.print()"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
+
     </div>
 
     {{-- Form Penarikan --}}
@@ -26,7 +27,7 @@
             <h6 class="m-0 font-weight-bold text-primary">FORM PENARIKAN TUNAI</h6>
         </a>
 
-        <div class="collapse show" id="form-penarikan-tunai">
+        <div class="collapse" id="form-penarikan-tunai">
             <div class="card-body">
 
                 <form action="{{route('keuangan.tarik')}}" method="POST">
@@ -38,7 +39,7 @@
 
                         <div class="col-md-6">
                             <label for="nominal">Nominal</label>
-                            <input type="text" id="nominal" name="nominal" class="form-control">
+                            <input type="number" id="nominal" name="nominal" class="form-control">
                         </div>
                     </div>
 
@@ -58,6 +59,65 @@
         </div>
     </div>
 
+    @if (session('data'))
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center bg-info">
+            <div class="text-white">
+                <img src="{{asset('img/logo.png')}}" width="60px" alt="">
+                <h5 class="d-inline font-weight-bold">SAMMPAH</h5>
+            </div>
+
+            <div class="text-center pt-2 text-white">
+                <h5> SLIP PENARIKAN </h5>
+                <small>No : {{session('data')->id . date('/d/m/y')}}</small>
+            </div>
+        </div>
+
+        <div class="card-body p-4">
+
+            <div class="row">
+                <div class="col-sm-3 font-weight-bold">
+                    <p class="mb-4_5"> Terima Dari </p>
+                    <p class="mb-4_5"> Tanggal </p>
+                    <p class="mb-4_5"> No. Rekening </p>
+                    <p class="mb-4_%"> Terbilang (Rupiah)</p>
+                </div>
+
+                <div class="col-sm-9">
+                    <p> <span class="mr-2"> : </span> {{Auth::user()->name}}</p>
+                    <hr>
+                    <p> <span class="mr-2"> : </span> {{session('data')->created_at}} </p>
+                    <hr>
+                    <p> <span class="mr-2"> : </span> {{session('data')->user->email}} </p>
+                    <hr>
+                    <p> <span class="mr-2"> : </span> {{session('data')->kredit}} </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white d-flex justify-content-around mt-2">
+            <div class="penerima mt-2">
+                <p class="text-info mb-6">
+                    jumlah diatas telah diterima dengan benar
+                </p>
+
+                <p class="border-top text-center pt-1">
+                    Penerima
+                </p>
+            </div>
+
+            <div class="pemilik mt-2">
+                <p class="mb-6">
+                    Bantul, {{session('data')->created_at}}
+                </p>
+
+                <p class="border-top text-center pt-1">
+                    Bendahara
+                </p>
+            </div>
+        </div>
+    </div>
+    @endif
 
 </div>
 

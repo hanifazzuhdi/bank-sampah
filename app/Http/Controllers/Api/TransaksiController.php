@@ -40,9 +40,7 @@ class TransaksiController extends Controller
         Tabungan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => 'Penjualan Sampah ke Bank Sampah',
-            // 'jenis_sampah'  => $data['jenis_sampah'],
-            'berat'         => $data['berat'],
-            'debet'         => $data['penghasilan'],
+            'debit'         => $data['penghasilan'],
             'kredit'        => 0,
             'saldo'         => $last == null ? 0 + $data['penghasilan'] : $last->saldo + $data['penghasilan']
         ]);
@@ -65,9 +63,7 @@ class TransaksiController extends Controller
         Tabungan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => 'Penarikan Saldo',
-            'jenis_sampah'  => null,
-            'berat'         => null,
-            'debet'         => null,
+            'debit'         => null,
             'kredit'        => request('nominal'),
             'saldo'         => $data->saldo - request('nominal')
         ]);
@@ -96,9 +92,7 @@ class TransaksiController extends Controller
         Tabungan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => request('keterangan') ?? 'Kirim Saldo ke pengguna lain',
-            'jenis_sampah'  => null,
-            'berat'         => null,
-            'debet'         => 0,
+            'debit'         => 0,
             'kredit'        => $nominal,
             'saldo'         => $data->saldo - $nominal
         ]);
@@ -109,9 +103,7 @@ class TransaksiController extends Controller
         Tabungan::create([
             'user_id'       => $penerima->user_id,
             'keterangan'    => request('keterangan') ?? 'Kirim Saldo dari pengguna lain',
-            'jenis_sampah'  => null,
-            'berat'         => null,
-            'debet'         => $nominal,
+            'debit'         => $nominal,
             'kredit'        => 0,
             'saldo'         => $penerima->saldo + $nominal
         ]);

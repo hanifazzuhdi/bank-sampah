@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Model\Keuangan;
-use App\Http\Controllers\Controller;
-use App\Model\Penarikan;
-use App\Model\Penjualan;
 use App\User;
-use Illuminate\Http\Request;
+use App\Model\Tabungan;
+use App\Model\Keuangan;
+use App\Model\Penarikan;
+use App\Http\Controllers\Controller;
 
 class KeuanganController extends Controller
 {
@@ -17,7 +16,7 @@ class KeuanganController extends Controller
         $keuangan = Keuangan::orderBy('id', 'desc')->get();
         $saldo = Keuangan::latest()->first('saldo');
         $pengeluaran = Keuangan::whereMonth('created_at', date('m'))->sum('kredit');
-        $pemasukan = Keuangan::whereMonth('created_at', date('m'))->where('id', '!=', 1)->sum('debet');
+        $pemasukan = Keuangan::whereMonth('created_at', date('m'))->where('id', '!=', 1)->sum('debit');
 
         return view('pages.bendahara.keuangan', compact('keuangan', 'saldo', 'pengeluaran', 'pemasukan'));
     }
@@ -37,19 +36,48 @@ class KeuanganController extends Controller
     {
         request()->validate([
             'email'  => 'required|email',
-            'nominal' => 'required'
+            'nominal' => 'required|integer'
         ]);
 
         $user = User::where('email', request('email'))->first();
+        $tabungan = Tabungan::where('user_id', $user->id)->latest()->first();
 
-        $penarikan = new Penarikan();
-        $penarikan->user_id = $user->id;
-        $penarikan->alias = $user->name;
-        $penarikan->rekening = "Melalui Teller";
-        $penarikan->kredit  = request('nominal');
-        $penarikan->keterangan = request('keterangan') ?? "Penarikan Tunai Melalui Teller";
-        $penarikan->status = 2;
+        if ($tabungan->saldo < request('nominal')) {
+            alert()->warning('Gagal', 'Saldo Nasabah Tidak Cukup');
+            return back();
+        }
 
-        $penarikan->save();
+        // Tambah data di table penarikan
+        $penarikan = Penarikan::create([
+            'user_id'    => $user->id,
+            'nama'       => $user->name,
+            'rekening'   => "Melalui Teller",
+            'kredit'     => request('nominal'),
+            'keterangan' => request('keterangan') ?? "Penarikan Tunai Melalui Teller",
+            'status'     => 2
+        ]);
+
+        // tambah data di table tabungan nasabah
+        Tabungan::create([
+            'user_id'       => $user->id,
+            'keterangan'    =>  request('keterangan') ?? "Penarikan Tunai Melalui Teller",
+            'debit'         => 0,
+            'kredit'        => request('nominal'),
+            'saldo'         => $tabungan->saldo -= request('nominal')
+        ]);
+
+        // kurangi saldo keuangan bank
+        $keuangan = Keuangan::latest()->first('saldo');
+
+        Keuangan::create([
+            'keterangan' => 'Penarikan Dana Nasabah Melalui Teller',
+            'debit'      => 0,
+            'kredit'     => request('nominal'),
+            'saldo'      => $keuangan->saldo -= request('nominal')
+        ]);
+
+        alert()->success('Success', 'Saldo Berhasil ditarik');
+
+        return redirect(route('keuangan.penarikan'))->with('data', $penarikan);
     }
 }

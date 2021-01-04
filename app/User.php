@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\Penarikan;
 use App\Model\Penyetoran;
 use App\Model\Role;
 use App\Model\Tabungan;
@@ -58,6 +59,11 @@ class User extends Authenticatable implements JWTSubject
     public function penyetoran()
     {
         return $this->hasMany(Penyetoran::class);
+    }
+
+    public function penarikan()
+    {
+        return $this->hasMany(Penarikan::class);
     }
 
     public function tabungans()

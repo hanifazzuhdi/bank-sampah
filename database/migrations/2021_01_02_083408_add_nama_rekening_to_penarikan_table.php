@@ -27,7 +27,7 @@ class AddNamaRekeningToPenarikanTable extends Migration
     public function down()
     {
         Schema::table('penarikan', function (Blueprint $table) {
-            $table->dropColumn('alias');
+            $table->dropColumn('nama');
             $table->dropColumn('rekening');
         });
     }

@@ -10,7 +10,7 @@ class Tabungan extends Model
 {
     use FormatDate;
 
-    protected $fillable = ['keterangan', 'jenis_sampah', 'berat', 'debet', 'kredit', 'saldo', 'user_id', 'status'];
+    protected $fillable = ['keterangan', 'debit', 'kredit', 'saldo', 'user_id', 'status'];
 
     // Relation
     public function user()

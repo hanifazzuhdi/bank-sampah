@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         Keuangan::create([
             'keterangan' => 'Dana dari investor',
-            'debet'      => '100000000',
+            'debit'      => '100000000',
             'kredit'     => 0,
             'saldo'      => '100000000'
         ]);

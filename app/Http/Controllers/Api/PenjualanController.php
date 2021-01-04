@@ -52,7 +52,7 @@ class PenjualanController extends Controller
 
         $keuangan = Keuangan::create([
             'keterangan' => request('keterangan') ?? "Hasil penjualan ke pengepul",
-            'debet' => $request->berat * $request->harga,
+            'debit' => $request->berat * $request->harga,
             'kredit' => 0,
             'saldo' => $penghasilan == null ? $request->berat * $request->harga : $penghasilan->saldo + ($request->berat * $request->harga)
         ]);

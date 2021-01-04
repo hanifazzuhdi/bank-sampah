@@ -98,7 +98,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Keterangan</th>
-                            <th>Debet</th>
+                            <th>debit</th>
                             <th>Kredit</th>
                             <th>Saldo</th>
                             <th>Dibuat</th>
@@ -108,7 +108,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Keterangan</th>
-                            <th>Debet</th>
+                            <th>debit</th>
                             <th>Kredit</th>
                             <th>Saldo</th>
                             <th>Dibuat</th>
@@ -119,7 +119,7 @@
                         <tr>
                             <td>{{$value->id}}</td>
                             <td>{{$value->keterangan}}</td>
-                            <td>{{number_format ($value->debet, 0, ',', '.')}}</td>
+                            <td>{{number_format ($value->debit, 0, ',', '.')}}</td>
                             <td>{{number_format ($value->kredit, 0, ',', '.')}}</td>
                             <td>{{number_format ($value->saldo, 0, ',', '.')}}</td>
                             <td>{{$value->created_at}}</td>

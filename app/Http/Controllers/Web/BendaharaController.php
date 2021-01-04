@@ -46,7 +46,7 @@ class BendaharaController extends Controller
         // Saldo Keuangan berkurang otomatis
         Keuangan::create([
             'keterangan' => 'Penarikan Uang Oleh Nasabah',
-            'debet'      => 0,
+            'debit'      => 0,
             'kredit'     => $penarikan->kredit,
             'saldo'      => Keuangan::latest()->first()->saldo - $penarikan->kredit
         ]);
@@ -70,9 +70,7 @@ class BendaharaController extends Controller
         Tabungan::create([
             'user_id'       => request('user_id'),
             'keterangan'    => 'Penarikan Saldo',
-            'jenis_sampah'  => null,
-            'berat'         => null,
-            'debet'         => null,
+            'debit'         => null,
             'kredit'        => request('nominal'),
             'saldo'         => $data->saldo - request('nominal')
         ]);
@@ -87,7 +85,7 @@ class BendaharaController extends Controller
         ]);
         Keuangan::create([
             'keterangan' => 'Penarikan Uang Oleh Nasabah',
-            'debet'      => 0,
+            'debit'      => 0,
             'kredit'     => request('nominal'),
             'saldo'      => Keuangan::latest()->first()->saldo - request('nominal')
         ]);

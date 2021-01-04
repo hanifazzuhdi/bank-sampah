@@ -8527,6 +8527,14 @@ button.bg-dark:hover {
     margin-bottom: 1.5rem !important
 }
 
+.mb-4_5 {
+    margin-bottom: 2rem !important
+}
+
+.mb-6 {
+    margin-bottom: 6rem !important;
+}
+
 .ml-4,
 .mx-4 {
     margin-left: 1.5rem !important
