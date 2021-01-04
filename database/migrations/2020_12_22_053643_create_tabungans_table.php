@@ -16,7 +16,7 @@ class CreateTabungansTable extends Migration
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id();
             $table->string('keterangan');
-            $table->unsignedBigInteger('jenis_sampah')->nullable();
+            // $table->unsignedBigInteger('jenis_sampah')->nullable();
             $table->integer('berat')->nullable();
             $table->integer('debet')->nullable();
             $table->integer('kredit')->nullable();
@@ -24,7 +24,7 @@ class CreateTabungansTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('jenis_sampah')->references('id')->on('jenis');
+            // $table->foreign('jenis_sampah')->references('id')->on('jenis');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

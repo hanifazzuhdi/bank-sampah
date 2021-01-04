@@ -55,9 +55,9 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::get('penjualan', 'BendaharaController@penjualan')->name('bendahara.penjualan');  //Menampilkan data penjualan
 
     //Route Penarikan       -> Bendahara
-    Route::get('penarikan/tunai', 'KeuanganController@penarikan')->name('keuangan.penarikan');            //menampilkan data user
-    Route::get('penarikan/permintaan', 'KeuanganController@permintaan')->name('keuangan.permintaan');     //menampilkan data user
-
+    Route::get('penarikan/tunai', 'KeuanganController@getPenarikan')->name('keuangan.penarikan');            //menampilkan form penarikan
+    Route::get('penarikan/permintaan', 'KeuanganController@getPermintaan')->name('keuangan.permintaan');     //menampilkan data permintaan
+    Route::post('penarikan/tunai/store', 'KeuanganController@penarikan')->name('keuangan.tarik');            //Kirim form penarikan tunai
 
 
     Route::post('tarik', 'PenarikanController@tarik')->name('admin_tarik');         //menarik saldo oleh admin dari keuangan

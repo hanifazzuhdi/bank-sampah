@@ -39,8 +39,8 @@ class TransaksiController extends Controller
 
         Tabungan::create([
             'user_id'       => Auth::id(),
-            'keterangan'    => 'Penjualan Sampah',
-            'jenis_sampah'  => $data['jenis_sampah'],
+            'keterangan'    => 'Penjualan Sampah ke Bank Sampah',
+            // 'jenis_sampah'  => $data['jenis_sampah'],
             'berat'         => $data['berat'],
             'debet'         => $data['penghasilan'],
             'kredit'        => 0,

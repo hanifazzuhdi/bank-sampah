@@ -29,7 +29,7 @@
         <div class="collapse show" id="form-penarikan-tunai">
             <div class="card-body">
 
-                <form action="" method="POST">
+                <form action="{{route('keuangan.tarik')}}" method="POST">
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <label for="email">Email</label>
@@ -51,7 +51,7 @@
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-
+                    @csrf
                 </form>
 
             </div>
