@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('password/email', 'Api\ForgotPasswordController@forgot');
+Route::post('password/reset', 'Api\ForgotPasswordController@reset');
 
 // Route Auth
 Route::post('register', 'Api\UserController@register');
