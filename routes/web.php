@@ -61,8 +61,4 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::post('penarikan/tunai/store', 'KeuanganController@penarikan')->name('keuangan.tarik');            //Kirim form penarikan tunai
     Route::post('penarikan/konfirmasi/{id}', 'KeuanganController@konfirmasi');
     Route::post('penarikan/tolak/{id}', 'KeuanganController@tolak');
-
-
-    // Route ajax
-    Route::get('getSampahHome', 'HomeController@sampah');
 });

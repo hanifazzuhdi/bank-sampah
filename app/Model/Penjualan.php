@@ -9,7 +9,7 @@ class Penjualan extends Model
 {
     use FormatDate;
 
-    protected $fillable = ['jenis_sampah', 'berat', 'harga', 'penghasilan', 'date'];
+    protected $fillable = ['jenis_sampah', 'berat', 'harga', 'penghasilan'];
 
     // relation
     public function jenis()
