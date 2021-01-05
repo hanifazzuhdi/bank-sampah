@@ -34,8 +34,8 @@ class ProfileController extends Controller
             'name'          => 'required'
         ]);
 
-        if ($request->image) {
-            $img = base64_encode(file_get_contents($request->image));
+        if ($request->avatar) {
+            $img = base64_encode(file_get_contents($request->avatar));
             $client = new Client();
             $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
                 'form_params' => [
@@ -52,7 +52,7 @@ class ProfileController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
 
         $user->name = request('name') ?? $user->name;
-        $user->avatar = request('image') ? $image : $user->avatar;
+        $user->avatar = request('avatar') ? $image : $user->avatar;
 
         $user->phone_number = $request->phone_number;
         // $user->address = $request->address;
