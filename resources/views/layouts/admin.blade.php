@@ -58,9 +58,34 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('template/js/sb-admin-2.min.js')}}"></script>
-
     <!-- Custom js untuk satu page -->
     @yield('script')
+
+
+    <script>
+        var elem = document.documentElement;
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+
+        $(function (){
+            $.ajax({
+                url: 'alert',
+                method: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $('.count-alert').html(data);
+                }
+            });
+        });
+    </script>
 
 </body>
 

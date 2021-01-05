@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.auth', ['title' => 'Reset Your Password'])
 
 @section('content')
 
