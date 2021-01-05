@@ -42,6 +42,7 @@ class PenjualanController extends Controller
             'berat' => $request->berat,
             'harga' => $request->harga,
             'penghasilan' => $request->berat * $request->harga,
+            'date' => now()
         ]);
 
         //kurangi stok sampah berdasarkan jenis
