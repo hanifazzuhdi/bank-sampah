@@ -23,23 +23,31 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <label>Url Image : </label>
-                            <br>
+                            <label><span class="text-danger">*</span>Url Image : </label>
                             <input type="text" name="imageURL" class="form-control">
-                            <small class="text-help text-danger">*Pilih salah satu metode untuk input image</small>
                         </div>
                         <div class="col">
-                            <label>Image : </label>
+                            <label><span class="text-danger">*</span>Image : </label>
                             <br>
                             <input type="file" name="image" class="mt-1">
                         </div>
                     </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            <label>Warna Thumbnail : </label>
+                            <input class="form-control" type="color" name="warna">
+                        </div>
+                    </div>
                     @csrf
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
 
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <small class="text-help text-danger">*Pilih salah satu metode untuk input image</small>
+
+                <div class="button">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
                 </form>
                 {{-- End Form --}}
             </div>
@@ -72,30 +80,37 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <label>Url Image : </label>
+                            <label><span class="text-danger">*</span>Url Image : </label>
                             <br>
                             <input type="text" name="imageURL" class="form-control" id="image-update">
-                            <small class="text-help text-danger d-block mt-2">*Pilih salah satu metode untuk input
-                                image</small>
-                            <small class="text-help text-danger">*Url yang tampil adalah lokasi image
-                                sebelumnya</small>
                         </div>
                         <div class="col">
-                            <label>Image : </label>
+                            <label><span class="text-danger">*</span>Image : </label>
                             <br>
                             <input type="file" name="image" class="mt-1">
-                            <small class="text-help text-danger">*Hapus URL default jika anda ingin mengupload
-                                image
-                                dengan metode ini</small>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            <label>Warna Thumbnail : </label>
+                            <input class="form-control" type="color" name="warna" id="color-update">
                         </div>
                     </div>
                     @csrf
                     @method('put')
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
+                <div class="text-help">
+                    <small class="text-danger d-block mt-2">*Pilih salah satu metode untuk input image</small>
+                    <small class="text-danger d-block">*Url yang tampil adalah lokasi image sebelumnya</small>
+                    <small class="text-danger d-block">*Hapus URL default jika anda ingin mengupload image dengan metode
+                        Upload File</small>
+                </div>
 
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <div class="button">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
                 </form>
                 {{-- End Form --}}
             </div>

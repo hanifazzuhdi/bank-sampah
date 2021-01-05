@@ -14,27 +14,27 @@ class SampahSeeder extends Seeder
     {
         Sampah::create([
             'jenis_sampah' => '1',
-            'berat'        => '0'
+            'berat'        => '10',
         ]);
 
         Sampah::create([
             'jenis_sampah' => '2',
-            'berat'        => '0'
+            'berat'        => '15',
         ]);
 
         Sampah::create([
             'jenis_sampah' => '3',
-            'berat'        => '0'
+            'berat'        => '5'
         ]);
 
         Sampah::create([
             'jenis_sampah' => '4',
-            'berat'        => '0'
+            'berat'        => '9'
         ]);
 
         Sampah::create([
             'jenis_sampah' => '5',
-            'berat'        => '0'
+            'berat'        => '20'
         ]);
     }
 }

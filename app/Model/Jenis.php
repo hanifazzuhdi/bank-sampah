@@ -9,7 +9,7 @@ class Jenis extends Model
 {
     use FormatDate;
 
-    protected $fillable = ['jenis_sampah', 'image', 'harga'];
+    protected $fillable = ['jenis_sampah', 'image', 'harga', 'warna'];
 
     // relasi
     public function penyetoran()

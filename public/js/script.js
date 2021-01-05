@@ -101,6 +101,7 @@ $(function () {
                 $('#jenis-update').val(data.jenis_sampah);
                 $('#harga-update').val(data.harga);
                 $('#image-update').val(data.image);
+                $('#color-update').val(data.warna);
             }
 
         });

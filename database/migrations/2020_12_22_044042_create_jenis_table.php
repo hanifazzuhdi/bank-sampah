@@ -18,6 +18,7 @@ class CreateJenisTable extends Migration
             $table->string('image')->default('https://via.placeholder.com/150');
             $table->string('jenis_sampah');
             $table->string('harga');
+            $table->string('warna');
             $table->timestamps();
         });
     }

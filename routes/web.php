@@ -63,5 +63,6 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::post('penarikan/tolak/{id}', 'KeuanganController@tolak');
 
 
-    // Route
+    // Route ajax
+    Route::get('getSampahHome', 'HomeController@sampah');
 });
