@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('index', 'show');
+    }
+
     public function index()
     {
         $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 5)->get();

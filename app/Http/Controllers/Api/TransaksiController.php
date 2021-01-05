@@ -84,16 +84,6 @@ class TransaksiController extends Controller
     {
         $datas = Penarikan::where('user_id', Auth::id())->get();
 
-        foreach ($datas as  $value) {
-            if ($value['status'] == 1) {
-                $value['status'] = "Menunggu Persetujuan Bendahara";
-            } else if ($value['status'] == 2) {
-                $value['status'] = "Dana Berhasil dicairkan";
-            } else {
-                $value['status'] = "Dana Gagal dicairkan";
-            }
-        }
-
         return $this->sendResponse('Success', 'Riwayat berhasil ditampilkan', $datas, 200);
     }
 }
