@@ -49,11 +49,11 @@ class HomeController extends Controller
             ->groupBy(DB::raw("MONTH(created_at)"))
             ->get();
 
+        $penghasilan = [];
+
         foreach ($penghasilann as  $value) {
             $penghasilan[] =  $value->penghasilan;
         }
-
-        // dd($penghasilan);
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'sampah', 'warna', 'jenis_sampah', 'penghasilan'));
     }
