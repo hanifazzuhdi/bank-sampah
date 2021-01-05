@@ -47,7 +47,7 @@
                         <div class="error mx-auto" data-text="403">403</div>
                         <p class="lead text-gray-800 mb-5">Access Forbidden</p>
                         <p class="text-gray-500 mb-2">
-                            Anda Tidak Memiliki Akses ... <i class="fas fa-user-secret"></i>
+                            Anda Tidak Memiliki Akses ... <i class="fas fa-lock"></i>
                         </p>
                         <a href="{{route('home')}}">&larr; Segera Kembali</a>
                     </div>

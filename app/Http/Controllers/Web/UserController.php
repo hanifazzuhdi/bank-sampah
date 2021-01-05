@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('index', 'tabungan');
+    }
+
     public function index()
     {
         $users = User::where('role_id', 1)->get();

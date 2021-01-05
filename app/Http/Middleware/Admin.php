@@ -19,7 +19,7 @@ class Admin
         if (Auth::user() and Auth::user()->role_id == 5) {
             return $next($request);
         } else {
-            return redirect('/403');
+            return abort('403');
         }
     }
 }

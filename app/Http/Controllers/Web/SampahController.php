@@ -9,6 +9,11 @@ use GuzzleHttp\Client;
 
 class SampahController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('getSampah', 'getGudang', 'show');
+    }
+
     public function getSampah()
     {
         $sampahs = Jenis::paginate(6);
