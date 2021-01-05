@@ -6,10 +6,11 @@ use App\User;
 use App\Model\Keuangan;
 use App\Model\Penjualan;
 use App\Model\Penyetoran;
-use App\Http\Controllers\Controller;
 use App\Model\Jenis;
 use App\Model\Sampah;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Model\Penarikan;
 
 class HomeController extends Controller
 {
@@ -65,6 +66,13 @@ class HomeController extends Controller
         }
 
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'sampah', 'warna', 'jenis_sampah', 'penghasilan'));
+    }
+
+    public function alert()
+    {
+        $permintaan = Penarikan::where('status', 1)->count();
+
+        echo json_encode($permintaan);
     }
 
     public function laporan()
