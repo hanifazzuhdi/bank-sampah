@@ -47,7 +47,7 @@ class UserController extends Controller
             'email' => request()->email,
             'password' => Hash::make(request()->password),
             'phone_number' => request()->phone_number
-        ]);
+        ])->sendEmailVerificationNotification();
         // return $this->respondWithMessage('User successfully created');
         return response()->json(compact('user'), 201);
     }
