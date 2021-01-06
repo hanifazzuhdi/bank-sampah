@@ -16,7 +16,7 @@ class CreateSampahsTable extends Migration
         Schema::create('sampahs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jenis_sampah');
-            $table->integer('berat');
+            $table->integer('berat')->default(0);
             $table->timestamps();
 
             $table->foreign('jenis_sampah')->references('id')->on('jenis')->onDelete('cascade');

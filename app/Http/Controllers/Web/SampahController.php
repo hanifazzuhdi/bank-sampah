@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Model\Jenis;
 use App\Model\Sampah;
-use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use App\Http\Controllers\Controller;
 
 class SampahController extends Controller
 {
@@ -34,6 +34,7 @@ class SampahController extends Controller
         $data = request()->validate([
             'jenis_sampah' => 'required',
             'harga'        => 'required',
+            'warna'        => 'required',
         ]);
 
         // kondisi name image tidak ada
