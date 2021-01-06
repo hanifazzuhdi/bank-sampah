@@ -49,6 +49,9 @@ class UserController extends Controller
             'phone_number' => request()->phone_number
         ]);
 
-        return response()->json(compact('user'), 201);
+        return response()->json([
+            'status' => 'success',
+            'data'  => $user
+        ]);
     }
 }

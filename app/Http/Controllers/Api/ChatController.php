@@ -91,5 +91,4 @@ class ChatController extends Controller
         }
         return $this->sendResponse('Error', 'Gagal menghapus pesan', null, 500);
     }
-    
 }
