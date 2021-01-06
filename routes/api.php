@@ -15,12 +15,14 @@ Route::post('password/reset', 'Api\ForgotPasswordController@reset');
 Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
 
+Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');
+Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
 
 Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route User          -> Nasabah, Pengurus1, Pengurus2
-    Route::get('profile', 'ProfileController@index');   //menampilkan profil user yang sedang login
-    Route::post('profile', 'ProfileController@update'); //mengupdate profile
+    Route::get('profile', 'ProfileController@index')->middleware('verified');   //menampilkan profil user yang sedang login
+    Route::post('profile', 'ProfileController@update')->middleware('verified'); //mengupdate profile
     Route::post('ganti', 'ProfileController@change');   //ganti password
     Route::get('gett', 'ProfileController@gett');       //route percobaan
 
