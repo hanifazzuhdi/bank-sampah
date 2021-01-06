@@ -49,13 +49,12 @@ class UserController extends Controller
             'phone_number' => request()->phone_number
         ])->sendEmailVerificationNotification();
 
-        $data = User::where('email', request('email'))->firstOrFail();
+        // $data = User::where('email', request('email'))->firstOrFail();
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Akun Berhasil dibuat',
-            'data'  => $data
+            'message' => 'silakan verivikasi',
+            // 'data'  => $data
         ]);
-        // return $this->sendResponse('Success', 'berhasil registrasi', $user, 200);
     }
 }
