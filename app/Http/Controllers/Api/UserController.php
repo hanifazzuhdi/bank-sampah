@@ -49,7 +49,10 @@ class UserController extends Controller
             'phone_number' => request()->phone_number
         ])->sendEmailVerificationNotification();
         // return $this->respondWithMessage('User successfully created');
-        // return response()->json(compact('user'), 201);
-        return $this->sendResponse('Success', 'berhasil registrasi', $user, 200);
+        return response()->json([
+            'status' => 'success',
+            'data'  => $user
+        ]);
+        // return $this->sendResponse('Success', 'berhasil registrasi', $user, 200);
     }
 }
