@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
 
     //Route Naasabah        -> Admin
     Route::get('nasabah', 'UserController@index')->name('nasabah.index');                    //menampilkan data user
-    Route::get('nasabah/blacklist', 'UserController@blacklist')->name('nasabah.blacklist');  //menampilkan data user terblack list
+    Route::get('nasabah-blacklist', 'UserController@blacklist')->name('nasabah.blacklist');  //menampilkan data user terblack list
     Route::get('nasabah/tabungan/{id}', 'UserController@tabungan');                          // menampilkan buku tabungan nasabah
     Route::post('nasabah/store', 'UserController@store')->name('nasabah.store');             //buat user baru oleh admin
     Route::post('nasabah/blacklist/{id}', 'UserController@softDelete');                      //soft delete atau blokir user
@@ -56,8 +56,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::get('penjualan', 'BendaharaController@penjualan')->name('bendahara.penjualan');  //Menampilkan data penjualan
 
     //Route Penarikan       -> Bendahara
-    Route::get('penarikan/tunai', 'KeuanganController@getPenarikan')->name('keuangan.penarikan');            //menampilkan form penarikan
-    Route::get('penarikan/permintaan', 'KeuanganController@getPermintaan')->name('keuangan.permintaan');     //menampilkan data permintaan
+    Route::get('penarikan-tunai', 'KeuanganController@getPenarikan')->name('keuangan.penarikan');            //menampilkan form penarikan
+    Route::get('penarikan-permintaan', 'KeuanganController@getPermintaan')->name('keuangan.permintaan');     //menampilkan data permintaan
     Route::post('penarikan/tunai/store', 'KeuanganController@penarikan')->name('keuangan.tarik');            //Kirim form penarikan tunai
     Route::post('penarikan/konfirmasi/{id}', 'KeuanganController@konfirmasi');
     Route::post('penarikan/tolak/{id}', 'KeuanganController@tolak');

@@ -42,15 +42,19 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
-        $user = User::create([
+        User::create([
             'name' => request()->name,
             'email' => request()->email,
             'password' => Hash::make(request()->password),
             'phone_number' => request()->phone_number
         ])->sendEmailVerificationNotification();
+
+        // $data = User::where('email', request('email'))->firstOrFail();
+
         return response()->json([
             'status' => 'success',
-            'data'  => $user
+            'message' => 'silakan verivikasi',
+            // 'data'  => $data
         ]);
     }
 }

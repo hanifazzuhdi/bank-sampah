@@ -9,14 +9,16 @@ use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
-    public function forgot() {
+    public function forgot()
+    {
         $credentials = request()->validate(['email' => 'required|email']);
 
         Password::sendResetLink($credentials);
 
         return response()->json(["msg" => 'Reset password link sent on your email id.']);
     }
-    public function reset() {
+    public function reset()
+    {
         $credentials = request()->validate([
             'email' => 'required|email',
             'token' => 'required|string',
@@ -33,5 +35,5 @@ class ForgotPasswordController extends Controller
         }
 
         return response()->json(["msg" => "Password has been successfully changed"]);
-    }   
+    }
 }
