@@ -21,8 +21,8 @@ class CreatePenyetoransTable extends Migration
             $table->integer('penghasilan');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('jenis_sampah')->references('id')->on('jenis');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('jenis_sampah')->references('id')->on('jenis')->onDelete('cascade');
         });
     }
 
