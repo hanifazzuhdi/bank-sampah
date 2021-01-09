@@ -15,8 +15,8 @@ Route::post('password/reset', 'Api\ForgotPasswordController@reset');
 Route::post('register', 'Api\UserController@register');
 Route::post('login', 'Api\UserController@login');
 
-Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');
-Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
+Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend'); //kirim email verivikasi
+Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify'); //kirim email verivikasi
 
 Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
@@ -61,3 +61,4 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::delete('chat/{id} ', 'ChatController@destroy'); //hapus pesan
 
 });
+    

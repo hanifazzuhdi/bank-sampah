@@ -42,7 +42,7 @@ class ChatController extends Controller
         $messages = Chat::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $user_id)->where('to', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
-            $query->where('from', $my_id)->where('to', $user_id);
+            $query->where('from', $my_id)->where('to', $user_id)->where('owner', $user_id);;
         })->get();
 
         return $this->sendResponse('Success', 'ambil pesan', $messages, 200);
@@ -57,6 +57,15 @@ class ChatController extends Controller
         $data = new Chat();
         $data->from = $from;
         $data->to = $to;
+        $data->owner = $to;
+        $data->message = $message;
+        $data->is_read = 0;
+        $data->save();
+
+        $data = new Chat();
+        $data->from = $from;
+        $data->to = $to;
+        $data->owner = $from;
         $data->message = $message;
         $data->is_read = 0;
         $data->save();
@@ -75,7 +84,7 @@ class ChatController extends Controller
         );
 
         $pusher->trigger('my-channel', 'my-event', $data);
-        return $this->sendResponse('Success', 'kontak dong', $data, 200);
+        return $this->sendResponse('Success', 'pesan terkirim bos', $data, 200);
     }
 
     public function destroy($id)
