@@ -103,6 +103,8 @@ class ChatController extends Controller
 
     public function hapus_untuk_semua($id)
     {
+        //masih butuh banyak seklai penelitian bos
+        //cacatnya masih ada
         $user = Auth::id();
         $Message = Chat::find($id);
         $semua = Chat::where('message', $Message->message)->where('created_at', $Message->creted_at);
