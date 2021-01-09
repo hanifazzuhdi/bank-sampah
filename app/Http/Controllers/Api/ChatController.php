@@ -40,9 +40,9 @@ class ChatController extends Controller
 
         // ambil pesanya dari user yang di select
         $messages = Chat::where(function ($query) use ($user_id, $my_id) {
-            $query->where('from', $user_id)->where('to', $my_id);
+            $query->where('from', $user_id)->where('to', $my_id)->where('owner', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
-            $query->where('from', $my_id)->where('to', $user_id)->where('owner', $user_id);;
+            $query->where('from', $my_id)->where('to', $user_id)->where('owner', $my_id);
         })->get();
 
         return $this->sendResponse('Success', 'ambil pesan', $messages, 200);
