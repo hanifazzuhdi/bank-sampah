@@ -57,7 +57,7 @@ class ChatController extends Controller
         $data = new Chat();
         $data->from = $from;
         $data->to = $to;
-        $data->owner = $to;
+        $data->owner = $from;
         $data->message = $message;
         $data->is_read = 0;
         $data->save();
@@ -65,7 +65,7 @@ class ChatController extends Controller
         $data = new Chat();
         $data->from = $from;
         $data->to = $to;
-        $data->owner = $from;
+        $data->owner = $to;
         $data->message = $message;
         $data->is_read = 0;
         $data->save();
@@ -107,15 +107,15 @@ class ChatController extends Controller
         //cacatnya masih ada
         $user = Auth::id();
         $Message = Chat::find($id);
-        $semua = Chat::where('message', $Message->message)->where('created_at', $Message->creted_at);
+        $semua = Chat::where('message', $Message->message)->where('created_at', $Message->creted_at)->where('id', $id+1);
         if ($Message->from != $user) {
             return $this->sendResponse('Success', 'bukan pesan anda', null, 500);
         }
-        if ($Message && $Message->is_read = 0) {
+        if ($Message->is_read = 0) {
             $Message->delete();
             $semua->delete();
             return $this->sendResponse('Success', 'Berhasil menghapus pesan', $Message, 200);
-        }
+        } else{
         return $this->sendResponse('Error', 'pesan anda sudah dibaca', null, 500);
-    } 
+    }} 
 }
