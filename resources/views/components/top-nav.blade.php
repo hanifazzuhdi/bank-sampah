@@ -70,7 +70,8 @@
 
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" onclick="openFullscreen()" role="button">
+                <a title="Layar Penuh" class="nav-link dropdown-toggle fullScreen" onclick="openFullscreen()"
+                    role="button">
                     <i class="fas fa-expand fa-fw"></i>
                 </a>
             </li>
