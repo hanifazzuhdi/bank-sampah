@@ -8,6 +8,7 @@ use App\Model\Penyetoran;
 use App\Model\Penjemputan;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class PenyetoranController extends Controller
 {
@@ -19,9 +20,12 @@ class PenyetoranController extends Controller
         ]);
 
         $harga = Jenis::find(request('jenis_sampah'));
+
         $data['penghasilan'] = $fee == 0 ? $harga->harga * $data['berat'] : $harga->harga * $data['berat'] - (($harga->harga * $data['berat']) * $fee / 100);
 
-        $data['user_id'] = Auth::id();
+        $id_user = User::where('email', request('email'))->firstOrFail();
+
+        $data['user_id'] = $id_user->id;
 
         // jika ada orang iseng
         abort_if($data['user_id'] != Auth::id(), 403, 'ANDA TIDAK MEMILIKI AKSES KESINI');
