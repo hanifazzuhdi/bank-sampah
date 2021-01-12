@@ -23,7 +23,7 @@ class PenyetoranController extends Controller
 
         $data['penghasilan'] = $fee == 0 ? $harga->harga * $data['berat'] : $harga->harga * $data['berat'] - (($harga->harga * $data['berat']) * $fee / 100);
 
-        $data['user_id'] = request('email') ? User::where('email', request('email'))->get('id') : $id;
+        $data['user_id'] = request('email') ? User::where('email', request('email'))->firstOrFail() : $id;
 
         $res = Penyetoran::create($data);
 
