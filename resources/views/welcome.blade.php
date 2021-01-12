@@ -99,6 +99,10 @@
                 API Bank-Sampa<a class="login" href="{{route('login')}}">h</a>
             </div>
 
+            <form action="">
+                <input type="hidden" name="" id="">
+            </form>
+
             <div class="links">
                 <a href="https://laracasts.com">Rais</a>
                 <a href="https://github.com/icatpojan">Irsyad Fauzan</a>

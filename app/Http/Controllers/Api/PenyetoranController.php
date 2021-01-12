@@ -12,24 +12,18 @@ use App\User;
 
 class PenyetoranController extends Controller
 {
-    public function store($fee = 0)
+    public function store($fee = 0, $id = null)
     {
             $data = request()->validate([
             'jenis_sampah' => 'required',
             'berat'        => 'required',
-            'email'        => 'required',
         ]);
 
         $harga = Jenis::find(request('jenis_sampah'));
 
         $data['penghasilan'] = $fee == 0 ? $harga->harga * $data['berat'] : $harga->harga * $data['berat'] - (($harga->harga * $data['berat']) * $fee / 100);
 
-        $id_user = User::where('email', request('email'))->firstOrFail();
-
-        $data['user_id'] = $id_user->id;
-
-        // jika ada orang iseng
-        abort_if($data['user_id'] != Auth::id(), 403, 'ANDA TIDAK MEMILIKI AKSES KESINI');
+        $data['user_id'] = request('email') ? User::where('email', request('email'))->get('id') : $id;
 
         $res = Penyetoran::create($data);
 
@@ -71,9 +65,6 @@ class PenyetoranController extends Controller
 
         // input user id
         $data['user_id'] = Auth::id();
-
-        // jika ada orang iseng
-        abort_if($data['user_id'] != Auth::id(), 403, 'ANDA TIDAK MEMILIKI AKSES KESINI');
 
         $res = Penjemputan::create($data);
 
