@@ -13,11 +13,11 @@ class ProfileController extends Controller
 {
     public function gett()
     {
-        $user = User::latest()->first('name');
+        $user = User::all();
         if (empty($user)) {
             return response('silakan login terlebih dahulu bos');
         }
-        return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 200);
+        return $this->sendResponse('Success', 'ini dia user', $user, 200);
     }
     public function index()
     {

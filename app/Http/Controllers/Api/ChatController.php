@@ -40,9 +40,9 @@ class ChatController extends Controller
 
         // ambil pesanya dari user yang di select
         $messages = Chat::where(function ($query) use ($user_id, $my_id) {
-            $query->where('from', $user_id)->where('to', $my_id);
+            $query->where('from', $user_id)->where('to', $my_id)->where('owner', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
-            $query->where('from', $my_id)->where('to', $user_id);
+            $query->where('from', $my_id)->where('to', $user_id)->where('owner', $my_id);
         })->get();
 
         return $this->sendResponse('Success', 'ambil pesan', $messages, 200);
@@ -57,6 +57,15 @@ class ChatController extends Controller
         $data = new Chat();
         $data->from = $from;
         $data->to = $to;
+        $data->owner = $from;
+        $data->message = $message;
+        $data->is_read = 0;
+        $data->save();
+
+        $data = new Chat();
+        $data->from = $from;
+        $data->to = $to;
+        $data->owner = $to;
         $data->message = $message;
         $data->is_read = 0;
         $data->save();
@@ -75,7 +84,7 @@ class ChatController extends Controller
         );
 
         $pusher->trigger('my-channel', 'my-event', $data);
-        return $this->sendResponse('Success', 'kontak dong', $data, 200);
+        return $this->sendResponse('Success', 'pesan terkirim bos', $data, 200);
     }
 
     public function destroy($id)
@@ -90,5 +99,23 @@ class ChatController extends Controller
             return $this->sendResponse('Success', 'Berhasil menghapus pesan', $Message, 200);
         }
         return $this->sendResponse('Error', 'Gagal menghapus pesan', null, 500);
-    }
+    } 
+
+    public function hapus_untuk_semua($id)
+    {
+        //masih butuh banyak seklai penelitian bos
+        //cacatnya masih ada
+        $user = Auth::id();
+        $Message = Chat::find($id);
+        $semua = Chat::where('message', $Message->message)->where('created_at', $Message->creted_at)->where('id', $id+1);
+        if ($Message->from != $user) {
+            return $this->sendResponse('Success', 'bukan pesan anda', null, 500);
+        }
+        if ($Message->is_read = 0) {
+            $Message->delete();
+            $semua->delete();
+            return $this->sendResponse('Success', 'Berhasil menghapus pesan', $Message, 200);
+        } else{
+        return $this->sendResponse('Error', 'pesan anda sudah dibaca', null, 500);
+    }} 
 }
