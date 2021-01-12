@@ -14,7 +14,7 @@ class PenyetoranController extends Controller
 {
     public function store($fee = 0)
     {
-        $data = request()->validate([
+            $data = request()->validate([
             'jenis_sampah' => 'required',
             'berat'        => 'required',
             'email'        => 'required',
