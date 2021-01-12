@@ -28,9 +28,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route penyetoran    -> Nasabah
     Route::get('historyPenjemputan', 'PenyetoranController@historyPenjemputan');    //Melihat History penjemputan sampah
-    Route::post('setorDriver/{fee}', 'PenyetoranController@store');                 //Nasabah Setor Sampah Dijemput Driver
-    Route::post('setor', 'PenyetoranController@store');                             //Nasabah Antar Sampah sendiri ke gudang
-    Route::post('jemput', 'PenyetoranController@jemput');                           //Nasabah minta permintaan jemput sampah oleh driver
+    Route::post('jemput', 'PenyetoranController@jemput');       //Nasabah minta permintaan jemput sampah oleh driver
 
     // Route Transaksi     -> Nasabah
     Route::get('getTabungan', 'TransaksiController@index');     //untuk melihat buku tabungan nasabah
@@ -40,6 +38,8 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route Gudang sampah  -> Nasabah, Pengurus1, Pengurus2
     Route::get('getSampah', 'SampahController@index');        // Melihat Sampah Yang ada di gudang
+    Route::post('setorDriver/{fee}', 'PenyetoranController@store');    //pengurus satur Setor Sampah Dijemput Driver
+    Route::post('setor', 'PenyetoranController@store');     //Nasabah Antar Sampah sendiri ke gudang
     Route::get('getSampah/{id}', 'SampahController@show');    // Melihat Sampah berdasarkan id jenisnya
     Route::get('getJenis', 'SampahController@getJenis');      // Melihat Jenis Sampah Dilayani
 
@@ -61,4 +61,3 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
     Route::delete('chat/{id} ', 'ChatController@destroy'); //hapus pesan
 
 });
-    

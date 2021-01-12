@@ -78,4 +78,10 @@ class HomeController extends Controller
     public function laporan()
     {
     }
+
+
+    public function peringkat()
+    {
+    $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)")
+    }
 }
