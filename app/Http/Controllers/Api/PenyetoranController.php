@@ -17,6 +17,7 @@ class PenyetoranController extends Controller
         $data = request()->validate([
             'jenis_sampah' => 'required',
             'berat'        => 'required',
+            'email'        => 'required',
         ]);
 
         $harga = Jenis::find(request('jenis_sampah'));
