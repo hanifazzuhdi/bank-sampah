@@ -82,6 +82,6 @@ class HomeController extends Controller
 
     public function peringkat()
     {
-    $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)")
+    $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)");    
     }
 }
