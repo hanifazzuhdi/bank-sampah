@@ -45,7 +45,7 @@ class HomeController extends Controller
         }
 
         // chart penghasilan
-        if (request()->url() == 'http://localhost:8000/home') {
+        if (env('APP_ENV') == 'local') {
             // query mysql untuk localhost
             $penghasilann = DB::table("penjualans")
                 ->select(DB::raw("(SUM(penghasilan)) as penghasilan"))
