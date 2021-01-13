@@ -59,12 +59,12 @@
     {{-- Jika Penarikan Success --}}
     @if (session('data'))
     <div class="d-flex justify-content-end mb-2">
-        <a class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" onclick="printContent('slip')"><i
+        <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" onclick="printContent('slip')"><i
                 class="fas fa-download fa-sm text-white-50"></i> Print Slip</a>
     </div>
 
     <div class="card" id="slip">
-        <div class="card-header d-flex justify-content-between align-items-center bg-info">
+        <div class="card-header d-flex justify-content-between align-items-center bg-success">
             <div class="text-white">
                 <img src="{{asset('img/logo.png')}}" width="60px" alt="">
                 <h5 class="d-inline font-weight-bold">SAMMPAH</h5>
@@ -100,7 +100,7 @@
 
         <div class="card-footer bg-white d-flex justify-content-around mt-2">
             <div class="penerima mt-3">
-                <p class="text-info mb-6">
+                <p class="text-success mb-6">
                     jumlah diatas telah diterima dengan benar
                 </p>
 
