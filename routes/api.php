@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route penyetoran    -> Nasabah
     Route::get('historyPenjemputan', 'PenyetoranController@historyPenjemputan');    //Melihat History penjemputan sampah
-    Route::post('setorDriver/{fee}/{id}', 'PenyetoranController@store');                 //Nasabah Setor Sampah Dijemput Driver
+    Route::post('setorDriver/{fee}/{id}', 'PenyetoranController@store');            //Nasabah Setor Sampah Dijemput Driver
     Route::post('setor', 'PenyetoranController@store');                             //Nasabah Antar Sampah sendiri ke gudang
     Route::post('jemput', 'PenyetoranController@jemput');                           //Nasabah minta permintaan jemput sampah oleh driver
 
