@@ -22,7 +22,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'jwt.verify'], function () {
 
     // Route User          -> Nasabah, Pengurus1, Pengurus2
     Route::get('profile', 'ProfileController@index')->middleware('verified');   //menampilkan profil user yang sedang login
-    Route::post('profile', 'ProfileController@update')->middleware('verified'); //mengupdate profile
+    Route::post('profile', 'ProfileController@update'); //mengupdate profile
     Route::post('ganti', 'ProfileController@change');   //ganti password
     Route::get('gett', 'ProfileController@gett');       //route percobaan
 

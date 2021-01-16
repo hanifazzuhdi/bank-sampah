@@ -18,6 +18,7 @@ class ProfileController extends Controller
         }
         return $this->sendResponse('Success', 'ini dia user', $user, 200);
     }
+
     public function index()
     {
         $user = User::where('id', Auth::user()->id)->first();
@@ -26,6 +27,7 @@ class ProfileController extends Controller
         }
         return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 200);
     }
+
     public function update(Request $request)
     {
         $this->validate($request, [
@@ -52,6 +54,7 @@ class ProfileController extends Controller
         $user->update();
         return $this->sendResponse('Success', 'profile berhasil di update Bos', $user, 200);
     }
+
     public function change(Request $request)
     {
         $user = User::where('id', Auth::user()->id)->first();
