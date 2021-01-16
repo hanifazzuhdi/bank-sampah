@@ -49,8 +49,7 @@ class TelegramNotif extends Notification
     {
         return TelegramMessage::create()
             ->to('@test_aja')
-            ->content("*PEMBERITAHUAN BENDAHARA*\nPermintaan penarikan uang No.Rekening {$this->email}\nsedang menunggu untuk di proses\n\nPermintaan belum diproses : {$this->permintaan}")
-            ->button('Buka Aplikasi', 'http://sammpah.herokuapp.com/');
+            ->content("*PEMBERITAHUAN BENDAHARA*\nPermintaan penarikan uang No.Rekening {$this->email}\nsedang menunggu untuk di proses\n\nPermintaan belum diproses : {$this->permintaan}");       // ->button('Buka Aplikasi', 'http://sammpah.herokuapp.com/');
     }
 
     /**
