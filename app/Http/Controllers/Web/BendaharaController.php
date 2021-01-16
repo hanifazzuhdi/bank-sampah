@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\User;
 use App\Model\Tabungan;
-use App\Model\Keuangan;
 use App\Model\Penarikan;
 use App\Model\Penyetoran;
-use App\Http\Controllers\Controller;
 use App\Model\Penjualan;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class BendaharaController extends Controller
 {

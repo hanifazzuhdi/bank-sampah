@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Model\Jenis;
 use App\Model\Sampah;
-use GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 
 class SampahController extends Controller
@@ -29,7 +28,7 @@ class SampahController extends Controller
         echo json_encode($data);
     }
 
-    public function store(Client $client)
+    public function store()
     {
         $data = request()->validate([
             'jenis_sampah' => 'required',
@@ -42,21 +41,10 @@ class SampahController extends Controller
             $data['image'] = request('imageURL');
         } else {
             // kondisi name image ada dan validasi post api image
-            $image = base64_encode(file_get_contents(request('image')));
-            $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
-                'form_params' => [
-                    'key' => '6d207e02198a847aa98d0a2a901485a5',
-                    'action' => 'upload',
-                    'source' => $image,
-                    'format' => 'json'
-                ]
-            ]);
-
-            $get = $res->getBody()->getContents();
-            $hasil = json_decode($get);
+            $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
 
             // Get Link Image
-            $data['image'] = $hasil->image->display_url;
+            $data['image'] = $response;
         }
 
         // Create to DB
@@ -72,7 +60,7 @@ class SampahController extends Controller
         return back();
     }
 
-    public function update($id, Client $client)
+    public function update($id)
     {
         $data = request()->validate([
             'jenis_sampah'  => 'required',
@@ -84,21 +72,10 @@ class SampahController extends Controller
             $data['image'] = request('imageURL');
         } else {
             // kondisi name image ada dan validasi post api image
-            $image = base64_encode(file_get_contents(request('image')));
-            $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
-                'form_params' => [
-                    'key' => '6d207e02198a847aa98d0a2a901485a5',
-                    'action' => 'upload',
-                    'source' => $image,
-                    'format' => 'json'
-                ]
-            ]);
-
-            $get = $res->getBody()->getContents();
-            $hasil = json_decode($get);
+            $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
 
             // Get Link Image
-            $data['image'] = $hasil->image->display_url;
+            $data['image'] = $response;
         }
 
         Jenis::find($id)->update($data);

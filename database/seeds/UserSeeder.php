@@ -54,7 +54,8 @@ class UserSeeder extends Seeder
             'email' => 'hnfhanif53@gmail.com',
             'password'  => Hash::make('password'),
             'phone_number'  => '08119072001',
-            'role_id'   => 1
+            'role_id'   => 1,
+            'email_verified_at' => now(),
         ]);
 
         User::create([
@@ -62,7 +63,8 @@ class UserSeeder extends Seeder
             'email' => 'saya1@gmail.com',
             'password'  => Hash::make('12345678'),
             'phone_number'  => '0812345678',
-            'role_id'   => 1
+            'role_id'   => 1,
+            'email_verified_at' => now()
         ]);
     }
 }

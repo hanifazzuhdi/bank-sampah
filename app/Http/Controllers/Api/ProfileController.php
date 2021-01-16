@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\User;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +18,7 @@ class ProfileController extends Controller
         }
         return $this->sendResponse('Success', 'ini dia user', $user, 200);
     }
+
     public function index()
     {
         $user = User::where('id', Auth::user()->id)->first();
@@ -27,6 +27,7 @@ class ProfileController extends Controller
         }
         return $this->sendResponse('Success', 'ini dia profil anda bos', $user, 200);
     }
+
     public function update(Request $request)
     {
         $this->validate($request, [
@@ -35,18 +36,7 @@ class ProfileController extends Controller
         ]);
 
         if ($request->avatar) {
-            $img = base64_encode(file_get_contents($request->avatar));
-            $client = new Client();
-            $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
-                'form_params' => [
-                    'key' => '6d207e02198a847aa98d0a2a901485a5',
-                    'action' => 'upload',
-                    'source' => $img,
-                    'format' => 'json',
-                ]
-            ]);
-            $array = json_decode($res->getBody()->getContents());
-            $image = $array->image->file->resource->chain->image;
+            $image = cloudinary()->upload(request('avatar')->getRealPath())->getSecurePath();
         }
 
         $user = User::where('id', Auth::user()->id)->first();
@@ -64,6 +54,7 @@ class ProfileController extends Controller
         $user->update();
         return $this->sendResponse('Success', 'profile berhasil di update Bos', $user, 200);
     }
+
     public function change(Request $request)
     {
         $user = User::where('id', Auth::user()->id)->first();

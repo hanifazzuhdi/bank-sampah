@@ -8,7 +8,6 @@ use Pusher\Pusher;
 use App\Model\Chat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
@@ -99,7 +98,7 @@ class ChatController extends Controller
             return $this->sendResponse('Success', 'Berhasil menghapus pesan', $Message, 200);
         }
         return $this->sendResponse('Error', 'Gagal menghapus pesan', null, 500);
-    } 
+    }
 
     public function hapus_untuk_semua($id)
     {
@@ -107,7 +106,7 @@ class ChatController extends Controller
         //cacatnya masih ada
         $user = Auth::id();
         $Message = Chat::find($id);
-        $semua = Chat::where('message', $Message->message)->where('created_at', $Message->creted_at)->where('id', $id+1);
+        $semua = Chat::where('message', $Message->message)->where('created_at', $Message->creted_at)->where('id', $id + 1);
         if ($Message->from != $user) {
             return $this->sendResponse('Success', 'bukan pesan anda', null, 500);
         }
@@ -115,7 +114,8 @@ class ChatController extends Controller
             $Message->delete();
             $semua->delete();
             return $this->sendResponse('Success', 'Berhasil menghapus pesan', $Message, 200);
-        } else{
-        return $this->sendResponse('Error', 'pesan anda sudah dibaca', null, 500);
-    }} 
+        } else {
+            return $this->sendResponse('Error', 'pesan anda sudah dibaca', null, 500);
+        }
+    }
 }
