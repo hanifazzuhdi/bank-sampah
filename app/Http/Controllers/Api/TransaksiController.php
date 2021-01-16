@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Model\Tabungan;
-use App\Http\Controllers\Controller;
-use App\Model\Keuangan;
 use App\Model\Penarikan;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class TransaksiController extends Controller
 {

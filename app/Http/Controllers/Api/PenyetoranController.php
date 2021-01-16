@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Model\Jenis;
-use GuzzleHttp\Client;
 use App\Model\Penyetoran;
 use App\Model\Penjemputan;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +38,7 @@ class PenyetoranController extends Controller
         return $this->sendResponse('Success', 'Sampah berhasil dijual', $res, 201);
     }
 
-    public function jemput(Client $client)
+    public function jemput()
     {
         $data = request()->validate([
             'image'         => 'required',
@@ -49,20 +48,10 @@ class PenyetoranController extends Controller
         ]);
 
         // Validasi image
-        $image = base64_encode(file_get_contents(request('image')));
-        $res = $client->request('POST', 'https://freeimage.host/api/1/upload', [
-            'form_params' => [
-                'key' => '6d207e02198a847aa98d0a2a901485a5',
-                'action' => 'upload',
-                'source' => $image,
-                'format' => 'json'
-            ]
-        ]);
-        $get = $res->getBody()->getContents();
-        $hasil = json_decode($get);
+        $response = cloudinary()->upload(request('avatar')->getRealPath())->getSecurePath();
 
         // input image
-        $data['image'] = $hasil->image->display_url;
+        $data['image'] = $response;
 
         // input user id
         $data['user_id'] = Auth::id();

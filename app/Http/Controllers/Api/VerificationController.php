@@ -52,7 +52,7 @@ class VerificationController extends Controller
     {
         if ($request->user()->hasVerifiedEmail()) {
 
-            return response(['message'=>'Already verified']);
+            return response(['message' => 'Already verified']);
         }
 
         $request->user()->sendEmailVerificationNotification();
@@ -82,7 +82,7 @@ class VerificationController extends Controller
 
         if ($request->user()->hasVerifiedEmail()) {
 
-            return response(['message'=>'akun anda telah diverifikasi. silakan kembali ke aplikasi']);
+            return response(['message' => 'akun anda telah diverifikasi. silakan kembali ke aplikasi']);
 
             // return redirect($this->redirectPath());
         }
@@ -91,9 +91,6 @@ class VerificationController extends Controller
             event(new Verified($request->user()));
         }
 
-        return response(['message'=>'Successfully verified']);
-
+        return response(['message' => 'Successfully verified']);
     }
-
-   
 }

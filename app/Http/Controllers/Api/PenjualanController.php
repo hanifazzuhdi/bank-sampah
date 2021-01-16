@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Model\Sampah;
 use App\Model\Keuangan;
 use App\Model\Penjualan;
-use App\Model\Sampah;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class PenjualanController extends Controller

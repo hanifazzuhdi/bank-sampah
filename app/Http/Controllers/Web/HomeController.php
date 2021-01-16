@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Web;
 
 use App\User;
+use App\Model\Jenis;
+use App\Model\Sampah;
 use App\Model\Keuangan;
 use App\Model\Penjualan;
 use App\Model\Penyetoran;
-use App\Model\Jenis;
-use App\Model\Sampah;
+use App\Model\Penarikan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Model\Penarikan;
 
 class HomeController extends Controller
 {
