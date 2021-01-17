@@ -33,6 +33,10 @@ class KaryawanController extends Controller
 
         $data['password'] = Hash::make(request('password'));
 
+        if ($data['role_id'] == 3 or $data['role_id'] == 2) {
+            $data['email_verified_at'] = now();
+        }
+
         User::create($data);
 
         alert()->success('Success', 'Data Berhasil ditambahkan');

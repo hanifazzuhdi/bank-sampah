@@ -38,7 +38,7 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>No. Telepon</th>
-                            <th>Alamat</th>
+                            <th>Email Verified At</th>
                             <th>Dibuat</th>
                             <th>Action</th>
                         </tr>
@@ -48,7 +48,7 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>No. Telepon</th>
-                            <th>Alamat</th>
+                            <th>Email Verified At</th>
                             <th>Dibuat</th>
                             <th>Action</th>
                         </tr>
@@ -59,7 +59,7 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone_number}}</td>
-                            <td>{{$user->address}}</td>
+                            <td>{{$user->email_verified_at ?? 'Belum Verifikasi Email'}}</td>
                             <td>{{$user->created_at}}</td>
                             <td class="text-center">
                                 <div class="dropdown">

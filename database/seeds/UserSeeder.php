@@ -37,7 +37,8 @@ class UserSeeder extends Seeder
             'password'  => Hash::make('password'),
             'phone_number'  => '08167145678',
             'address'  => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
-            'role_id'   => 3
+            'role_id'   => 3,
+            'email_verified_at' => now(),
         ]);
 
         User::create([
@@ -46,7 +47,8 @@ class UserSeeder extends Seeder
             'password'  => Hash::make('password'),
             'phone_number'  => '08123478161',
             'address'  => 'Pondok Programmer Kec. Kretek Bantul Yogyakarta',
-            'role_id'   => 2
+            'role_id'   => 2,
+            'email_verified_at' => now(),
         ]);
 
         User::create([
