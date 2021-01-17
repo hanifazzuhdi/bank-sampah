@@ -59,7 +59,9 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone_number}}</td>
-                            <td>{{$user->email_verified_at ?? 'Belum Verifikasi Email'}}</td>
+                            <td>{!!$user->email_verified_at ?? '<span class="text-danger"> Belum Verifikasi Email
+                                </span>'!!}
+                            </td>
                             <td>{{$user->created_at}}</td>
                             <td class="text-center">
                                 <div class="dropdown">

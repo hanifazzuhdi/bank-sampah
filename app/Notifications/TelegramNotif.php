@@ -48,7 +48,7 @@ class TelegramNotif extends Notification
     public function toTelegram($notifiable)
     {
         return TelegramMessage::create()
-            ->to('@test_aja')
+            ->to('@sammpah_2')
             ->content("*PEMBERITAHUAN BENDAHARA*\nPermintaan penarikan uang No.Rekening {$this->email}\nsedang menunggu untuk di proses\n\nPermintaan belum diproses : {$this->permintaan}")
             ->button('Kelola Keuangan', 'http://sammpah.herokuapp.com');
     }
