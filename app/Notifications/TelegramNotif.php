@@ -15,6 +15,7 @@ class TelegramNotif extends Notification
     use Queueable;
 
     public $email;
+    public $penarikan;
     public $permintaan;
 
     /**
@@ -22,9 +23,10 @@ class TelegramNotif extends Notification
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($email, $penarikan)
     {
         $this->email = $email;
+        $this->penarikan = $penarikan;
         $this->permintaan = Penarikan::whereStatus(1)->get()->count();
     }
 
@@ -49,7 +51,7 @@ class TelegramNotif extends Notification
     {
         return TelegramMessage::create()
             ->to('@sammpah_2')
-            ->content("*PEMBERITAHUAN BENDAHARA*\nPermintaan penarikan uang No.Rekening {$this->email}\nsedang menunggu untuk di proses\n\nPermintaan belum diproses : {$this->permintaan}")
+            ->content("*PEMBERITAHUAN BENDAHARA*\nPermintaan penarikan uang :\n- Email : {$this->email}\n- Alias : {$this->penarikan->nama}\n- No.Rekening : {$this->penarikan->rekening}\n\nSedang menunggu untuk di proses, segera proses permintaan\n\nPermintaan belum diproses : {$this->permintaan}")
             ->button('Kelola Keuangan', 'http://sammpah.herokuapp.com');
     }
 

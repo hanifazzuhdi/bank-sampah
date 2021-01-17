@@ -78,7 +78,7 @@ class TransaksiController extends Controller
         ]);
 
         $user = Auth::user();
-        $user->notify(new TelegramNotif($user->email));
+        $user->notify(new TelegramNotif($user->email, $penarikan));
 
         return $this->sendResponse('Success', 'Permintaan Sedang di Proses, Menunggu Saldo dikirim', $penarikan, 202);
     }
