@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     use SoftDeletes;
     use FormatDate;
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'email_verified_at'];
 
     /**
      * The attributes that are mass assignable.

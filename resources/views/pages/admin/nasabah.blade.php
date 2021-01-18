@@ -59,10 +59,10 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone_number}}</td>
-                            <td>{!!$user->email_verified_at ?? '<span class="text-danger"> Belum Verifikasi Email
-                                </span>'!!}
+                            <td>
+                                {!! $user->email_verified_at ? $user->email_verified_at->translatedFormat('d F Y H:i') :
+                                "<span class='text-danger'> Belum Verifikasi Email </span>" !!}
                             </td>
-                            <td>{{$user->created_at}}</td>
                             <td class="text-center">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle text-decoration-none" role="button" id="dropdownMenuLink"
