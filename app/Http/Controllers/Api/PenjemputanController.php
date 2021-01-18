@@ -9,7 +9,7 @@ class PenjemputanController extends Controller
 {
     public function index()
     {
-        $permintaan = Penjemputan::with('user')->where('status', 0)->get();
+        $permintaan = Penjemputan::with('user')->get();
         return $this->sendResponse('Success', 'ini dia daftar permintaan jemput bos', $permintaan, 200);
     }
 
