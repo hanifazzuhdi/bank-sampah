@@ -65,7 +65,7 @@ class PenyetoranController extends Controller
     {
         $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get();
 
-        if (empty($data->array)) return $this->sendResponse();
+        // if (empty($data->array)) return $this->sendResponse();
 
         return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
     }
