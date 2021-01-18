@@ -48,7 +48,7 @@ class PenyetoranController extends Controller
         ]);
 
         // Validasi image
-        $response = cloudinary()->upload(request('avatar')->getRealPath())->getSecurePath();
+        $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
 
         // input image
         $data['image'] = $response;
