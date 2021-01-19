@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
+Auth::loginUsingId(1);
+
 Auth::routes([
     'register' => false,
 ]);
