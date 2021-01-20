@@ -26,9 +26,8 @@
                                             placeholder="Enter Email Address...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" value="password" name="password"
-                                            class="form-control form-control-user" id="exampleInputPassword"
-                                            placeholder="Password">
+                                        <input type="password" name="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">

@@ -6,6 +6,7 @@ use App\Model\Tabungan;
 use App\Model\Penarikan;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Notifications\TelegramNotif;
 
 class TransaksiController extends Controller
 {
@@ -75,6 +76,9 @@ class TransaksiController extends Controller
             'keterangan'    => 'Penarikan Saldo',
             'status'        => 1,
         ]);
+
+        $user = Auth::user();
+        $user->notify(new TelegramNotif($user->email, $penarikan));
 
         return $this->sendResponse('Success', 'Permintaan Sedang di Proses, Menunggu Saldo dikirim', $penarikan, 202);
     }
