@@ -22,8 +22,13 @@ class PenyetoranController extends Controller
 
         $data['penghasilan'] = $fee == 0 ? $harga->harga * $data['berat'] : $harga->harga * $data['berat'] - (($harga->harga * $data['berat']) * $fee / 100);
 
-        $user_id = User::where('email', request('email'))->firstOrFail();
-        $data['user_id'] = request('email') ? $user_id->id : $id;
+        if ($id != null) {
+            $data['user_id'] = $id;
+            $this->selesaiPenjemputan($id);
+        } else {
+            $user_id = User::where('email', request('email'))->firstOrFail();
+            $data['user_id'] = $user_id;
+        }
 
         $res = Penyetoran::create($data);
 
@@ -35,7 +40,7 @@ class PenyetoranController extends Controller
             $this->sendResponse('Failed', 'Gagal Melakukan Permintaan', null, 400);
         }
 
-        return $this->sendResponse('Success', 'Sampah berhasil dijual', $res, 201);
+        return $this->sendResponse('Success', 'Sampah berhasil disetor', $res, 201);
     }
 
     public function jemput()
@@ -48,7 +53,7 @@ class PenyetoranController extends Controller
         ]);
 
         // Validasi image
-        $response = cloudinary()->upload(request('avatar')->getRealPath())->getSecurePath();
+        $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
 
         // input image
         $data['image'] = $response;
@@ -65,8 +70,17 @@ class PenyetoranController extends Controller
     {
         $data = Penjemputan::where('user_id', Auth::id())->orderBy('status', 'ASC')->get();
 
-        if (empty($data->array)) return $this->sendResponse();
+        // if (empty($data->array)) return $this->sendResponse();
 
         return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
+    }
+
+    protected function selesaiPenjemputan($id)
+    {
+        $penjemputan = Penjemputan::find($id);
+
+        return $penjemputan->update([
+            'status'    => 2
+        ]);
     }
 }

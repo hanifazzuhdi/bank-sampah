@@ -15,7 +15,7 @@ class KaryawanController extends Controller
 
     public function index()
     {
-        $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 5)->get();
+        $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 5)->paginate(10);
 
         return view('pages.admin.karyawan', compact('users'));
     }

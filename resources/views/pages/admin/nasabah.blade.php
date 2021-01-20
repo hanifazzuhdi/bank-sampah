@@ -92,6 +92,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-end">
+                    {{$users->links()}}
+                </div>
             </div>
         </div>
     </div>
@@ -107,7 +110,7 @@
 
 <script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
+<script src="{{asset('js/datatables-user.js')}}"></script>
 
 {{-- jquery --}}
 <script src="{{asset('js/script.js')}}"></script>
