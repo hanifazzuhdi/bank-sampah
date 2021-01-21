@@ -75,9 +75,9 @@ class PenyetoranController extends Controller
         return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
     }
 
-    protected function selesaiPenjemputan($id)
+    protected function selesaiPenjemputan($user_id)
     {
-        $penjemputan = Penjemputan::find($id);
+        $penjemputan = Penjemputan::where('user_id', $user_id)->where('status', 1)->firstOrFail();
 
         return $penjemputan->update([
             'status'    => 2
