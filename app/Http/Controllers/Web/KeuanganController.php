@@ -25,7 +25,9 @@ class KeuanganController extends Controller
 
     public function getPenarikan()
     {
-        return view('pages.bendahara.penarikan.penarikan');
+        $users = User::where('role_id', 1)->get();
+
+        return view('pages.bendahara.penarikan.penarikan', compact('users'));
     }
 
     public function getPermintaan()

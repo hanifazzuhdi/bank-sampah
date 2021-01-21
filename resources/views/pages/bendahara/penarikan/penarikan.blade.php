@@ -1,5 +1,8 @@
 @extends('layouts.admin', ['title' => 'Penarikan Tunai - Sammpah.com'])
 
+@section('style')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 
 @section('content')
 
@@ -30,7 +33,11 @@
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control">
+                            <select class="form-control" name="email" id="selectEmail">
+                                @foreach ($users as $user)
+                                <option value="{{$user->email}}"> {{$user->email}} </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col-md-6">
@@ -127,7 +134,14 @@
 @endsection
 
 @section('script')
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 <script>
+    $(document).ready(function() {
+        $('#selectEmail').select2()
+    });
+
     function printContent(el){
 	var restorepage = document.body.innerHTML;
 	var printcontent = document.getElementById(el).innerHTML;
