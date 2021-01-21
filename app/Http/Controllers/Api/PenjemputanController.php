@@ -6,7 +6,7 @@ use App\Model\Penjemputan;
 use App\Http\Controllers\Controller;
 
 class PenjemputanController extends Controller
-{
+{   
     public function index()
     {
         $permintaan = Penjemputan::with('user')->get();

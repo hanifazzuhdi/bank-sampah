@@ -40,7 +40,7 @@ class TransaksiController extends Controller
         Tabungan::create([
             'user_id'       => Auth::id(),
             'keterangan'    => 'Penjualan Sampah ke Bank Sampah',
-            'debit'         => $data['penghasilan'],
+            'debet'         => $data['penghasilan'],
             'kredit'        => 0,
             'saldo'         => $last == null ? 0 + $data['penghasilan'] : $last->saldo + $data['penghasilan']
         ]);
