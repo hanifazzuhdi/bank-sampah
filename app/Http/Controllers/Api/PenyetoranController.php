@@ -46,17 +46,17 @@ class PenyetoranController extends Controller
     public function jemput()
     {
         $data = request()->validate([
-            // 'image'         => 'required',
+            'image'         => 'required',
             'address'       => 'required',
             'phone_number'  => 'required',
             'description'   => 'required',
         ]);
 
         // Validasi image
-        // $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
+        $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
 
         // input image
-        $data['image'] = "askdjbj";
+        $data['image'] = $response;
 
         // input user id
         $data['user_id'] = Auth::id();
