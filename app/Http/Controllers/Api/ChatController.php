@@ -42,7 +42,7 @@ class ChatController extends Controller
             $query->where('from', $user_id)->where('to', $my_id)->where('owner', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id)->where('owner', $my_id);
-        })->orderBy('created_at')->get();
+        })->orderBy('created_at','ASC')->get();
 
         return $this->sendResponse('Success', 'ambil pesan', $messages, 200);
     }
