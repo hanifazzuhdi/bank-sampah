@@ -3,11 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
-Route::get('coba', 'Api\HomeController@nasabah'); //mengirim email reset password
-
-=======
->>>>>>> c17502a264d48f7256591f1fe84491851e6a47eb
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
