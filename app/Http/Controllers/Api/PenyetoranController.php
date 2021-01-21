@@ -11,7 +11,7 @@ use App\User;
 
 class PenyetoranController extends Controller
 {
-    public function store($fee = 0, $id = null)
+    public function store($fee = 0, $id = null, $id_jemput = null)
     {
         $data = request()->validate([
             'jenis_sampah' => 'required',
@@ -24,7 +24,7 @@ class PenyetoranController extends Controller
 
         if ($id != null) {
             $data['user_id'] = $id;
-            $this->selesaiPenjemputan($id);
+            $this->selesaiPenjemputan($id, $id_jemput);
         } else {
             $user_id = User::where('email', request('email'))->firstOrFail();
             $data['user_id'] = $user_id;
@@ -46,17 +46,17 @@ class PenyetoranController extends Controller
     public function jemput()
     {
         $data = request()->validate([
-            'image'         => 'required',
+            // 'image'         => 'required',
             'address'       => 'required',
             'phone_number'  => 'required',
             'description'   => 'required',
         ]);
 
         // Validasi image
-        $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
+        // $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
 
         // input image
-        $data['image'] = $response;
+        $data['image'] = "askdjbj";
 
         // input user id
         $data['user_id'] = Auth::id();
@@ -75,9 +75,9 @@ class PenyetoranController extends Controller
         return $this->sendResponse('Success', 'History Berhasil dimuat', $data, 200);
     }
 
-    protected function selesaiPenjemputan($user_id)
+    protected function selesaiPenjemputan($user_id, $id_jemput)
     {
-        $penjemputan = Penjemputan::where('user_id', $user_id)->where('status', 1)->firstOrFail();
+        $penjemputan = Penjemputan::where('id', $id_jemput)->where('user_id', $user_id)->where('status', 1)->firstOrFail();
 
         return $penjemputan->update([
             'status'    => 2
