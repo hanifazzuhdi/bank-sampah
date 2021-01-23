@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
         'user.web'  => \App\Http\Middleware\UserWeb::class,
         'admin'  => \App\Http\Middleware\Admin::class,
+        'bendahara' => \App\Http\Middleware\Bendahara::class,
     ];
 }
