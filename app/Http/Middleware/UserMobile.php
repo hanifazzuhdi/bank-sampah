@@ -19,7 +19,7 @@ class UserMobile
         if (Auth::user() and (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)) {
             return $next($request);
         } else {
-            return abort(403);
+            abort('403');
         }
     }
 }
