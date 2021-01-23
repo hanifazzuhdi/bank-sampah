@@ -1,9 +1,7 @@
 <?php
 
-use App\Exports\KeuanganExport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Maatwebsite\Excel\Facades\Excel;
 
 Auth::routes([
     'register' => false,
@@ -57,11 +55,11 @@ Route::group(['namespace' => 'Web', 'middleware' => ['user.web']], function () {
     Route::get('penjualan', 'BendaharaController@penjualan')->name('bendahara.penjualan');  //Menampilkan data penjualan
 
     //Route Penarikan       -> Bendahara
-    Route::get('penarikan-tunai', 'KeuanganController@getPenarikan')->name('keuangan.penarikan');            //menampilkan form penarikan
-    Route::get('penarikan-permintaan', 'KeuanganController@getPermintaan')->name('keuangan.permintaan');     //menampilkan data permintaan
-    Route::post('penarikan/tunai/store', 'KeuanganController@penarikan')->name('keuangan.tarik');            //Kirim form penarikan tunai
-    Route::post('penarikan/konfirmasi/{id}', 'KeuanganController@konfirmasi');
-    Route::post('penarikan/tolak/{id}', 'KeuanganController@tolak');
+    Route::get('penarikan-tunai', 'KeuanganController@getPenarikan')->name('keuangan.penarikan');                               //menampilkan form penarikan
+    Route::get('penarikan-permintaan', 'KeuanganController@getPermintaan')->name('keuangan.permintaan');                        //menampilkan data permintaan
+    Route::post('penarikan/tunai/store', 'KeuanganController@penarikan')->middleware('bendahara')->name('keuangan.tarik');      //Kirim form penarikan tunai
+    Route::post('penarikan/konfirmasi/{id}', 'KeuanganController@konfirmasi')->middleware('bendahara');
+    Route::post('penarikan/tolak/{id}', 'KeuanganController@tolak')->middleware('bendahara');
 
     // Route ajax
     Route::get('alert', 'HomeController@alert');

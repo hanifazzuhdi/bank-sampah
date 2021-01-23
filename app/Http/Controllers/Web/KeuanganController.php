@@ -6,8 +6,6 @@ use App\User;
 use App\Model\Tabungan;
 use App\Model\Keuangan;
 use App\Model\Penarikan;
-use App\Exports\KeuanganExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
 class KeuanganController extends Controller
