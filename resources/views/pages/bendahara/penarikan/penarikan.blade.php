@@ -40,10 +40,11 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6"   >
                             <label for="nominal">Nominal</label>
                             <input type="number" id="nominal" name="nominal" class="form-control">
                         </div>
+                        
                     </div>
 
                     <div class="form-group">
