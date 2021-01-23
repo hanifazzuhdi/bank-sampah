@@ -17,7 +17,7 @@ Route::post('login', 'Api\UserController@login');
 Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend'); //kirim email verivikasi
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify'); //kirim email verivikasi
 
-Route::group(['namespace' => 'Api', 'middleware' => ['jwt.verify', 'user.mobile']], function () {
+Route::group(['namespace' => 'Api', 'middleware' => ['jwt.verify']], function () {
 
     // Route User          -> Nasabah, Pengurus1, Pengurus2
     Route::get('profile', 'ProfileController@index')->middleware('verified');   //menampilkan profil user yang sedang login
