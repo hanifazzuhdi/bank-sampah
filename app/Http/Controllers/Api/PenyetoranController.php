@@ -13,7 +13,7 @@ class PenyetoranController extends Controller
 {
     public function store($fee = 0, $id = null, $id_jemput = null)
     {
-            $data = request()->validate([
+        $data = request()->validate([
             'jenis_sampah' => 'required',
             'berat'        => 'required',
         ]);
@@ -27,7 +27,7 @@ class PenyetoranController extends Controller
             $this->selesaiPenjemputan($id, $id_jemput);
         } else {
             $user_id = User::where('email', request('email'))->firstOrFail();
-            $data['user_id'] = $user_id;
+            $data['user_id'] = $user_id->id;
         }
 
         $res = Penyetoran::create($data);
