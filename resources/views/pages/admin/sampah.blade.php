@@ -117,10 +117,10 @@
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ["{{$sampah->jenis_sampah}}","{{$sampah->jenis_sampah}}","{{$sampah->jenis_sampah}}","{{$sampah->jenis_sampah}}"],
+				labels: {!! json_encode($jenis) !!},
 				datasets: [{
 					label: 'perbandingan harga',
-					data: [{{$sampah->harga}},{{$sampah->harga}},{{$sampah->harga}},{{$sampah->harga}},{{$sampah->harga}},],
+					data: {!! json_encode($harga) !!},
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
