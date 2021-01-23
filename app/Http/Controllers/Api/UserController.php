@@ -26,6 +26,7 @@ class UserController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
+        $this->verified($user);
         return response()->json(compact('user', 'token'), 202);
     }
 
@@ -49,12 +50,16 @@ class UserController extends Controller
             'phone_number' => request()->phone_number
         ])->sendEmailVerificationNotification();
 
-        // $data = User::where('email', request('email'))->firstOrFail();
-
         return response()->json([
             'status' => 'success',
             'message' => 'silakan verivikasi',
-            // 'data'  => $data
         ]);
+    }
+
+    public function verified($user)
+    {
+        if ($user->role_id != 1 and $user->role_id != 2 and $user->role_id != 3) {
+            return abort('403');
+        }
     }
 }
