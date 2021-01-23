@@ -35,7 +35,6 @@ a {
 }
 
 .container {
-    width: 1170px;
     margin: 0 auto;
 }
 
@@ -102,6 +101,8 @@ footer {
     background-color: rgba(34, 49, 52, 0.9);
     z-index: 10;
     text-align: center;
+    opacity: 0.9;
+    position: static;
 }
 
 footer p a {
@@ -111,10 +112,6 @@ footer p a {
 .logo {
     width: 124px;
     margin-top: 20px;
-}
-
-.header-left {
-    float: left;
 }
 
 .header-right {
@@ -133,16 +130,13 @@ footer p a {
     display: block;
 }
 
-.heading {
-    padding-top: 60px;
-    padding-bottom: 30px;
-    color: #5f5d60;
-}
-
-.heading h2 {
-    font-weight: normal;
-}
-
 p a {
     padding: 0 25px;
+}
+
+@media screen and (max-width:500px) {
+    body {
+        width: auto;
+        height: auto;
+    }
 }
