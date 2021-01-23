@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Web;
 
 use App\Model\Jenis;
 use App\Model\Sampah;
@@ -8,33 +8,95 @@ use App\Http\Controllers\Controller;
 
 class SampahController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        $data = Sampah::with(['jenis'])->orderBy('id', 'ASC')->get();
-
-        return $this->sendResponse('Success', 'Data Sampah Berhasil dimuat', $data, 200);
+        $this->middleware('admin')->except('getSampah', 'getGudang', 'show');
     }
 
-    public function getJenis()
+    public function getSampah()
     {
-        $data = Jenis::all();
+        $sampahs = Jenis::paginate(6);
 
-        return $this->sendResponse('Success', 'Data Jenis Sampah Dimuat', $data, 200);
+        return view('pages.admin.sampah', compact('sampahs'));
     }
 
+    // for ajax
     public function show($id)
     {
-        $data = Sampah::findOrFail($id);
+        $data = Jenis::find($id);
 
-        return $this->sendResponse('Success', 'Data Sampah Berhasil Dimuat', $data, 200);
+        echo json_encode($data);
     }
 
-    public static function addSampah($data)
+    public function store()
     {
-        $sampah = Sampah::find($data['jenis_sampah']);
-
-        $sampah->update([
-            'berat' => $sampah->berat += $data['berat']
+        $data = request()->validate([
+            'jenis_sampah' => 'required',
+            'harga'        => 'required',
+            'warna'        => 'required',
         ]);
+
+        // kondisi name image tidak ada
+        if (!request('image')) {
+            $data['image'] = request('imageURL');
+        } else {
+            // kondisi name image ada dan validasi post api image
+            $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
+
+            // Get Link Image
+            $data['image'] = $response;
+        }
+
+        // Create to DB
+        $jenis = Jenis::create($data);
+
+        // Create data to table Sampahs
+        Sampah::create([
+            'jenis_sampah' => $jenis->id,
+            'berat'        => 0
+        ]);
+
+        alert()->success('Success', 'Data Berhasil Ditambahkan');
+        return back();
+    }
+
+    public function update($id)
+    {
+        $data = request()->validate([
+            'jenis_sampah'  => 'required',
+            'harga'         => 'required',
+        ]);
+
+        // kondisi name image tidak ada
+        if (!request('image')) {
+            $data['image'] = request('imageURL');
+        } else {
+            // kondisi name image ada dan validasi post api image
+            $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
+
+            // Get Link Image
+            $data['image'] = $response;
+        }
+
+        Jenis::find($id)->update($data);
+
+        alert()->success('Success', 'Data Berhasil Diubah');
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        Jenis::destroy($id);
+
+        alert()->success('Success', 'Data Berhasil Dihapus');
+        return back();
+    }
+
+    // Gudang
+    public function getGudang()
+    {
+        $sampahs = Sampah::with(['jenis'])->orderBy('id', 'ASC')->paginate(6);
+
+        return view('pages.admin.gudang', compact('sampahs'));
     }
 }
