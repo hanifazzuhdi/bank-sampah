@@ -16,10 +16,10 @@ class UserMobile
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() and (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)) {
-            return $next($request);
-        } else {
-            abort('403');
-        }
+        // if (Auth::user() and (Auth::user()->role_id == 1 or Auth::user()->role_id == 2 or Auth::user()->role_id == 3)) {
+        //     return $next($request);
+        // } else {
+        //     abort('403');
+        // }
     }
 }

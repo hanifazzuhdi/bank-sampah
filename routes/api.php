@@ -12,7 +12,7 @@ Route::post('password/reset', 'Api\ForgotPasswordController@reset');
 
 // Route Auth
 Route::post('register', 'Api\UserController@register');
-Route::post('login', 'Api\UserController@login')->middleware('user.mobile');
+Route::post('login', 'Api\UserController@login');
 
 Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend'); //kirim email verivikasi
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify'); //kirim email verivikasi
