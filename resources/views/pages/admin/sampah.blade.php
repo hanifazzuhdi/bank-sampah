@@ -111,7 +111,6 @@
 {{-- jquery --}}
 <script src="{{asset('js/script.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
-@foreach ($sampahs as $sampah)
 <script>
     var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -151,5 +150,4 @@
 			}
 		});
 </script>
-@endforeach
 @endsection
