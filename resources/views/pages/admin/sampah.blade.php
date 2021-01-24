@@ -118,7 +118,7 @@
 			data: {
 				labels: {!! json_encode($jenis) !!},
 				datasets: [{
-					label: 'perbandingan harga',
+					label: 'per {{now()}}',
 					data: {!! json_encode($harga) !!},
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
