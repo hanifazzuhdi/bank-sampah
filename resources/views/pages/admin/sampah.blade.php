@@ -123,7 +123,7 @@
 			data: {
 				labels: {!! json_encode($jenis) !!},
 				datasets: [{
-					label: 'per {{now('Y/D')}}',
+					label: 'per {{now()}}',
 					data: {!! json_encode($harga) !!},
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
