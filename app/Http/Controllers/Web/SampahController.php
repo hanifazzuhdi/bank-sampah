@@ -16,8 +16,14 @@ class SampahController extends Controller
     public function getSampah()
     {
         $sampahs = Jenis::paginate(6);
-
-        return view('pages.admin.sampah', compact('sampahs'));
+        $jenis_sampah = Jenis::all();
+        foreach ($jenis_sampah as $value) {
+            $jenis[] = $value->jenis_sampah;
+        }
+        foreach ($jenis_sampah as $value) {
+            $harga[] = $value->harga;
+        }
+        return view('pages.admin.sampah', compact('sampahs','jenis','harga'));
     }
 
     // for ajax

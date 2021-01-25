@@ -1,5 +1,5 @@
 // jquery + ajax update
-$(function () {
+$(function() {
 
     // Permintaan csrf token laravel
     $.ajaxSetup({
@@ -12,7 +12,7 @@ $(function () {
     // Karyawan dan nasabah
 
     // update
-    $('.see-nasabah').click(function () {
+    $('.see-nasabah').click(function() {
         const id = $(this).data('id');
         const url = $(this).data('url');
         console.log(url + id);
@@ -31,7 +31,7 @@ $(function () {
             url: url + id,
             method: 'get',
             dataType: 'json',
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 $('#avatar').attr('src', data.avatar);
                 $('#name').val(data.name);
@@ -45,7 +45,7 @@ $(function () {
         });
     });
 
-    $('.see').on('click', function () {
+    $('.see').on('click', function() {
 
         const id = $(this).data('id');
         const url = $(this).data('url');
@@ -57,7 +57,7 @@ $(function () {
             url: url + id,
             method: 'get',
             dataType: 'json',
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 $('#avatar').attr('src', data.avatar);
                 $('#name').val(data.name);
@@ -72,20 +72,20 @@ $(function () {
     });
 
     // create
-    $('.btn-create-karyawan').click(function () {
+    $('.btn-create-karyawan').click(function() {
         $('.modal-body form').attr('action', '/karyawan/store');
 
         $('.select-role').show();
     });
 
-    $('.btn-create-user').click(function () {
+    $('.btn-create-user').click(function() {
         $('.modal-body form').attr('action', '/nasabah/store');
 
         $('.select-role').hide();
     });
 
     // Jenis Sampah
-    $('.update-jenis').click(function () {
+    $('.update-jenis').click(function() {
 
         const url = $(this).data('url');
         console.log(url);
@@ -96,7 +96,7 @@ $(function () {
             url: url,
             method: 'get',
             dataType: 'json',
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 $('#jenis-update').val(data.jenis_sampah);
                 $('#harga-update').val(data.harga);
