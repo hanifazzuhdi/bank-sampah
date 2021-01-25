@@ -17,7 +17,7 @@ class SampahController extends Controller
 
     public function getJenis()
     {
-        $data = Jenis::all();
+        $data = Jenis::orderBy('id', 'ASC')->get();
 
         return $this->sendResponse('Success', 'Data Jenis Sampah Dimuat', $data, 200);
     }
