@@ -87,7 +87,7 @@ class SampahController extends Controller
 
         Jenis::find($id)->update($data);
         hargasampah::create([
-            'id_jenis' => $data['jenis_sampah'],
+            'jenis' => $data['jenis_sampah'],
             'harga' => $data['harga']
         ]);
         alert()->success('Success', 'Data Berhasil Diubah');

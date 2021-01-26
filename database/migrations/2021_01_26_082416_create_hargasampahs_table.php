@@ -15,7 +15,7 @@ class CreateHargasampahsTable extends Migration
     {
         Schema::create('hargasampahs', function (Blueprint $table) {
             $table->id();
-            $table->string('id_jenis')->nullable();
+            $table->string('jenis')->nullable();
             $table->string('harga');
             $table->timestamps();
         });
