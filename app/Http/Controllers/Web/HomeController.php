@@ -39,7 +39,7 @@ class HomeController extends Controller
             $warna[] = $value->warna;
         }
 
-        $sampahh = Sampah::all();
+           $sampahh = Sampah::all();
         foreach ($sampahh as $value) {
             $sampah[] = $value->berat;
         }
