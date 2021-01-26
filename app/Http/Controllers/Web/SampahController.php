@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Model\Jenis;
 use App\Model\Sampah;
 use App\Http\Controllers\Controller;
+use App\Model\hargasampah;
 
 class SampahController extends Controller
 {
@@ -23,7 +24,7 @@ class SampahController extends Controller
         foreach ($jenis_sampah as $value) {
             $harga[] = $value->harga;
         }
-        return view('pages.admin.sampah', compact('sampahs','jenis','harga'));
+        return view('pages.admin.sampah', compact('sampahs', 'jenis', 'harga'));
     }
 
     // for ajax
@@ -85,7 +86,10 @@ class SampahController extends Controller
         }
 
         Jenis::find($id)->update($data);
-
+        hargasampah::create([
+            'id_jenis' => $data['jenis_sampah'],
+            'harga' => $data['harga']
+        ]);
         alert()->success('Success', 'Data Berhasil Diubah');
         return back();
     }
