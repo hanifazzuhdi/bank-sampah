@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes([
-    'register' => false,
+    // 'register' => false,
 ]);
 
 Route::get('/', function () {
