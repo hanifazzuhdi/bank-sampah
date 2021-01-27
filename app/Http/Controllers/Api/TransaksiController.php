@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $data = Tabungan::where('user_id', Auth::id())->get();
+        $data = Tabungan::where('user_id', Auth::id())->orderBy('id', 'DESC')->get();
 
         if ($data == '[]') return $this->sendResponse();
 
