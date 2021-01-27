@@ -249,7 +249,7 @@ var myLineChart = new Chart(ctx, {
           maxTicksLimit: 7
         }
       }],
-      yAxes: [{
+          yAxes: [{
         ticks: {
           maxTicksLimit: 5,
           padding: 10,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Model\Jenis;
 use App\Model\Sampah;
 use App\Http\Controllers\Controller;
+use App\Model\hargasampah;
 
 class SampahController extends Controller
 {
@@ -17,13 +18,21 @@ class SampahController extends Controller
     {
         $sampahs = Jenis::paginate(6);
         $jenis_sampah = Jenis::all();
+        $harga_sampah = hargasampah::all();
+        
         foreach ($jenis_sampah as $value) {
             $jenis[] = $value->jenis_sampah;
         }
         foreach ($jenis_sampah as $value) {
             $harga[] = $value->harga;
         }
-        return view('pages.admin.sampah', compact('sampahs','jenis','harga'));
+        foreach ($harga_sampah as $value) {
+            $label[] = $value->created_at;
+        }
+        foreach ($harga_sampah as $value) {
+            $hargae[] = $value->harga;
+        }
+        return view('pages.admin.sampah', compact('sampahs', 'jenis', 'harga','label','hargae'));
     }
 
     // for ajax
@@ -85,7 +94,10 @@ class SampahController extends Controller
         }
 
         Jenis::find($id)->update($data);
-
+        hargasampah::create([
+            'jenis' => $data['jenis_sampah'],
+            'harga' => $data['harga']
+        ]);
         alert()->success('Success', 'Data Berhasil Diubah');
         return back();
     }

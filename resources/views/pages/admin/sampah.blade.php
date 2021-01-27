@@ -104,6 +104,25 @@
 
 </div>
 
+<div class="container-fluid">
+
+    <div class="col-xl-8 col-lg-7 pl-0">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">grafik kenaikan harga</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                {{-- <div style="width: 650px;height: 300px;text-align:center"> --}}
+                    <canvas id="hargaSampah" width="600" height="400"></canvas>
+                {{-- </div> --}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 <!-- /.container-fluid -->
 
@@ -117,6 +136,75 @@
 <script src="{{asset('js/script.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 <script>
+    var hargae = document.getElementById("hargaSampah");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var dataFirst = {
+    label: "plastik",
+    data: {!! json_encode($hargae) !!},
+    lineTension: 0,
+    fill: false,
+    borderColor: 'red'
+  };
+
+  var dataDua = {
+    label: "kertas",
+    data: [1000,500,3000],
+    lineTension: 0,
+    fill: false,
+    borderColor: 'yellow'
+  };
+  var dataTiga = {
+    label: "elektronik",
+    data: [3000,500,1000],
+    lineTension: 0,
+    fill: false,
+    borderColor: 'black'
+  };
+  var dataEmpat = {
+    label: "minyak",
+    data: [2000,500,200],
+    lineTension: 0,
+    fill: false,
+    borderColor: 'green'
+  };
+var dataSecond = {
+    label: "logam",
+    data: [1000,2000,3000,4000],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+  var dataSecond = {
+    label: "logam",
+    data: [1000,2000,3000,4000],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+var speedData = {
+  labels: {!! json_encode($label) !!},
+  datasets: [dataFirst,dataDua,dataTiga,dataEmpat, dataSecond]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+  }
+};
+
+var lineChart = new Chart(hargae, {
+  type: 'line',
+  data: speedData,
+  options: chartOptions
+});
     var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'bar',
@@ -153,6 +241,6 @@
 					}]
 				}
 			}
-		});
+		}); 
 </script>
 @endsection
