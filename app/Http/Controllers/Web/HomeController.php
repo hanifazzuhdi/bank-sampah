@@ -38,6 +38,7 @@ class HomeController extends Controller
 
         foreach ($jenis_sampah as $value) {
             $warna[] = $value->warna;
+            $harga[] = $value->harga;
         }
 
         $sampahh = Sampah::all();
@@ -65,22 +66,14 @@ class HomeController extends Controller
         foreach ($penghasilann as  $value) {
             $penghasilan[] =  $value->penghasilan;
         }
-        $jenis_sampah = Jenis::all();
+        // ini buat chart kenaikan harga
         $harga_sampah = hargasampah::all();
-
-        foreach ($jenis_sampah as $value) {
-            $jenise[] = $value->jenis_sampah;
-        }
-        foreach ($jenis_sampah as $value) {
-            $harga[] = $value->harga;
-        }
         foreach ($harga_sampah as $value) {
             $label[] = $value->created_at;
-        }
-        foreach ($harga_sampah as $value) {
             $hargae[] = $value->harga;
+            $jenise[] = $value->jenis;
         }
-        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'jenise', 'harga', 'label', 'hargae'));
+        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'jenise', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'harga', 'label', 'hargae'));
     }
 
     public function alert()
