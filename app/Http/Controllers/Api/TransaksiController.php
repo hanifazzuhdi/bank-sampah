@@ -12,7 +12,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $data = Tabungan::where('user_id', Auth::id())->get();
+        $data = Tabungan::where('user_id', Auth::id())->orderBy('id', 'DESC')->get();
 
         if ($data == '[]') return $this->sendResponse();
 
@@ -35,10 +35,10 @@ class TransaksiController extends Controller
 
     public static function addSaldo($data)
     {
-        $last = Tabungan::where('user_id', Auth::id())->latest()->first();
+        $last = Tabungan::where('user_id', $data['user_id'])->latest()->first();
 
         Tabungan::create([
-            'user_id'       => Auth::id(),
+            'user_id'       => $data['user_id'],
             'keterangan'    => 'Penjualan Sampah ke Bank Sampah',
             'debet'         => $data['penghasilan'],
             'kredit'        => 0,
