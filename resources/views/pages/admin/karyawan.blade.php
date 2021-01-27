@@ -66,6 +66,7 @@
                                     data-target=".modal-update" data-url="{{env('APP_URL') . '/karyawan/'}}">
                                     <i class="fas fa-eye"></i>
                                 </a>
+                                @if (Auth::user()->role_id == 5)
                                 |
                                 <form class="d-inline" action="{{'karyawan/delete/' . $user->id}}" method="post">
                                     <button class="btn p-0 btn-hapus" type="submit"
@@ -75,6 +76,7 @@
                                     @csrf
                                     @method('delete')
                                 </form>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

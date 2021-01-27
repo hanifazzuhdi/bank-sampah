@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class SampahController extends Controller
 {
     public function index()
-    {    
+    {
         $data = Sampah::with(['jenis'])->orderBy('id', 'ASC')->get();
 
         return $this->sendResponse('Success', 'Data Sampah Berhasil dimuat', $data, 200);

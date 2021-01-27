@@ -26,9 +26,11 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary">DAFTAR NASABAH</h6>
+            @if(Auth::user()->role_id == 5)
             <button class="btn btn-primary btn-sm btn-create-user" data-toggle="modal" data-target=".modal-create">
                 <i class="fas fa-user-plus"></i>
             </button>
+            @endif
         </div>
         <div class="card-body">
             <div class="table-responsive">

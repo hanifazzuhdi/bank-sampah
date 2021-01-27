@@ -13,6 +13,7 @@
                     <div class="col-md-4 d-flex justify-content-center border-right pt-4">
                         <img id="avatar" class="rounded-circle border" src="" alt="Avatar" width="150px" height="150px">
 
+                        @if (Auth::user()->role_id == 5)
                         <div class="userDelete">
                             <form class="form-delete" action="" method="post">
                                 <button class="btn border p-2 bg-danger text-white" type="submit" title="Delete User"
@@ -32,6 +33,7 @@
                                 @csrf
                             </form>
                         </div>
+                        @endif
 
                         {{-- start form --}}
                         <form class="form-create" action="" method="POST" enctype="multipart/form-data">

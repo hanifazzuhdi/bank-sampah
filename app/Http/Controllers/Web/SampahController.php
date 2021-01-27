@@ -19,7 +19,7 @@ class SampahController extends Controller
         $sampahs = Jenis::paginate(6);
         $jenis_sampah = Jenis::all();
         $harga_sampah = hargasampah::all();
-        
+
         foreach ($jenis_sampah as $value) {
             $jenis[] = $value->jenis_sampah;
         }
@@ -32,7 +32,7 @@ class SampahController extends Controller
         foreach ($harga_sampah as $value) {
             $hargae[] = $value->harga;
         }
-        return view('pages.admin.sampah', compact('sampahs', 'jenis', 'harga','label','hargae'));
+        return view('pages.admin.sampah', compact('sampahs', 'jenis', 'harga', 'label', 'hargae'));
     }
 
     // for ajax

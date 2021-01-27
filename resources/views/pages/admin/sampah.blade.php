@@ -22,10 +22,12 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="mt-2 font-weight-bold text-primary">DAFTAR JENIS SAMPAH</h6>
+            @if (Auth::user()->role_id == 5)
             <button class="btn btn-primary btn-sm btn-create-jenis" data-toggle="modal"
                 data-target="#modal-sampah-create">
                 <i class="fas fa-plus"></i>
             </button>
+            @endif
         </div>
         <div class="card-body d-flex justify-content-around flex-wrap">
 
@@ -37,6 +39,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">{{$sampah->jenis_sampah}}</h6>
                         <small>Harga Beli : {{$sampah->harga}} /Kg</small>
                     </div>
+                    @if (Auth::user()->role_id == 5)
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -61,6 +64,7 @@
                             </form>
                         </div>
                     </div>
+                    @endif
                 </div>
                 <!-- Card Body -->
                 <div class=" card-body d-flex justify-content-between">
@@ -115,7 +119,7 @@
             <!-- Card Body -->
             <div class="card-body">
                 {{-- <div style="width: 650px;height: 300px;text-align:center"> --}}
-                    <canvas id="hargaSampah" width="600" height="400"></canvas>
+                <canvas id="hargaSampah" width="600" height="400"></canvas>
                 {{-- </div> --}}
             </div>
         </div>
@@ -241,6 +245,6 @@ var lineChart = new Chart(hargae, {
 					}]
 				}
 			}
-		}); 
+		});
 </script>
 @endsection
