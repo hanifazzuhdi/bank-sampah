@@ -95,9 +95,9 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                {{-- <div style="width: 650px;height: 300px;text-align:center"> --}}
+                <div style="width: 650px;height: 300px;text-align:center">
                     <canvas id="myChart"></canvas>
-                {{-- </div> --}}
+                </div>
             </div>
         </div>
     </div>
