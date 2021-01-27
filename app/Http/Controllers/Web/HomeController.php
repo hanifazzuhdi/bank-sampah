@@ -11,6 +11,7 @@ use App\Model\Penyetoran;
 use App\Model\Penarikan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Model\hargasampah;
 
 class HomeController extends Controller
 {
@@ -39,7 +40,7 @@ class HomeController extends Controller
             $warna[] = $value->warna;
         }
 
-           $sampahh = Sampah::all();
+        $sampahh = Sampah::all();
         foreach ($sampahh as $value) {
             $sampah[] = $value->berat;
         }
@@ -64,8 +65,22 @@ class HomeController extends Controller
         foreach ($penghasilann as  $value) {
             $penghasilan[] =  $value->penghasilan;
         }
+        $jenis_sampah = Jenis::all();
+        $harga_sampah = hargasampah::all();
 
-        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'sampah', 'warna', 'jenis_sampah', 'penghasilan'));
+        foreach ($jenis_sampah as $value) {
+            $jenise[] = $value->jenis_sampah;
+        }
+        foreach ($jenis_sampah as $value) {
+            $harga[] = $value->harga;
+        }
+        foreach ($harga_sampah as $value) {
+            $label[] = $value->created_at;
+        }
+        foreach ($harga_sampah as $value) {
+            $hargae[] = $value->harga;
+        }
+        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'jenise', 'harga', 'label', 'hargae'));
     }
 
     public function alert()
@@ -82,6 +97,6 @@ class HomeController extends Controller
 
     public function peringkat()
     {
-    $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)");    
+        $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)");
     }
 }
