@@ -84,8 +84,6 @@
     </div>
 
 </div>
-
-
 <!-- /.container-fluid -->
 
 @include('components.modal-sampah')
