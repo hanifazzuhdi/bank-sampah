@@ -75,7 +75,7 @@
 
     <script>
           $(window).on("load",function(){
-          $(".loader-wrapper").fadeOut("slow");
+          $(".loader-wrapper").fadeOut("fast");
         });
         var elem = document.documentElement;
         function openFullscreen() {
