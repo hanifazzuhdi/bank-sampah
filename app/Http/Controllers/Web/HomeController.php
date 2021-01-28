@@ -41,7 +41,7 @@ class HomeController extends Controller
             $harga[] = $value->harga;
         }
 
-           $sampahh = Sampah::all();
+        $sampahh = Sampah::all();
         foreach ($sampahh as $value) {
             $sampah[] = $value->berat;
         }
@@ -71,9 +71,9 @@ class HomeController extends Controller
         foreach ($harga_sampah as $value) {
             $label[] = $value->created_at;
             $hargae[] = $value->harga;
-$jenise[] = $value->jenis;
+            $jenise[] = $value->jenis;
         }
-        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis','jenise', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'harga','label','hargae'));
+        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'jenise', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'harga', 'label', 'hargae'));
     }
 
     public function alert()
@@ -90,6 +90,6 @@ $jenise[] = $value->jenis;
 
     public function peringkat()
     {
-    $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)");    
+        $peringkat = DB::table('penyetoran')->select("SUM(penyetoran)");
     }
 }
