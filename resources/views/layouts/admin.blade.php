@@ -35,7 +35,6 @@
 
 <body id="page-top">
     <!-- Page Wrapper -->
-    
     <div id="wrapper">
         @include('components.side-nav')
 
@@ -44,12 +43,12 @@
             @include('components.top-nav')
 
             @yield('content')
-           
+            <div class="loader-wrapper">
+                <span class="loader"><span class="loader-inner"></span></span>
+            </div>
         </div>
         {{-- end content --}}
-        <div class="loader-wrapper">
-            <span class="loader"><span class="loader-inner"></span></span>
-        </div>
+
         <!-- Footer -->
         @include('components.footer')
 
@@ -70,12 +69,7 @@
     <!-- Custom js untuk satu page -->
     @yield('script')
 
-    <script>
-        $(window).on("load", function() {
-            $(".loader-wrapper").fadeOut("slow");
-        });
 
-    </script>
     <script>
         var elem = document.documentElement;
 
@@ -102,7 +96,12 @@
         });
 
     </script>
+    <script>
+        $(window).on("load", function() {
+            $(".loader-wrapper").fadeOut("slow");
+        });
 
+    </script>
 </body>
 
 </html>
