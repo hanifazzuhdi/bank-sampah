@@ -30,6 +30,8 @@
 
     <!-- Custom CSS untuk satu page -->
     @yield('style')
+    <script src="jquery-2.1.4.js"></script>
+    <link href="{{asset('css/loading.css')}}" rel="stylesheet">
 
 </head>
 
@@ -45,6 +47,9 @@
 
             @yield('content')
         </div>
+        <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+          </div>
         {{-- end content --}}
 
         <!-- Footer -->
@@ -69,6 +74,9 @@
 
 
     <script>
+          $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
         var elem = document.documentElement;
         function openFullscreen() {
             if (elem.requestFullscreen) {
