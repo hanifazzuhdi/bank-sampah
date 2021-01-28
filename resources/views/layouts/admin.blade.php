@@ -75,7 +75,7 @@
 
     <script>
         $(window).on("load", function() {
-            $(".loader-wrapper").delay(2500).fadeOut("fast");
+            $(".loader-wrapper").delay(1500).fadeOut("fast");
         });
         var elem = document.documentElement;
 
