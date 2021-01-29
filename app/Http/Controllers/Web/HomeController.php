@@ -67,21 +67,7 @@ class HomeController extends Controller
             $penghasilan[] =  $value->penghasilan;
         }
 
-        // dd(json_encode($jenis));
-
-        $label = [];
-        $jenise = [];
-        $hargae = [];
-
-        // ini buat chart kenaikan harga
-        $harga_sampah = hargasampah::all();
-        foreach ($harga_sampah as $value) {
-            $label[] = $value->created_at;
-            $hargae[] = $value->harga;
-            $jenise[] = $value->jenis;
-        }
-
-        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'jenise', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'harga', 'label', 'hargae'));
+        return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'harga'));
     }
 
     public function alert()

@@ -151,7 +151,7 @@
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">harga sampah</h6>
+                <h6 class="m-0 font-weight-bold text-primary">HARGA SAMPAH</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -163,26 +163,6 @@
     </div>
 
 </div>
-
-<div class="container-fluid">
-
-    <div class="col-xl-8 col-lg-7 pl-0">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">grafik kenaikan harga</h6>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                {{-- <div style="width: 650px;height: 300px;text-align:center"> --}}
-                <canvas id="hargaSampah" width="600" height="400"></canvas>
-                {{-- </div> --}}
-            </div>
-        </div>
-    </div>
-
-</div>
-
 
 @endsection
 
@@ -331,44 +311,6 @@ var myLineChart = new Chart(ctx, {
       }
     }
   }
-});
-
-</script>
-{{-- ini chart kenaikan harga --}}
-
-<script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
-<script>
-    var array = {!! json_encode($jenis) !!}
-
-    new Chart(document.getElementById("hargaSampah"), {
-  type: 'line',
-
-  data: {
-
-    // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-    labels: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
-
-    datasets: [
-        {
-            data: [86,114,106,106,107,111, 2000],
-            label: array[0],
-            borderColor: "#3e95cd",
-            fill: false
-        }
-
-    , {
-        data: [86,114,100,106,107,111, 1000],
-        label: "Asia",
-        borderColor: "#8e5ea2",
-        fill: false
-      }, {
-        data: [50,314,106,106,107,111, 4000],
-        label: "Europe",
-        borderColor: "#3cba9f",
-        fill: false
-      }
-    ]
-  },
 });
 
 // ini chart perbandingan harga
