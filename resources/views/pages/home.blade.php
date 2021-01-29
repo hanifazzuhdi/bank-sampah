@@ -338,45 +338,37 @@ var myLineChart = new Chart(ctx, {
 
 <script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 <script>
-    var hargae = document.getElementById("hargaSampah");
+    var array = {!! json_encode($jenis) !!}
 
-Chart.defaults.global.defaultFontFamily = "Lato";
-Chart.defaults.global.defaultFontSize = 18;
-
-var dataFirst = {
-    label: {!! json_encode($jenise) !!},
-    data: {!! json_encode($hargae) !!},
-    lineTension: 0,
-    fill: true,
-    borderColor: [
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)'
-					]
-  };
-var speedData = {
-  labels: {!! json_encode($label) !!},
-  datasets: [dataFirst]
-};
-
-var chartOptions = {
-  legend: {
-    display: true,
-    position: 'top',
-    labels: {
-      boxWidth: 80,
-      fontColor: 'black'
-    }
-  }
-};
-
-var lineChart = new Chart(hargae, {
+    new Chart(document.getElementById("hargaSampah"), {
   type: 'line',
-  data: speedData,
-  options: chartOptions
+
+  data: {
+
+    // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+    labels: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+
+    datasets: [
+        {
+            data: [86,114,106,106,107,111, 2000],
+            label: array[0],
+            borderColor: "#3e95cd",
+            fill: false
+        }
+
+    , {
+        data: [86,114,100,106,107,111, 1000],
+        label: "Asia",
+        borderColor: "#8e5ea2",
+        fill: false
+      }, {
+        data: [50,314,106,106,107,111, 4000],
+        label: "Europe",
+        borderColor: "#3cba9f",
+        fill: false
+      }
+    ]
+  },
 });
 
 // ini chart perbandingan harga

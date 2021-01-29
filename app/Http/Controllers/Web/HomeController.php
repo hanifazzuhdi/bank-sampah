@@ -66,6 +66,13 @@ class HomeController extends Controller
         foreach ($penghasilann as  $value) {
             $penghasilan[] =  $value->penghasilan;
         }
+
+        // dd(json_encode($jenis));
+
+        $label = [];
+        $jenise = [];
+        $hargae = [];
+
         // ini buat chart kenaikan harga
         $harga_sampah = hargasampah::all();
         foreach ($harga_sampah as $value) {
@@ -73,6 +80,7 @@ class HomeController extends Controller
             $hargae[] = $value->harga;
             $jenise[] = $value->jenis;
         }
+
         return view('pages.home', compact('user', 'keuangan', 'penjualan', 'transaksi', 'jenis', 'jenise', 'sampah', 'warna', 'jenis_sampah', 'penghasilan', 'harga', 'label', 'hargae'));
     }
 
