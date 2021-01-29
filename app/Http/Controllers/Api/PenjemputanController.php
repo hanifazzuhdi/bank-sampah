@@ -6,10 +6,10 @@ use App\Model\Penjemputan;
 use App\Http\Controllers\Controller;
 
 class PenjemputanController extends Controller
-{   
+{
     public function index()
     {
-        $permintaan = Penjemputan::with('user')->get();
+        $permintaan = Penjemputan::with('user')->orderBy('id', 'DESC')->get();
 
         if ($permintaan == '[]') {
             return $this->sendResponse('Failed', 'data kosong', null, 404);
@@ -20,7 +20,7 @@ class PenjemputanController extends Controller
 
     public function terima()
     {
-        $permintaan = Penjemputan::with('user')->where('status', 1)->get();
+        $permintaan = Penjemputan::with('user')->where('status', 1)->orderBy('id', 'DESC')->get();
 
         if ($permintaan == '[]') {
             return $this->sendResponse('Failed', 'data kosong', null, 404);
@@ -31,7 +31,7 @@ class PenjemputanController extends Controller
 
     public function selesai()
     {
-        $permintaan = Penjemputan::with('user')->where('status', 2)->get();
+        $permintaan = Penjemputan::with('user')->where('status', 2)->orderBy('id', 'DESC')->get();
 
         if ($permintaan == '[]') {
             return $this->sendResponse('Failed', 'data kosong', null, 404);
@@ -42,7 +42,7 @@ class PenjemputanController extends Controller
 
     public function penolakan()
     {
-        $permintaan = Penjemputan::with('user')->where('status', 3)->get();
+        $permintaan = Penjemputan::with('user')->where('status', 3)->orderBy('id', 'DESC')->get();
 
         if ($permintaan == '[]') {
             return $this->sendResponse('Failed', 'data kosong', null, 404);
