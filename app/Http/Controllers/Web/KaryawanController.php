@@ -52,7 +52,13 @@ class KaryawanController extends Controller
         ]);
 
         if (request('avatar')) {
-            $response = cloudinary()->upload(request('avatar')->getRealPath())->getSecurePath();
+            $response = cloudinary()->upload(request()->file('avatar')->getRealPath(), [
+                'transformation' => [
+                    'quality' => 'auto',
+                    'fetch_format' => 'auto'
+                ],
+                'crop' => 'limit'
+            ])->getSecurePath();
             $data['avatar'] = $response;
         }
 

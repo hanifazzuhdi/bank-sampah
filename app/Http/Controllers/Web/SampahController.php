@@ -42,7 +42,13 @@ class SampahController extends Controller
             $data['image'] = request('imageURL');
         } else {
             // kondisi name image ada dan validasi post api image
-            $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
+            $response = cloudinary()->upload(request()->file('image')->getRealPath(), [
+                'transformation' => [
+                    'quality' => 'auto',
+                    'fetch_format' => 'auto'
+                ],
+                'crop' => 'limit'
+            ])->getSecurePath();
 
             // Get Link Image
             $data['image'] = $response;
@@ -73,7 +79,14 @@ class SampahController extends Controller
             $data['image'] = request('imageURL');
         } else {
             // kondisi name image ada dan validasi post api image
-            $response = cloudinary()->upload(request('image')->getRealPath())->getSecurePath();
+
+            $response = cloudinary()->upload(request()->file('image')->getRealPath(), [
+                'transformation' => [
+                    'quality' => 'auto',
+                    'fetch_format' => 'auto'
+                ],
+                'crop' => 'limit'
+            ])->getSecurePath();
 
             // Get Link Image
             $data['image'] = $response;

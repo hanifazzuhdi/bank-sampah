@@ -36,7 +36,13 @@ class ProfileController extends Controller
         ]);
 
         if ($request->avatar) {
-            $image = cloudinary()->upload(request('avatar')->getRealPath())->getSecurePath();
+            $image = cloudinary()->upload(request()->file('avatar')->getRealPath(), [
+                'transformation' => [
+                    'quality' => 'auto',
+                    'fetch_format' => 'auto'
+                ],
+                'crop' => 'limit'
+            ])->getSecurePath();
         }
 
         $user = User::where('id', Auth::user()->id)->first();
