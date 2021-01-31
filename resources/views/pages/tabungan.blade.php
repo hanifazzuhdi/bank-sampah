@@ -30,7 +30,7 @@
             <h6 class="m-0 font-weight-bold text-primary">INFORMASI NASABAH</h6>
         </a>
 
-        <div class="collapse" id="informasi-nasabah">
+        <div class="collapse show" id="informasi-nasabah">
             <div class="card-body">
 
                 <div class="row no-gutters align-items-center">

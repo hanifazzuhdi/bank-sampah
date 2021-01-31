@@ -44,9 +44,9 @@ class KeuanganController extends Controller
         ]);
 
         $user = User::where('email', request('email'))->firstOrfail();
-        $tabungan = Tabungan::where('user_id', $user->id)->latest()->firstOrFail();
+        $tabungan = Tabungan::where('user_id', $user->id)->latest()->first();
 
-        if ($tabungan->saldo < request('nominal')) {
+        if ($tabungan == null or $tabungan->saldo < request('nominal')) {
             alert()->warning('Gagal', 'Saldo Nasabah Tidak Cukup');
             return back();
         }

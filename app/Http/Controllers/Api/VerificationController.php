@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Tabungan;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -81,10 +82,7 @@ class VerificationController extends Controller
         }
 
         if ($request->user()->hasVerifiedEmail()) {
-
             return response(['message' => 'akun anda telah diverifikasi. silakan kembali ke aplikasi']);
-
-            // return redirect($this->redirectPath());
         }
 
         if ($request->user()->markEmailAsVerified()) {
